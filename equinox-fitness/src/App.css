@@ -1,0 +1,93 @@
+/* ===== EQUINOX CUSTOM STYLES ===== */
+
+/* Animated gradient border for the hero CTA */
+.btn-glow {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-glow::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #0071E3, #00c6ff, #0071E3, #7c3aed);
+  background-size: 400% 400%;
+  border-radius: 9999px;
+  z-index: -1;
+  animation: shimmer 3s ease infinite;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.btn-glow:hover::before {
+  opacity: 1;
+}
+
+@keyframes shimmer {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Metrics counter animation */
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.metric-item {
+  animation: countUp 0.8s ease forwards;
+  opacity: 0;
+}
+
+.metric-item:nth-child(2) { animation-delay: 0.15s; }
+.metric-item:nth-child(3) { animation-delay: 0.3s; }
+
+/* Staggered card entrance */
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.card-animate {
+  animation: slideUp 0.7s ease forwards;
+  opacity: 0;
+}
+
+.card-animate:nth-child(1) { animation-delay: 0.1s; }
+.card-animate:nth-child(2) { animation-delay: 0.2s; }
+.card-animate:nth-child(3) { animation-delay: 0.3s; }
+.card-animate:nth-child(4) { animation-delay: 0.4s; }
+
+/* Gradient text shimmer for hero */
+.text-shimmer {
+  background: linear-gradient(
+    90deg,
+    #1D1D1F 0%,
+    #1D1D1F 40%,
+    #0071E3 50%,
+    #1D1D1F 60%,
+    #1D1D1F 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textShimmer 5s ease-in-out infinite;
+}
+
+@keyframes textShimmer {
+  0% { background-position: 100% 0; }
+  100% { background-position: -100% 0; }
+}
+
+/* Floating animation for background blobs */
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(20px, -30px) rotate(5deg); }
+  50% { transform: translate(-10px, 15px) rotate(-3deg); }
+  75% { transform: translate(15px, 5px) rotate(3deg); }
+}
