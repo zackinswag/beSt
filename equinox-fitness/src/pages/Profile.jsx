@@ -82,7 +82,7 @@ export const Profile = () => {
               <div className="w-32 h-32 rounded-[32px] overflow-hidden border-4 border-white shadow-2xl relative z-10">
                 <img src={user?.imageUrl} alt={user?.fullName} className="w-full h-full object-cover" />
               </div>
-              <div className="absolute -bottom-2 -right-2 w-10 h-10 bg-black text-white rounded-2xl flex items-center justify-center shadow-lg transform hover:scale-110 transition-all cursor-pointer">
+              <div className="absolute -bottom-2 -right-2 w-10 h-10 bg-black text-white rounded-2xl flex items-center justify-center shadow-lg transform hover:scale-110 transition-all cursor-pointer z-20">
                 <Settings size={18} />
               </div>
             </div>
