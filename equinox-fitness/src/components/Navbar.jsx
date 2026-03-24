@@ -33,6 +33,9 @@ export const Navbar = () => {
           <Link to="/training" className="hover:text-apple-blue transition-colors duration-300">Programs</Link>
           <Link to="/library" className="hover:text-apple-blue transition-colors duration-300">Library</Link>
           <Link to="/pricing" className="hover:text-apple-blue transition-colors duration-300">Pricing</Link>
+          <SignedIn>
+            <Link to="/profile" className="hover:text-apple-blue transition-colors duration-300">Profil</Link>
+          </SignedIn>
           <Link to="/contact" className="hover:text-apple-blue transition-colors duration-300">Contact</Link>
         </div>
 
@@ -75,6 +78,9 @@ export const Navbar = () => {
             <Link to="/training" className="py-2 hover:text-apple-blue transition-colors border-b border-black/[0.03]">Programs</Link>
             <Link to="/library" className="py-2 hover:text-apple-blue transition-colors border-b border-black/[0.03]">Library</Link>
             <Link to="/pricing" className="py-2 hover:text-apple-blue transition-colors border-b border-black/[0.03]">Pricing</Link>
+            <SignedIn>
+              <Link to="/profile" className="py-2 hover:text-apple-blue transition-colors border-b border-black/[0.03]">Profil</Link>
+            </SignedIn>
             <Link to="/contact" className="py-2 hover:text-apple-blue transition-colors border-b border-black/[0.03]">Contact</Link>
           </div>
           

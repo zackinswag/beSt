@@ -16,6 +16,7 @@ import { WorkoutSession } from './pages/WorkoutSession';
 import { Library } from './pages/Library';
 import { Contact } from './pages/Contact';
 import { Pricing } from './pages/Pricing';
+import { Profile } from './pages/Profile';
 
 export default function App() {
   return (
@@ -42,6 +43,7 @@ export default function App() {
             <Route path="/library" element={<Library />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/pricing" element={<Pricing />} />
+            <Route path="/profile" element={<SignedIn><Profile /></SignedIn>} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </main>
