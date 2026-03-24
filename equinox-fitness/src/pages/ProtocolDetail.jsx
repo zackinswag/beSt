@@ -61,7 +61,7 @@ export const ProtocolDetail = () => {
     },
     {
       id: 'bro_split',
-      name: 'BRO SPLIT',
+      name: 'SPLIT PE GRUPE',
       desc: 'O grupă musculară pe zi. Focus intens pe hipertrofie.',
       why: 'Ideal pentru cei care vor să dedice timp maxim fiecărei grupe în parte.',
       icon: Dumbbell,
@@ -69,7 +69,7 @@ export const ProtocolDetail = () => {
     },
     {
       id: 'upper_lower',
-      name: 'U/L (Upper Lower)',
+      name: 'U/L (Superior - Inferior)',
       desc: 'Antrenamente alternative între partea superioară și cea inferioară.',
       why: 'Echilibru perfect între frecvență și volum, foarte versatil.',
       icon: Layers,
@@ -77,7 +77,7 @@ export const ProtocolDetail = () => {
     },
     {
       id: 'full_body',
-      name: 'FULL BODY',
+      name: 'TOT CORPUL',
       desc: 'Antrenează tot corpul în fiecare sesiune.',
       why: 'Maxim de eficiență pentru cei cu program încărcat, stimulează sinteza proteică frecvent.',
       icon: User,
@@ -115,16 +115,16 @@ export const ProtocolDetail = () => {
   const calisthenicsSubProtocols = [
     {
       id: 'calisthenics_classic',
-      name: 'Classic',
-      desc: 'Bază solidă (pull ups, dips, etc.). Esențial pentru a construi forța brută necesară skill-urilor avansate.',
+      name: 'Clasic',
+      desc: 'Bază solidă (tracțiuni, dips etc.). Esențial pentru a construi forța brută necesară skill-urilor avansate.',
       icon: User,
       color: 'blue',
       tier: 'free'
     },
     {
       id: 'calisthenics_skills',
-      name: 'Skills',
-      desc: 'Mastery (Front Lever, Planche, etc.). Antrenamentul pe skill-uri dezvoltă o forță relativă și mobilitate superioară prin integrare sistemică.',
+      name: 'Skill-uri',
+      desc: 'Măiestrie (Front Lever, Planche etc.). Antrenamentul pe skill-uri dezvoltă forță relativă și mobilitate superioară prin integrare sistemică.',
       icon: Zap,
       color: 'purple',
       tier: 'premium'
@@ -132,7 +132,7 @@ export const ProtocolDetail = () => {
   ];
 
   const subProtocols = id === 'gym' ? gymSubProtocols : id === 'calisthenics' ? calisthenicsSubProtocols : [];
-  const protocolTitle = id === 'gym' ? 'THE WEIGHTROOM' : 'BODY MASTERY';
+  const protocolTitle = id === 'gym' ? 'SALA DE FORȚĂ' : 'MĂIESTRIA CORPULUI';
   const protocolIcon = id === 'gym' ? Dumbbell : User;
 
   if (!['gym', 'calisthenics'].includes(id)) {
@@ -144,7 +144,7 @@ export const ProtocolDetail = () => {
         >
           <ArrowLeft size={14} /> Înapoi
         </button>
-        <h2 className="text-4xl font-black tracking-tighter mb-4">Coming Soon</h2>
+        <h2 className="text-4xl font-black tracking-tighter mb-4">În curând</h2>
         <p className="text-black/40">Lucrăm la acest protocol ({id}). Revino curând!</p>
       </div>
     );
@@ -190,7 +190,7 @@ export const ProtocolDetail = () => {
             <div>
               <h2 className="text-3xl md:text-5xl font-black tracking-tighter leading-none">
                 {selectedSubProtocol ? selectedSubProtocol.name.toUpperCase() : (
-                  id === 'gym' ? <>THE <span className="font-serif-italic font-normal text-black/70">WEIGHTROOM</span></> : <>BODY <span className="font-serif-italic font-normal text-black/70">MASTERY</span></>
+                  id === 'gym' ? <>SALA DE <span className="font-serif-italic font-normal text-black/70">FORȚĂ</span></> : <>MĂIESTRIA <span className="font-serif-italic font-normal text-black/70">CORPULUI</span></>
                 )}
               </h2>
               <p className="text-black/40 font-bold tracking-widest text-[10px] uppercase mt-1">
@@ -226,7 +226,7 @@ export const ProtocolDetail = () => {
                   {sub.tier === 'premium' && userAccess.tier === 'free' && !userAccess.trialActive && (
                     <div className="bg-apple-blue/10 px-3 py-1 rounded-full flex items-center gap-1.5">
                       <Lock size={10} className="text-apple-blue" />
-                      <span className="text-[9px] font-black uppercase tracking-widest text-apple-blue">Elite only</span>
+                      <span className="text-[9px] font-black uppercase tracking-widest text-apple-blue">Doar Elită</span>
                     </div>
                   )}
                 </div>
@@ -238,7 +238,7 @@ export const ProtocolDetail = () => {
 
                 <div className="flex items-center justify-between pt-6 border-t border-black/5">
                   <span className="text-[10px] font-black uppercase tracking-widest text-black/30 group-hover:text-black transition-colors">
-                    {sub.id === 'gym_strength' || sub.id === 'gym_maintenance' || sub.id === 'gym_shred' ? 'Vezi variantele' : 'Start Program'}
+                    {sub.id === 'gym_strength' || sub.id === 'gym_maintenance' || sub.id === 'gym_shred' ? 'Vezi variantele' : 'Începe programul'}
                   </span>
                   <ArrowRight size={16} className="text-black/20 group-hover:text-black group-hover:translate-x-1 transition-all" />
                 </div>

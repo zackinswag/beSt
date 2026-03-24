@@ -7,8 +7,8 @@ export const Training = () => {
   const protocols = [
     {
       id: 'gym',
-      title: 'THE WEIGHTROOM',
-      subtitle: 'Protocol 01',
+      title: 'SALA DE FORȚĂ',
+      subtitle: 'Protocolul 01',
       desc: 'Hipertrofie structurală și forță brută. Proiectat pentru performanță maximă fără compromisuri.',
       icon: Dumbbell,
       color: 'blue',
@@ -16,8 +16,8 @@ export const Training = () => {
     },
     {
       id: 'calisthenics',
-      title: 'BODY MASTERY',
-      subtitle: 'Protocol 02',
+      title: 'MĂIESTRIA CORPULUI',
+      subtitle: 'Protocolul 02',
       desc: 'Stăpânește fizica propriei greutăți. Dezvoltă skill-uri de la începător la nivel de elită absolută.',
       icon: User,
       color: 'purple',
@@ -25,8 +25,8 @@ export const Training = () => {
     },
     {
       id: 'hybrid',
-      title: 'HYBRID ENGINE',
-      subtitle: 'Protocol 03',
+      title: 'MOTOR HIBRID',
+      subtitle: 'Protocolul 03',
       desc: 'Unde forța explozivă întâlnește rezistența infinită. Programul complet pentru atletul total.',
       icon: Zap,
       color: 'rose',
@@ -50,7 +50,7 @@ export const Training = () => {
             <span className="text-[10px] font-black uppercase tracking-[0.2em] text-black/40">Selectează parcursul</span>
           </div>
           <h2 className="text-4xl md:text-6xl font-black tracking-tighter mb-6">
-            Choose your <span className="font-serif-italic font-normal text-black/70">path</span>.
+            Alege-ți <span className="font-serif-italic font-normal text-black/70">parcursul</span>.
           </h2>
           <p className="text-lg md:text-xl text-black/40 font-medium max-w-2xl mx-auto leading-relaxed">
             Fiecare protocol este optimizat pentru a elibera un tip diferit de performanță umană. Alege-ți armura.

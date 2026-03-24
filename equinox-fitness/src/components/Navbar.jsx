@@ -17,9 +17,9 @@ const throttle = (func, delay) => {
 
 // Navigation links configuration
 const NAV_LINKS = [
-  { label: 'Programs', path: '/training' },
-  { label: 'Library', path: '/library' },
-  { label: 'Pricing', path: '/pricing' },
+  { label: 'Programe', path: '/training' },
+  { label: 'Bibliotecă', path: '/library' },
+  { label: 'Prețuri', path: '/pricing' },
   { label: 'Contact', path: '/contact' }
 ];
 
@@ -92,18 +92,18 @@ export const Navbar = () => {
           <div className="hidden md:flex items-center gap-6">
             <SignedOut>
               <SignInButton mode="modal">
-                <button className="text-[12px] font-bold uppercase tracking-widest text-black/40 hover:text-black cursor-pointer transition-colors duration-300 bg-transparent border-none" aria-label="Sign in to your account">Login</button>
+                <button className="text-[12px] font-bold uppercase tracking-widest text-black/40 hover:text-black cursor-pointer transition-colors duration-300 bg-transparent border-none" aria-label="Autentifică-te în cont">Autentificare</button>
               </SignInButton>
               <SignUpButton mode="modal">
-                <button className="btn-primary text-[11px] px-7 py-2.5 uppercase tracking-[0.2em] font-black cursor-pointer" aria-label="Create a new account">Join</button>
+                <button className="btn-primary text-[11px] px-7 py-2.5 uppercase tracking-[0.2em] font-black cursor-pointer" aria-label="Creează un cont nou">Înregistrare</button>
               </SignUpButton>
             </SignedOut>
           </div>
 
           <SignedIn>
-            <Link to="/pricing" className="hidden md:flex items-center gap-2 bg-apple-blue/10 text-apple-blue px-4 py-2 rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-apple-blue hover:text-white transition-all duration-300" aria-label="Upgrade to Elite plan">
+            <Link to="/pricing" className="hidden md:flex items-center gap-2 bg-apple-blue/10 text-apple-blue px-4 py-2 rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-apple-blue hover:text-white transition-all duration-300" aria-label="Treci la planul Elită">
               <Sparkles size={12} />
-              Go Elite
+              Treci la Elită
             </Link>
             <UserButton 
               afterSignOutUrl="/" 
@@ -121,7 +121,7 @@ export const Navbar = () => {
             className="md:hidden p-2 text-black/60 hover:text-black transition-colors"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-expanded={isMenuOpen}
-            aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+            aria-label={isMenuOpen ? "Închide meniul de navigare" : "Deschide meniul de navigare"}
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -138,10 +138,10 @@ export const Navbar = () => {
           <SignedOut>
             <div className="flex flex-col gap-4 w-full pt-4">
               <SignInButton mode="modal">
-                <button className="text-[12px] font-bold uppercase tracking-widest text-black/40 py-2" aria-label="Sign in to your account">Login</button>
+                <button className="text-[12px] font-bold uppercase tracking-widest text-black/40 py-2" aria-label="Autentifică-te în cont">Autentificare</button>
               </SignInButton>
               <SignUpButton mode="modal">
-                <button className="btn-primary w-full py-4 rounded-[18px] text-[12px] uppercase tracking-[0.2em] font-black" aria-label="Create a new account">Join The Elite</button>
+                <button className="btn-primary w-full py-4 rounded-[18px] text-[12px] uppercase tracking-[0.2em] font-black" aria-label="Creează un cont nou">Intră în Elită</button>
               </SignUpButton>
             </div>
           </SignedOut>

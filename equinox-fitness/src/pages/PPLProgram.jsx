@@ -86,7 +86,7 @@ export const PPLProgram = () => {
 
   const toggleWorkoutCompletion = async (workoutId) => {
     if (!user?.id) {
-      alert('Please login to track your progress');
+      alert('Te rugăm să te autentifici ca să îți urmărești progresul');
       return;
     }
 
@@ -123,22 +123,22 @@ export const PPLProgram = () => {
       }));
     } catch (error) {
       console.error('Error updating progress:', error);
-      alert('Error updating progress');
+      alert('Eroare la actualizarea progresului');
     }
   };
 
   if (loading) {
-    return <div className="pt-44 text-center text-black/40">Loading program...</div>;
+    return <div className="pt-44 text-center text-black/40">Se încarcă programul...</div>;
   }
 
   if (error) {
-    return <div className="pt-44 text-center text-red-500">Error: {error}</div>;
+    return <div className="pt-44 text-center text-red-500">Eroare: {error}</div>;
   }
 
   if (workouts.length === 0) {
     return (
       <div className="pt-44 text-center">
-        <p className="text-black/40 mb-4">No workouts found for program: <span className="font-mono text-black">{programId}</span></p>
+        <p className="text-black/40 mb-4">Nu am găsit antrenamente pentru programul: <span className="font-mono text-black">{programId}</span></p>
         <button onClick={() => navigate(-1)} className="btn-primary">Înapoi</button>
       </div>
     );
@@ -157,10 +157,10 @@ export const PPLProgram = () => {
         <div>
           <div className="inline-flex items-center gap-2 bg-apple-blue/10 text-apple-blue px-3 py-1 rounded-full mb-3">
             <Zap size={12} fill="currentColor" />
-            <span className="text-[10px] font-black uppercase tracking-widest">Strength & Hypertrophy</span>
+            <span className="text-[10px] font-black uppercase tracking-widest">Forță și hipertrofie</span>
           </div>
           <h1 className="text-4xl md:text-5xl font-black tracking-tighter mb-2">PPL - Push/Pull/Legs</h1>
-          <p className="text-black/40 font-medium tracking-tight">Week 1 - Setează ritmul antrenamentului tău</p>
+          <p className="text-black/40 font-medium tracking-tight">Săptămâna 1 - setează ritmul antrenamentului tău</p>
         </div>
         <div className="bg-white/60 backdrop-blur-md p-6 rounded-3xl border border-white/50 shadow-sm">
           <p className="text-[9px] font-black uppercase tracking-widest text-black/30 mb-1">Status Progres</p>
@@ -178,7 +178,7 @@ export const PPLProgram = () => {
               className="w-full flex items-center justify-between p-4 text-left hover:bg-black/[0.02] transition-colors"
             >
               <div className="flex-1">
-                <p className="text-[12px] font-black uppercase tracking-[0.2em] text-black/30">{`Day ${workout.day_number}`}</p>
+                <p className="text-[12px] font-black uppercase tracking-[0.2em] text-black/30">{`Ziua ${workout.day_number}`}</p>
                 <p className="text-sm font-bold text-black/80 mt-1">{workout.name}</p>
               </div>
 
@@ -216,7 +216,7 @@ export const PPLProgram = () => {
                       </div>
                     ))
                   ) : (
-                    <p className="text-black/40 text-center py-4">No exercises yet</p>
+                    <p className="text-black/40 text-center py-4">Încă nu există exerciții</p>
                   )}
                 </div>
               </div>

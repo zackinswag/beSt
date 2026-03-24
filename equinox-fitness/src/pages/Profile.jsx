@@ -91,8 +91,8 @@ export const Profile = () => {
               <div className="flex flex-wrap items-center justify-center md:justify-start gap-3 mb-3">
                 <h1 className="text-4xl md:text-5xl font-black tracking-tighter">{user?.fullName}</h1>
                 <div className={`px-4 py-1.5 rounded-full border text-[10px] font-black uppercase tracking-widest ${getTierColor(dbUser?.subscription_tier)}`}>
-                  {dbUser?.subscription_tier === 'pro' ? 'Elite Athlete' : 
-                   dbUser?.subscription_tier === 'premium' ? 'Premium Member' : 'Essential User'}
+                  {dbUser?.subscription_tier === 'pro' ? 'Atlet de elită' : 
+                   dbUser?.subscription_tier === 'premium' ? 'Membru premium' : 'Utilizator esențial'}
                 </div>
               </div>
               <div className="flex items-center justify-center md:justify-start gap-4 text-black/40 font-medium text-sm">
@@ -128,14 +128,14 @@ export const Profile = () => {
                     </p>
                   </div>
                   <div className="text-right text-apple-blue font-black tracking-tighter">
-                    {dbUser?.subscription_tier === 'free' ? '0€ / lună' : 'COMING SOON'}
+                    {dbUser?.subscription_tier === 'free' ? '0€ / lună' : 'ÎN CURÂND'}
                   </div>
                 </div>
 
                 {dbUser?.subscription_tier === 'free' && trialDaysRemaining() > 0 && (
                   <div className="space-y-3">
                     <div className="flex justify-between items-center text-[10px] font-black uppercase tracking-widest">
-                      <span className="text-black/40">Trial Gratuit: Active</span>
+                      <span className="text-black/40">Probă gratuită: activă</span>
                       <span className="text-apple-blue">{trialDaysRemaining()} zile rămase</span>
                     </div>
                     <div className="w-full h-2.5 bg-black/5 rounded-full overflow-hidden">
@@ -179,13 +179,13 @@ export const Profile = () => {
           {/* SIDEBAR / ACCOUNT OPS */}
           <div className="space-y-6">
             <div className="apple-card p-8 space-y-2 border border-white/50 bg-white/60">
-              <h4 className="text-[10px] font-black uppercase tracking-widest text-black/30 mb-4 px-2">Account options</h4>
+              <h4 className="text-[10px] font-black uppercase tracking-widest text-black/30 mb-4 px-2">Opțiuni cont</h4>
               <button className="w-full flex items-center justify-between p-4 hover:bg-black/[0.03] rounded-2xl transition-all group">
                 <div className="flex items-center gap-4">
                   <div className="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-500 flex items-center justify-center">
                     <User size={18} />
                   </div>
-                  <span className="text-sm font-bold tracking-tight group-hover:translate-x-1 transition-transform">Edit Profile</span>
+                  <span className="text-sm font-bold tracking-tight group-hover:translate-x-1 transition-transform">Editează profilul</span>
                 </div>
                 <ChevronRight size={16} className="text-black/10" />
               </button>
@@ -194,21 +194,21 @@ export const Profile = () => {
                   <div className="w-10 h-10 rounded-xl bg-purple-500/10 text-purple-500 flex items-center justify-center">
                     <Settings size={18} />
                   </div>
-                  <span className="text-sm font-bold tracking-tight group-hover:translate-x-1 transition-transform">Preferences</span>
+                  <span className="text-sm font-bold tracking-tight group-hover:translate-x-1 transition-transform">Preferințe</span>
                 </div>
                 <ChevronRight size={16} className="text-black/10" />
               </button>
               <div className="pt-4 mt-4 border-t border-black/5">
                 <button className="w-full flex items-center gap-4 p-4 text-rose-500 hover:bg-rose-500/5 rounded-2xl transition-all group">
                   <LogOut size={18} className="group-hover:-translate-x-1 transition-transform" />
-                  <span className="text-sm font-bold tracking-tight">Logout</span>
+                  <span className="text-sm font-bold tracking-tight">Deconectare</span>
                 </button>
               </div>
             </div>
 
             <div className="apple-card p-8 bg-black text-white overflow-hidden relative group">
               <div className="absolute -right-8 -bottom-8 w-32 h-32 bg-apple-blue/20 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-1000"></div>
-              <h4 className="text-[10px] font-black uppercase tracking-widest text-white/40 mb-4 relative z-10">Pro tip</h4>
+              <h4 className="text-[10px] font-black uppercase tracking-widest text-white/40 mb-4 relative z-10">Sfat Pro</h4>
               <p className="text-xs font-medium leading-relaxed opacity-80 relative z-10">
                 Consistența este cheia succesului. Nu uita să bifezi antrenamentele pentru a vedea progresul real în timp!
               </p>

@@ -2,17 +2,17 @@ import React, { useState } from 'react';
 import { PlayCircle, ChevronRight, Search, ArrowUpRight } from 'lucide-react';
 
 export const Library = () => {
-  const [filter, setFilter] = useState('All');
+  const [filter, setFilter] = useState('Toate');
   const exercises = [
-    { id: 1, name: 'Barbell Squat', cat: 'Gym', level: 'Advanced', img: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1470&auto=format&fit=crop' },
-    { id: 2, name: 'Muscle Up', cat: 'Calisthenics', level: 'Elite', img: 'https://images.unsplash.com/photo-1599058917212-d750089bc07e?q=80&w=1469&auto=format&fit=crop' },
-    { id: 3, name: 'Burpee Over Bar', cat: 'Hybrid', level: 'Intermediate', img: 'https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?q=80&w=1470&auto=format&fit=crop' },
+    { id: 1, name: 'Genuflexiuni cu haltera', cat: 'Sală', level: 'Avansat', img: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1470&auto=format&fit=crop' },
+    { id: 2, name: 'Muscle Up', cat: 'Calisthenics', level: 'Elită', img: 'https://images.unsplash.com/photo-1599058917212-d750089bc07e?q=80&w=1469&auto=format&fit=crop' },
+    { id: 3, name: 'Burpee peste bară', cat: 'Hibrid', level: 'Intermediar', img: 'https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?q=80&w=1470&auto=format&fit=crop' },
     { id: 4, name: 'Planche Lean', cat: 'Calisthenics', level: 'Pro', img: 'https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?q=80&w=1469&auto=format&fit=crop' },
-    { id: 5, name: 'Deadlift', cat: 'Gym', level: 'Advanced', img: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1470&auto=format&fit=crop' },
-    { id: 6, name: 'Box Jumps', cat: 'Hybrid', level: 'Intermediate', img: 'https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?q=80&w=1470&auto=format&fit=crop' }
+    { id: 5, name: 'Îndreptări', cat: 'Sală', level: 'Avansat', img: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1470&auto=format&fit=crop' },
+    { id: 6, name: 'Sărituri pe box', cat: 'Hibrid', level: 'Intermediar', img: 'https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?q=80&w=1470&auto=format&fit=crop' }
   ];
 
-  const filtered = filter === 'All' ? exercises : exercises.filter(ex => ex.cat === filter);
+  const filtered = filter === 'Toate' ? exercises : exercises.filter(ex => ex.cat === filter);
 
   return (
     <div className="relative min-h-screen overflow-hidden">
@@ -28,16 +28,16 @@ export const Library = () => {
           <div className="text-left">
             <div className="inline-flex items-center gap-2.5 bg-black/[0.03] border border-black/[0.05] px-5 py-2 rounded-full mb-6">
               <PlayCircle size={12} className="text-apple-blue" />
-              <span className="text-[10px] font-black uppercase tracking-[0.2em] text-black/40">Knowledge Base</span>
+              <span className="text-[10px] font-black uppercase tracking-[0.2em] text-black/40">Bază de cunoștințe</span>
             </div>
-            <h2 className="text-5xl md:text-6xl font-black tracking-tighter mb-2">The <span className="font-serif-italic font-normal text-black/70">Vault</span>.</h2>
-            <p className="text-black/40 font-bold tracking-widest text-xs uppercase">Movement Standards & Technical Mastery</p>
+            <h2 className="text-5xl md:text-6xl font-black tracking-tighter mb-2">Seiful de <span className="font-serif-italic font-normal text-black/70">exerciții</span>.</h2>
+            <p className="text-black/40 font-bold tracking-widest text-xs uppercase">Standarde de mișcare și măiestrie tehnică</p>
           </div>
           
           {/* FILTER PILLS - Improved for Mobile */}
           <div className="flex w-full md:w-auto items-center overflow-x-auto no-scrollbar pb-2 md:pb-0">
             <div className="flex gap-2 p-1.5 rounded-full md:rounded-full bg-black/[0.03] border border-black/[0.05] backdrop-blur-md whitespace-nowrap">
-              {['All', 'Gym', 'Calisthenics', 'Hybrid'].map(cat => (
+              {['Toate', 'Sală', 'Calisthenics', 'Hibrid'].map(cat => (
                 <button 
                   key={cat} 
                   onClick={() => setFilter(cat)} 
@@ -91,7 +91,7 @@ export const Library = () => {
                   <h4 className="font-extrabold text-lg mb-1 group-hover:text-apple-blue transition-colors">{ex.name}</h4>
                   <div className="flex items-center gap-2">
                     <div className="w-1.5 h-1.5 rounded-full bg-apple-blue/50"></div>
-                    <p className="text-[10px] font-black text-black/30 tracking-widest uppercase">{ex.level} Level</p>
+                    <p className="text-[10px] font-black text-black/30 tracking-widest uppercase">Nivel {ex.level}</p>
                   </div>
                 </div>
                 <div className="w-10 h-10 rounded-full flex items-center justify-center shrink-0 bg-black/[0.03] group-hover:bg-apple-blue group-hover:text-white transition-all duration-300">

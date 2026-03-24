@@ -36,13 +36,13 @@ export const Pricing = () => {
   const tiers = [
     {
       id: 'free',
-      name: 'Essential',
+      name: 'Esențial',
       price: '0',
       desc: 'Bazele antrenamentului pentru început.',
       features: [
-        'Acces la Calisthenics Basics',
-        'Library de exerciții (limitat)',
-        'Tracker de progres basic',
+        'Acces la baza Calisthenics',
+        'Bibliotecă de exerciții (limitat)',
+        'Monitorizare progres de bază',
         'Fără suport tehnic'
       ],
       color: 'bg-black/5',
@@ -52,14 +52,14 @@ export const Pricing = () => {
     },
     {
       id: 'premium',
-      name: 'Elite Performance',
+      name: 'Performanță de Elită',
       price: '19.99',
       desc: 'Tot ce ai nevoie pentru a deveni cea mai bună versiune.',
       features: [
-        'Toate Protocoalele (Gym & Calisthenics)',
+        'Toate protocoalele (Sală și Calisthenics)',
         'Toate tipurile de Split (PPL, Bro, U/L)',
-        'Library complet de exerciții',
-        'Support Standard',
+        'Bibliotecă completă de exerciții',
+        'Suport standard',
         'Analiza Video a execuției'
       ],
       recommended: true,
@@ -70,7 +70,7 @@ export const Pricing = () => {
     },
     {
       id: 'pro',
-      name: 'Absolute Mastery',
+      name: 'Măiestrie Absolută',
       price: '29.99',
       desc: 'Optimizare totală: Antrenament, Nutriție și Recuperare.',
       features: [
@@ -78,7 +78,7 @@ export const Pricing = () => {
         'Plan de Nutriție Personalizat',
         'Ghid de Recuperare & Mobilitate',
         'Sesiuni 1-on-1 lunare',
-        'Support Priority VIP 24/7'
+        'Suport prioritar VIP 24/7'
       ],
       color: 'bg-purple-500/10',
       textColor: 'text-purple-600',
@@ -121,10 +121,10 @@ export const Pricing = () => {
             <span className="text-[10px] font-black uppercase tracking-[0.2em] text-black/40">Investește în tine</span>
           </div>
           <h2 className="text-4xl md:text-7xl font-black tracking-tighter mb-6">
-            Choose your <span className="font-serif-italic font-normal text-black/70">level</span>.
+            Alege-ți <span className="font-serif-italic font-normal text-black/70">nivelul</span>.
           </h2>
           <p className="text-lg md:text-xl text-black/40 font-medium max-w-2xl mx-auto leading-relaxed">
-            Fiecare plan include un <span className="text-black font-black">Free Trial de 30 de zile</span> pentru a te asigura că vezi rezultate reale înainte de a plăti.
+            Fiecare plan include o <span className="text-black font-black">perioadă de probă de 30 de zile</span> pentru a te asigura că vezi rezultate reale înainte de a plăti.
           </p>
         </div>
 
@@ -180,7 +180,7 @@ export const Pricing = () => {
                 {upgrading ? (
                   <Loader2 size={16} className="animate-spin" />
                 ) : (
-                  tier.id === 'free' ? 'Începe Gratis' : 'Start Trial 30 Zile'
+                  tier.id === 'free' ? 'Începe gratuit' : 'Începe proba de 30 zile'
                 )}
               </button>
             </div>

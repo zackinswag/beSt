@@ -9,32 +9,32 @@ export const Footer = () => (
         {/* Brand */}
         <div className="md:col-span-1">
           <h3 className="font-extrabold text-lg tracking-tighter mb-3">EQUINOX</h3>
-          <p className="text-sm text-black/40 leading-relaxed">Built for those who refuse to be average.</p>
+          <p className="text-sm text-black/40 leading-relaxed">Creat pentru cei care refuză mediocritatea.</p>
         </div>
         
         {/* Quick Links */}
         <div>
-          <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-black/30 mb-4">Navigation</h4>
+          <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-black/30 mb-4">Navigare</h4>
           <div className="space-y-2.5">
-            <Link to="/training" className="block text-sm text-black/50 hover:text-apple-blue transition-colors">Programs</Link>
-            <Link to="/library" className="block text-sm text-black/50 hover:text-apple-blue transition-colors">Library</Link>
+            <Link to="/training" className="block text-sm text-black/50 hover:text-apple-blue transition-colors">Programe</Link>
+            <Link to="/library" className="block text-sm text-black/50 hover:text-apple-blue transition-colors">Bibliotecă</Link>
             <Link to="/contact" className="block text-sm text-black/50 hover:text-apple-blue transition-colors">Contact</Link>
           </div>
         </div>
         
         {/* Protocols */}
         <div>
-          <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-black/30 mb-4">Protocols</h4>
+          <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-black/30 mb-4">Protocoale</h4>
           <div className="space-y-2.5">
-            <p className="text-sm text-black/50">The Weightroom</p>
-            <p className="text-sm text-black/50">Body Mastery</p>
-            <p className="text-sm text-black/50">Hybrid Engine</p>
+            <p className="text-sm text-black/50">Sala de Forță</p>
+            <p className="text-sm text-black/50">Măiestria Corpului</p>
+            <p className="text-sm text-black/50">Motor Hibrid</p>
           </div>
         </div>
 
         {/* Social */}
         <div>
-          <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-black/30 mb-4">Connect</h4>
+          <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-black/30 mb-4">Conectare</h4>
           <div className="flex gap-3">
             <a href="#" className="w-10 h-10 rounded-full bg-black/5 hover:bg-apple-blue hover:text-white flex items-center justify-center transition-all duration-300">
               <Instagram size={16} />
@@ -53,10 +53,10 @@ export const Footer = () => (
       <div className="divider-gradient mb-6"></div>
       <div className="flex flex-col md:flex-row justify-between items-center gap-4">
         <p className="text-[10px] uppercase font-bold tracking-[0.3em] text-black/20">
-          © {new Date().getFullYear()} Equinox Performance System. Built for Excellence.
+          © {new Date().getFullYear()} Equinox Performance System. Creat pentru excelență.
         </p>
         <p className="text-[10px] uppercase font-bold tracking-[0.3em] text-black/20">
-          Designed with precision
+          Creat cu precizie
         </p>
       </div>
     </div>

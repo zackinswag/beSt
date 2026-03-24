@@ -48,7 +48,7 @@ export const Contact = () => {
             <span className="text-[10px] font-black uppercase tracking-[0.2em] text-black/40">Contactează-ne</span>
           </div>
           <h2 className="text-5xl md:text-6xl font-black tracking-tighter mb-4">
-            Let's <span className="font-serif-italic font-normal text-black/70">connect.</span>
+            Hai să <span className="font-serif-italic font-normal text-black/70">conectăm.</span>
           </h2>
           <p className="text-lg text-black/40 font-medium max-w-lg mx-auto">
             Echipa noastră de elită este gata să te asiste în călătoria ta spre performanță maximă.
@@ -91,7 +91,7 @@ export const Contact = () => {
                       </div>
                     ))}
                   </div>
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-white/40">3 coaches online</span>
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-white/40">3 antrenori online</span>
                 </div>
               </div>
             </div>

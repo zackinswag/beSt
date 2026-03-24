@@ -46,9 +46,9 @@ export const Home = () => {
           </div>
           
           <h1 className="text-6xl md:text-[7rem] font-black tracking-tighter mb-8 leading-[0.85]">
-            <span className="text-shimmer">Train with</span>
+            <span className="text-shimmer">Antrenează-te cu</span>
             <br />
-            <span className="font-serif-italic font-normal text-5xl md:text-7xl text-black/70">intelligence.</span>
+            <span className="font-serif-italic font-normal text-5xl md:text-7xl text-black/70">inteligență.</span>
           </h1>
           
           <p className="text-lg md:text-xl text-black/40 font-medium mb-14 max-w-xl mx-auto leading-relaxed tracking-tight">
@@ -70,7 +70,7 @@ export const Home = () => {
               ))}
               <div className="pl-6 text-left">
                 <div className="text-sm font-black leading-none italic">4.9/5</div>
-                <div className="text-[10px] font-bold uppercase opacity-30 tracking-widest">User Rating</div>
+                <div className="text-[10px] font-bold uppercase opacity-30 tracking-widest">Evaluarea utilizatorilor</div>
               </div>
             </div>
           </div>
@@ -81,9 +81,9 @@ export const Home = () => {
       <section className="max-w-4xl mx-auto px-6 py-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {[
-            { icon: Users, value: 2847, suffix: '+', label: 'Active Members' },
-            { icon: Target, value: 42, suffix: '', label: 'Elite Programs' },
-            { icon: Trophy, value: 97, suffix: '%', label: 'Success Rate' },
+            { icon: Users, value: 2847, suffix: '+', label: 'Membri activi' },
+            { icon: Target, value: 42, suffix: '', label: 'Programe de elită' },
+            { icon: Trophy, value: 97, suffix: '%', label: 'Rată de succes' },
           ].map((metric, i) => (
             <div key={i} className="metric-item text-center py-8 px-6 rounded-2xl bg-white/40 backdrop-blur-sm border border-white/60">
               <metric.icon size={20} className="mx-auto mb-3 text-apple-blue/60" />
@@ -105,11 +105,11 @@ export const Home = () => {
             <Dumbbell className="absolute top-10 right-10 text-black/[0.03] w-48 h-48 -rotate-12 group-hover:text-apple-blue/10 group-hover:rotate-0 transition-all duration-700" />
             <div className="absolute inset-0 bg-gradient-to-t from-white/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             <div className="relative z-10">
-              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-apple-blue mb-4 block">Protocol 01</span>
-              <h3 className="text-4xl md:text-5xl font-black mb-4 tracking-tighter italic">THE WEIGHTROOM</h3>
+              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-apple-blue mb-4 block">Protocolul 01</span>
+              <h3 className="text-4xl md:text-5xl font-black mb-4 tracking-tighter italic">SALA DE FORȚĂ</h3>
               <p className="text-black/50 max-w-md text-sm leading-relaxed mb-8">Hipertrofie structurală și forță brută. Proiectat pentru performanță maximă fără compromisuri.</p>
               <Link to="/training" className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest group/link hover:text-apple-blue transition-colors">
-                Explorează <ArrowUpRight size={14} className="group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
+                Descoperă <ArrowUpRight size={14} className="group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
               </Link>
             </div>
           </div>
@@ -122,10 +122,10 @@ export const Home = () => {
               backgroundSize: '20px 20px'
             }}></div>
             <div className="space-y-8 relative z-10">
-              <h4 className="text-[10px] font-black uppercase tracking-[0.3em] opacity-40">System Efficiency</h4>
+              <h4 className="text-[10px] font-black uppercase tracking-[0.3em] opacity-40">Eficiența sistemului</h4>
               <div className="space-y-4">
                 <div className="flex justify-between items-end">
-                  <span className="text-xs font-bold opacity-60">Power</span>
+                  <span className="text-xs font-bold opacity-60">Forță</span>
                   <span className="text-2xl font-light italic tracking-tighter">98.2%</span>
                 </div>
                 <div className="h-1.5 bg-white/10 rounded-full overflow-hidden">
@@ -134,7 +134,7 @@ export const Home = () => {
               </div>
               <div className="space-y-4">
                 <div className="flex justify-between items-end">
-                  <span className="text-xs font-bold opacity-60">Mobility</span>
+                  <span className="text-xs font-bold opacity-60">Mobilitate</span>
                   <span className="text-2xl font-light italic tracking-tighter">85.4%</span>
                 </div>
                 <div className="h-1.5 bg-white/10 rounded-full overflow-hidden">
@@ -143,7 +143,7 @@ export const Home = () => {
               </div>
               <div className="space-y-4">
                 <div className="flex justify-between items-end">
-                  <span className="text-xs font-bold opacity-60">Recovery</span>
+                  <span className="text-xs font-bold opacity-60">Recuperare</span>
                   <span className="text-2xl font-light italic tracking-tighter">91.7%</span>
                 </div>
                 <div className="h-1.5 bg-white/10 rounded-full overflow-hidden">
@@ -151,7 +151,7 @@ export const Home = () => {
                 </div>
               </div>
             </div>
-            <p className="text-[9px] font-bold uppercase tracking-[0.3em] opacity-30 leading-relaxed relative z-10 mt-6">Optimization Active: <br />Equinox Intelligence</p>
+            <p className="text-[9px] font-bold uppercase tracking-[0.3em] opacity-30 leading-relaxed relative z-10 mt-6">Optimizare activă: <br />Inteligența Equinox</p>
           </div>
 
           {/* Body Mastery - with gradient overlay */}
@@ -159,7 +159,7 @@ export const Home = () => {
             <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-transparent to-purple-50/30 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
             <div className="relative z-10">
               <User className="text-apple-blue/20 mb-8 group-hover:text-apple-blue group-hover:scale-110 transition-all duration-500" size={32} />
-              <h3 className="text-3xl font-black mb-4 tracking-tighter italic">BODY MASTERY</h3>
+              <h3 className="text-3xl font-black mb-4 tracking-tighter italic">MĂIESTRIA CORPULUI</h3>
               <p className="text-black/50 text-sm leading-relaxed mb-8">Stăpânește fizica propriei greutăți. Skill-uri de la începător la nivel de elită.</p>
               <Link to="/training" className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest hover:text-apple-blue transition-colors">
                 Protocol <ArrowUpRight size={14} />
@@ -172,7 +172,7 @@ export const Home = () => {
             <div className="absolute inset-0 bg-gradient-to-br from-amber-50/30 via-transparent to-rose-50/30 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
             <div className="relative z-10">
               <Zap className="text-apple-blue/20 mb-8 group-hover:text-apple-blue group-hover:scale-110 transition-all duration-500" size={32} />
-              <h3 className="text-3xl font-black mb-4 tracking-tighter italic">HYBRID ENGINE</h3>
+              <h3 className="text-3xl font-black mb-4 tracking-tighter italic">MOTOR HIBRID</h3>
               <p className="text-black/50 text-sm leading-relaxed mb-8">Unde forța explozivă întâlnește rezistența infinită. Atletul total.</p>
               <Link to="/training" className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest hover:text-apple-blue transition-colors">
                 Protocol <ArrowUpRight size={14} />

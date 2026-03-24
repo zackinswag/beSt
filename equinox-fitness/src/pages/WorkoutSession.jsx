@@ -183,14 +183,14 @@ export const WorkoutSession = () => {
                   </h3>
                   <div className="flex items-center gap-4 mt-1">
                     <span className="flex items-center gap-1.5 text-[10px] font-black uppercase tracking-widest text-black/30">
-                      <ChevronRight size={10} className="text-apple-blue" /> {ex.sets} SETS
+                      <ChevronRight size={10} className="text-apple-blue" /> {ex.sets} SETURI
                     </span>
                     <span className="flex items-center gap-1.5 text-[10px] font-black uppercase tracking-widest text-black/30">
-                       <ChevronRight size={10} className="text-apple-blue" /> {ex.reps} REPS
+                       <ChevronRight size={10} className="text-apple-blue" /> {ex.reps} REPETĂRI
                     </span>
                     {ex.rest_time && (
                       <span className="flex items-center gap-1.5 text-[10px] font-black uppercase tracking-widest text-black/30">
-                        <Clock size={10} className="text-apple-blue" /> {ex.rest_time} REST
+                        <Clock size={10} className="text-apple-blue" /> {ex.rest_time} ODIHNĂ
                       </span>
                     )}
                   </div>
