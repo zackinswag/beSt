@@ -252,8 +252,13 @@ export const ProtocolDetail = () => {
               <div 
                 key={split.id}
                 onClick={() => {
-                  setShowComingSoon(true);
-                  setTimeout(() => setShowComingSoon(false), 3000);
+                  if (split.id === 'ppl') {
+                    // mapăm split-ul ppl la id-ul 'gym_ppl' care există în baza de date
+                    navigate(`/training/${id}/gym_ppl`);
+                  } else {
+                    setShowComingSoon(true);
+                    setTimeout(() => setShowComingSoon(false), 3000);
+                  }
                 }}
                 className="apple-card p-10 group cursor-pointer hover:shadow-2xl hover:shadow-black/5 transition-all duration-500 relative"
                 style={{ animationDelay: `${0.1 + i * 0.1}s` }}

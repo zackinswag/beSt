@@ -3,21 +3,78 @@ import { Link, useLocation } from 'react-router-dom';
 import { SignedIn, SignedOut, SignInButton, SignUpButton, UserButton } from "@clerk/clerk-react";
 import { Menu, X, Sparkles } from 'lucide-react';
 
+// Throttle utility
+const throttle = (func, delay) => {
+  let lastCall = 0;
+  return (...args) => {
+    const now = Date.now();
+    if (now - lastCall >= delay) {
+      lastCall = now;
+      func(...args);
+    }
+  };
+};
+
+// Navigation links configuration
+const NAV_LINKS = [
+  { label: 'Programs', path: '/training' },
+  { label: 'Library', path: '/library' },
+  { label: 'Pricing', path: '/pricing' },
+  { label: 'Contact', path: '/contact' }
+];
+
+// Reusable navigation component
+const NavigationLinks = ({ isMobile = false, location, onLinkClick }) => (
+  <div className={isMobile 
+    ? "flex flex-col gap-6 text-[14px] font-black uppercase tracking-[0.3em] text-black/60 w-full" 
+    : "hidden md:flex gap-10 text-[12px] font-bold uppercase tracking-[0.2em]"
+  }>
+    {NAV_LINKS.map(({ label, path }) => (
+      <Link 
+        key={path}
+        to={path} 
+        onClick={onLinkClick}
+        className={`transition-colors duration-300 ${
+          location.pathname === path 
+            ? 'text-apple-blue' 
+            : 'text-black/40 hover:text-apple-blue'
+        } ${isMobile ? 'py-2 border-b border-black/[0.03]' : ''}`}
+      >
+        {label}
+      </Link>
+    ))}
+    <SignedIn>
+      <Link 
+        to="/profile"
+        onClick={onLinkClick}
+        className={`transition-colors duration-300 ${
+          location.pathname === '/profile' 
+            ? 'text-apple-blue' 
+            : 'text-black/40 hover:text-apple-blue'
+        } ${isMobile ? 'py-2 border-b border-black/[0.03]' : ''}`}
+      >
+        Profil
+      </Link>
+    </SignedIn>
+  </div>
+);
+
 export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
   
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
+    const handleScroll = throttle(() => setScrolled(window.scrollY > 20), 200);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Închidem meniul când se schimbă pagina
   useEffect(() => {
     setIsMenuOpen(false);
   }, [location]);
+
+  const handleMobileMenuClose = () => setIsMenuOpen(false);
 
   return (
     <nav className="fixed w-full z-50 px-4 md:px-6 py-4">
@@ -29,40 +86,42 @@ export const Navbar = () => {
         <Link to="/" className="font-extrabold text-xl tracking-tighter hover:scale-105 transition-transform">EQUINOX</Link>
         
         {/* DESKTOP LINKS */}
-        <div className="hidden md:flex gap-10 text-[12px] font-bold uppercase tracking-[0.2em] text-black/40">
-          <Link to="/training" className="hover:text-apple-blue transition-colors duration-300">Programs</Link>
-          <Link to="/library" className="hover:text-apple-blue transition-colors duration-300">Library</Link>
-          <Link to="/pricing" className="hover:text-apple-blue transition-colors duration-300">Pricing</Link>
-          <SignedIn>
-            <Link to="/profile" className="hover:text-apple-blue transition-colors duration-300">Profil</Link>
-          </SignedIn>
-          <Link to="/contact" className="hover:text-apple-blue transition-colors duration-300">Contact</Link>
-        </div>
+        <NavigationLinks isMobile={false} location={location} />
 
         <div className="flex items-center gap-3 md:gap-6">
           <div className="hidden md:flex items-center gap-6">
             <SignedOut>
               <SignInButton mode="modal">
-                <button className="text-[12px] font-bold uppercase tracking-widest text-black/40 hover:text-black cursor-pointer transition-colors duration-300 bg-transparent border-none">Login</button>
+                <button className="text-[12px] font-bold uppercase tracking-widest text-black/40 hover:text-black cursor-pointer transition-colors duration-300 bg-transparent border-none" aria-label="Sign in to your account">Login</button>
               </SignInButton>
               <SignUpButton mode="modal">
-                <button className="btn-primary text-[11px] px-7 py-2.5 uppercase tracking-[0.2em] font-black cursor-pointer">Join</button>
+                <button className="btn-primary text-[11px] px-7 py-2.5 uppercase tracking-[0.2em] font-black cursor-pointer" aria-label="Create a new account">Join</button>
               </SignUpButton>
             </SignedOut>
           </div>
 
           <SignedIn>
-            <Link to="/pricing" className="hidden md:flex items-center gap-2 bg-apple-blue/10 text-apple-blue px-4 py-2 rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-apple-blue hover:text-white transition-all duration-300">
+            <Link to="/pricing" className="hidden md:flex items-center gap-2 bg-apple-blue/10 text-apple-blue px-4 py-2 rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-apple-blue hover:text-white transition-all duration-300" aria-label="Upgrade to Elite plan">
               <Sparkles size={12} />
               Go Elite
             </Link>
-            <UserButton afterSignOutUrl="/" appearance={{ elements: { userButtonAvatarAvatarBox: "w-9 h-9 border border-black/5" } }} />
+            <UserButton 
+              afterSignOutUrl="/" 
+              appearance={{ 
+                elements: { 
+                  userButtonAvatarAvatarBox: "w-9 h-9 border border-black/5" 
+                } 
+              }} 
+              aria-label="User account menu"
+            />
           </SignedIn>
 
           {/* MOBILE MENU TOGGLE */}
           <button 
             className="md:hidden p-2 text-black/60 hover:text-black transition-colors"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-expanded={isMenuOpen}
+            aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -73,28 +132,20 @@ export const Navbar = () => {
       <div className={`md:hidden absolute top-24 left-4 right-4 transition-all duration-500 ${
         isMenuOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-4 pointer-events-none'
       }`}>
-        <div className="bg-white/90 backdrop-blur-3xl border border-white/50 rounded-[32px] p-8 shadow-2xl flex flex-col gap-8 text-center items-center">
-          <div className="flex flex-col gap-6 text-[14px] font-black uppercase tracking-[0.3em] text-black/60 w-full">
-            <Link to="/training" className="py-2 hover:text-apple-blue transition-colors border-b border-black/[0.03]">Programs</Link>
-            <Link to="/library" className="py-2 hover:text-apple-blue transition-colors border-b border-black/[0.03]">Library</Link>
-            <Link to="/pricing" className="py-2 hover:text-apple-blue transition-colors border-b border-black/[0.03]">Pricing</Link>
-            <SignedIn>
-              <Link to="/profile" className="py-2 hover:text-apple-blue transition-colors border-b border-black/[0.03]">Profil</Link>
-            </SignedIn>
-            <Link to="/contact" className="py-2 hover:text-apple-blue transition-colors border-b border-black/[0.03]">Contact</Link>
-          </div>
+        <nav className="bg-white/90 backdrop-blur-3xl border border-white/50 rounded-[32px] p-8 shadow-2xl flex flex-col gap-8 text-center items-center">
+          <NavigationLinks isMobile={true} location={location} onLinkClick={handleMobileMenuClose} />
           
           <SignedOut>
             <div className="flex flex-col gap-4 w-full pt-4">
               <SignInButton mode="modal">
-                <button className="text-[12px] font-bold uppercase tracking-widest text-black/40 py-2">Login</button>
+                <button className="text-[12px] font-bold uppercase tracking-widest text-black/40 py-2" aria-label="Sign in to your account">Login</button>
               </SignInButton>
               <SignUpButton mode="modal">
-                <button className="btn-primary w-full py-4 rounded-[18px] text-[12px] uppercase tracking-[0.2em] font-black">Join The Elite</button>
+                <button className="btn-primary w-full py-4 rounded-[18px] text-[12px] uppercase tracking-[0.2em] font-black" aria-label="Create a new account">Join The Elite</button>
               </SignUpButton>
             </div>
           </SignedOut>
-        </div>
+        </nav>
       </div>
     </nav>
   );
