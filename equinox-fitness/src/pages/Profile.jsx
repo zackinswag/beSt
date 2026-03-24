@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useUser } from '@clerk/clerk-react';
 import { useNavigate, Link } from 'react-router-dom';
-import { User, Mail, Shield, Zap, Calendar, ArrowRight, Settings, LogOut, ChevronRight, Award } from 'lucide-react';
+import { User, Mail, Shield, Zap, Calendar, ArrowRight, Settings, LogOut, ChevronRight, Award, Trophy } from 'lucide-react';
 import { useSupabase } from '../hooks/useSupabase';
 
 export const Profile = () => {
