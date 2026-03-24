@@ -120,7 +120,7 @@ export const Profile = () => {
                 <Zap size={20} className="text-apple-blue" />
               </div>
 
-              <div className="bg-white/30 p-8 rounded-3xl border border-white/50 mb-8 shadow-sm">
+              <div className="bg-zinc-50 p-8 rounded-2xl border border-zinc-200/60 mb-8 shadow-sm">
                 <div className="flex justify-between items-end mb-6">
                   <div>
                     <p className="text-[10px] font-semibold uppercase tracking-widest text-black/30 mb-2">Plan Curent</p>
@@ -167,7 +167,7 @@ export const Profile = () => {
                   { label: 'Recorduri', value: '0', icon: Trophy },
                   { label: 'Zile Active', value: '0', icon: Zap },
                 ].map((stat, i) => (
-                  <div key={i} className="text-center p-6 bg-white/30 rounded-2xl border border-white/50 shadow-sm">
+                  <div key={i} className="text-center p-6 bg-zinc-50 rounded-2xl border border-zinc-200/60 shadow-sm">
                     <stat.icon size={16} className="mx-auto mb-3 text-black/20" />
                     <div className="text-2xl font-black mb-1 tracking-tighter">{stat.value}</div>
                     <div className="text-[8px] font-black uppercase tracking-[0.2em] text-black/30">{stat.label}</div>
@@ -181,7 +181,7 @@ export const Profile = () => {
           <div className="space-y-6">
             <div className="apple-card p-8 space-y-2">
               <h4 className="text-[10px] font-semibold uppercase tracking-widest text-black/30 mb-4 px-2">Opțiuni cont</h4>
-              <button className="w-full flex items-center justify-between p-4 hover:bg-white/40 rounded-2xl transition-all group">
+              <button className="w-full flex items-center justify-between p-4 hover:bg-zinc-50 rounded-xl transition-all group">
                 <div className="flex items-center gap-4">
                   <div className="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-500 flex items-center justify-center">
                     <User size={18} />
@@ -190,7 +190,7 @@ export const Profile = () => {
                 </div>
                 <ChevronRight size={16} className="text-black/10" />
               </button>
-              <button className="w-full flex items-center justify-between p-4 hover:bg-white/40 rounded-2xl transition-all group">
+              <button className="w-full flex items-center justify-between p-4 hover:bg-zinc-50 rounded-xl transition-all group">
                 <div className="flex items-center gap-4">
                   <div className="w-10 h-10 rounded-xl bg-purple-500/10 text-purple-500 flex items-center justify-center">
                     <Settings size={18} />
@@ -207,9 +207,9 @@ export const Profile = () => {
               </div>
             </div>
 
-            <div className="apple-card p-8 bg-black text-white overflow-hidden relative group">
-              <div className="absolute -right-8 -bottom-8 w-32 h-32 bg-apple-blue/20 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-1000"></div>
-              <h4 className="text-[10px] font-semibold uppercase tracking-widest text-white/40 mb-4 relative z-10">Sfat Pro</h4>
+            <div className="apple-card p-8 bg-zinc-950 border-none text-white overflow-hidden relative group">
+              <div className="absolute -right-8 -bottom-8 w-32 h-32 bg-blue-500/30 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-1000"></div>
+              <h4 className="text-[10px] font-bold uppercase tracking-widest text-blue-500 mb-4 relative z-10">Sfat Pro</h4>
               <p className="text-xs font-medium leading-relaxed opacity-80 relative z-10">
                 Consistența este cheia succesului. Nu uita să bifezi antrenamentele pentru a vedea progresul real în timp!
               </p>

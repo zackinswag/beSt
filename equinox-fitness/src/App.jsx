@@ -21,7 +21,7 @@ export default function App() {
   return (
     <Router>
       <SignedIn><SyncUser /></SignedIn>
-      <div className="min-h-screen flex flex-col bg-gradient-to-br from-slate-50 via-blue-50/20 to-slate-100">
+      <div className="min-h-screen flex flex-col bg-zinc-50">
         <Navbar />
         <main className="flex-grow">
           <Routes>

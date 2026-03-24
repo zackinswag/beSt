@@ -80,7 +80,7 @@ export const Home = () => {
             { icon: Target, value: 100, suffix: '+', label: 'Exerciții filtrate' },
             { icon: Trophy, value: 100, suffix: '%', label: 'Progres sustenabil' },
           ].map((metric, i) => (
-            <div key={i} className="metric-item text-center py-8 px-6 rounded-2xl bg-white/40 backdrop-blur-sm border border-white/60">
+            <div key={i} className="metric-item text-center py-8 px-6 rounded-2xl bg-white border border-black/5 shadow-sm">
               <metric.icon size={20} className="mx-auto mb-3 text-apple-blue/60" />
               <div className="text-4xl md:text-4xl font-black tracking-tighter mb-1">
                 <AnimatedCounter end={metric.value} suffix={metric.suffix} />
@@ -104,7 +104,7 @@ export const Home = () => {
               { step: 'Pasul 2', title: 'Urmează antrenamentele', desc: 'Primești structură clară pe zile și exerciții.' },
               { step: 'Pasul 3', title: 'Măsoară progresul', desc: 'Bifezi sesiunile și vezi evoluția în timp.' }
             ].map((item) => (
-              <div key={item.step} className="rounded-2xl bg-white/30 border border-white/50 p-5 shadow-sm">
+              <div key={item.step} className="rounded-xl bg-zinc-50 border border-zinc-200/60 p-5 shadow-sm">
                 <p className="text-[10px] uppercase tracking-[0.2em] font-semibold text-apple-blue mb-2">{item.step}</p>
                 <p className="font-semibold mb-1.5">{item.title}</p>
                 <p className="text-sm text-black/55">{item.desc}</p>
@@ -132,15 +132,18 @@ export const Home = () => {
             </div>
           </div>
 
-          {/* Stats Card - Dark Dashboard */}
-          <div className="md:col-span-4 bg-gradient-to-br from-black via-gray-900 to-black text-white rounded-[32px] p-10 flex flex-col justify-between shadow-2xl shadow-black/30 card-animate relative overflow-hidden">
+          {/* Stats Card - Dark Carbon Dashboard */}
+          <div className="md:col-span-4 bg-zinc-950 text-white rounded-[20px] p-10 flex flex-col justify-between shadow-2xl shadow-black/20 card-animate relative overflow-hidden">
             {/* Subtle grid pattern */}
-            <div className="absolute inset-0 opacity-5" style={{
-              backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)',
+            <div className="absolute inset-0 opacity-10" style={{
+              backgroundImage: 'radial-gradient(circle, #3b82f6 1px, transparent 1px)',
               backgroundSize: '20px 20px'
             }}></div>
             <div className="space-y-8 relative z-10">
-              <h4 className="text-[10px] font-semibold uppercase tracking-[0.3em] opacity-40">Eficiența sistemului</h4>
+              <h4 className="text-[10px] items-center flex gap-2 font-bold uppercase tracking-[0.3em] text-blue-500">
+                <span className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></span>
+                Performanța sistemului
+              </h4>
               <div className="space-y-4">
                 <div className="flex justify-between items-end">
                   <span className="text-xs font-bold opacity-60">Forță</span>
@@ -169,7 +172,7 @@ export const Home = () => {
                 </div>
               </div>
             </div>
-            <p className="text-[9px] font-semibold uppercase tracking-[0.3em] opacity-30 leading-relaxed relative z-10 mt-6">Optimizare activă: <br />Inteligența Equinox</p>
+            <p className="text-[9px] font-bold uppercase tracking-[0.3em] text-white/30 leading-relaxed relative z-10 mt-6">Optimizare activă: <br />Baza de Date Equinox</p>
           </div>
 
           {/* Body Mastery - with gradient overlay */}
