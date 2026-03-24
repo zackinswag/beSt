@@ -79,15 +79,15 @@ export const Home = () => {
 
       {/* METRICS STRIP */}
       <section className="max-w-4xl mx-auto px-6 py-10">
-        <div className="grid grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {[
             { icon: Users, value: 2847, suffix: '+', label: 'Active Members' },
             { icon: Target, value: 42, suffix: '', label: 'Elite Programs' },
             { icon: Trophy, value: 97, suffix: '%', label: 'Success Rate' },
           ].map((metric, i) => (
-            <div key={i} className="metric-item text-center py-6 px-4 rounded-2xl bg-white/40 backdrop-blur-sm border border-white/60">
+            <div key={i} className="metric-item text-center py-8 px-6 rounded-2xl bg-white/40 backdrop-blur-sm border border-white/60">
               <metric.icon size={20} className="mx-auto mb-3 text-apple-blue/60" />
-              <div className="text-3xl md:text-4xl font-black tracking-tighter mb-1">
+              <div className="text-4xl md:text-4xl font-black tracking-tighter mb-1">
                 <AnimatedCounter end={metric.value} suffix={metric.suffix} />
               </div>
               <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-black/30">{metric.label}</div>
