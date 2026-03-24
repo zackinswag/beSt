@@ -13,12 +13,12 @@
     backdrop-filter: blur(20px);
     border-radius: 28px;
     border: 1px solid rgba(0, 0, 0, 0.05);
-    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .apple-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08), 0 8px 20px rgba(0, 0, 0, 0.04);
+    transform: translateY(-4px);
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.08), 0 6px 14px rgba(0, 0, 0, 0.04);
     border-color: rgba(0, 113, 227, 0.1);
   }
 
@@ -30,7 +30,7 @@
     border-radius: 9999px;
     font-weight: 700;
     display: inline-block;
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     border: none;
     cursor: pointer;
     text-align: center;
@@ -39,8 +39,8 @@
 
   .btn-primary:hover {
     background-color: #005bb5 !important;
-    transform: scale(1.04) translateY(-2px);
-    box-shadow: 0 14px 40px rgba(0, 113, 227, 0.35);
+    transform: translateY(-1px);
+    box-shadow: 0 10px 24px rgba(0, 113, 227, 0.28);
   }
 
   .btn-primary:active {
@@ -53,7 +53,7 @@ body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   background: linear-gradient(135deg, #f5f7fa 0%, #dce4f5 20%, #e8d5f5 40%, #f5e0e8 60%, #dce4f5 80%, #f5f7fa 100%);
   background-size: 300% 300%;
-  animation: gradientShift 5s ease infinite;
+  animation: gradientShift 14s ease infinite;
   color: #1D1D1F;
   margin: 0;
   min-height: 100vh;
@@ -93,11 +93,23 @@ body {
 }
 
 .animate-mesh {
-  animation: mesh 6s infinite alternate ease-in-out;
+  animation: mesh 10s infinite alternate ease-in-out;
 }
 
 /* Thin divider line */
 .divider-gradient {
   height: 1px;
   background: linear-gradient(90deg, transparent, rgba(0,0,0,0.08), transparent);
+}
+
+/* Accessibility: reduce motion for users who request it */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

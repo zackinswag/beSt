@@ -17,7 +17,7 @@
   background-size: 400% 400%;
   border-radius: 9999px;
   z-index: -1;
-  animation: shimmer 3s ease infinite;
+  animation: shimmer 6s ease infinite;
   opacity: 0;
   transition: opacity 0.4s ease;
 }
@@ -53,7 +53,7 @@
 }
 
 .card-animate {
-  animation: slideUp 0.7s ease forwards;
+  animation: slideUp 0.55s ease forwards;
   opacity: 0;
 }
 
@@ -76,7 +76,7 @@
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: textShimmer 5s ease-in-out infinite;
+  animation: textShimmer 8s ease-in-out infinite;
 }
 
 @keyframes textShimmer {

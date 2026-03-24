@@ -1,5 +1,7 @@
+import React, { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useUser } from '@clerk/clerk-react';
-import { ArrowLeft, CheckCircle2, Circle, Clock, Info, ChevronRight, Lock } from 'lucide-react';
+import { ArrowLeft, CheckCircle2, Clock, Info, ChevronRight } from 'lucide-react';
 import { useSupabase } from '../hooks/useSupabase';
 
 export const WorkoutSession = () => {
@@ -13,7 +15,6 @@ export const WorkoutSession = () => {
   const [workout, setWorkout] = useState(null);
   const [exercises, setExercises] = useState([]);
   const [completedExercises, setCompletedExercises] = useState(new Set());
-  const [hasAccess, setHasAccess] = useState(false);
 
   useEffect(() => {
     const checkAccessAndFetch = async () => {
@@ -42,7 +43,6 @@ export const WorkoutSession = () => {
             navigate('/pricing');
             return;
           }
-          setHasAccess(true);
         }
         setAuthLoading(false);
 
@@ -98,7 +98,7 @@ export const WorkoutSession = () => {
 
   if (!workout) {
     return (
-      <div className="pt-44 text-center">
+      <div className="pt-40 md:pt-44 text-center">
         <h2 className="text-2xl font-black mb-4">Antrenament negăsit</h2>
         <button onClick={() => navigate(-1)} className="btn-primary px-8 py-3">Înapoi</button>
       </div>
@@ -123,7 +123,7 @@ export const WorkoutSession = () => {
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
             <div>
               <h1 className="text-3xl md:text-5xl font-black tracking-tighter mb-2 leading-none">{workout.name}</h1>
-              <p className="text-black/40 font-bold tracking-[0.2em] uppercase text-[10px]">{id} • Protocol {programId}</p>
+              <p className="text-black/55 font-bold tracking-[0.2em] uppercase text-[10px]">{id} • Protocol {programId}</p>
             </div>
             <div className="bg-white/60 backdrop-blur-xl border border-white/40 px-6 py-4 rounded-3xl flex items-center gap-4 shadow-sm min-w-[160px]">
               <div className="text-right">
@@ -219,7 +219,7 @@ export const WorkoutSession = () => {
                   <CheckCircle2 size={40} />
                 </div>
                 <h3 className="text-3xl font-black tracking-tighter mb-2">Bravo, Elite!</h3>
-                <p className="text-black/40 font-medium mb-8">Ai completat sesiunea de antrenatment de astăzi.</p>
+                <p className="text-black/55 font-medium mb-8">Ai completat sesiunea de antrenament de astăzi.</p>
                 <button 
                   onClick={() => navigate('/training')}
                   className="btn-primary w-full py-4 uppercase font-black tracking-widest text-xs"

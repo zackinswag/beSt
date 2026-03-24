@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useUser } from '@clerk/clerk-react';
 import { useNavigate, Link } from 'react-router-dom';
-import { User, Mail, Shield, Zap, Calendar, ArrowRight, Settings, LogOut, ChevronRight, Award, Trophy } from 'lucide-react';
+import { User, Mail, Shield, Zap, Calendar, Settings, LogOut, ChevronRight, Award, Trophy } from 'lucide-react';
 import { useSupabase } from '../hooks/useSupabase';
 
 export const Profile = () => {
@@ -68,8 +68,7 @@ export const Profile = () => {
     <div className="relative min-h-screen overflow-hidden pb-20">
       {/* BACKGROUND AMBIENT */}
       <div className="absolute top-0 left-0 w-full h-full -z-10 overflow-hidden bg-[#F5F5F7]">
-        <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-blue-400/5 rounded-full blur-[120px] animate-mesh"></div>
-        <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-purple-400/5 rounded-full blur-[120px] animate-mesh" style={{ animationDelay: '-5s' }}></div>
+        <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-blue-400/5 rounded-full blur-[120px] animate-mesh" style={{ animationDuration: '12s' }}></div>
       </div>
 
       <div className="pt-32 md:pt-44 max-w-4xl mx-auto px-6">
@@ -90,12 +89,12 @@ export const Profile = () => {
             <div className="text-center md:text-left flex-grow">
               <div className="flex flex-wrap items-center justify-center md:justify-start gap-3 mb-3">
                 <h1 className="text-4xl md:text-5xl font-black tracking-tighter">{user?.fullName}</h1>
-                <div className={`px-4 py-1.5 rounded-full border text-[10px] font-black uppercase tracking-widest ${getTierColor(dbUser?.subscription_tier)}`}>
+                <div className={`px-4 py-1.5 rounded-full border text-[10px] font-semibold uppercase tracking-widest ${getTierColor(dbUser?.subscription_tier)}`}>
                   {dbUser?.subscription_tier === 'pro' ? 'Atlet de elită' : 
                    dbUser?.subscription_tier === 'premium' ? 'Membru premium' : 'Utilizator esențial'}
                 </div>
               </div>
-              <div className="flex items-center justify-center md:justify-start gap-4 text-black/40 font-medium text-sm">
+              <div className="flex items-center justify-center md:justify-start gap-4 text-black/55 font-medium text-sm">
                 <div className="flex items-center gap-2">
                   <Mail size={14} />
                   {user?.primaryEmailAddress?.emailAddress}
@@ -113,7 +112,7 @@ export const Profile = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* SUBSCRIPTION CARD */}
           <div className="md:col-span-2 space-y-8">
-            <div className="apple-card p-10 hover:shadow-2xl hover:shadow-black/5 transition-all duration-500 border border-white/50 bg-white/60">
+            <div className="apple-card p-8 md:p-10 hover:shadow-2xl hover:shadow-black/5 transition-all duration-500 border border-white/50 bg-white/60">
               <div className="flex justify-between items-center mb-10">
                 <h3 className="text-xl font-bold tracking-tight">Status Abonament</h3>
                 <Zap size={20} className="text-apple-blue" />
@@ -122,19 +121,19 @@ export const Profile = () => {
               <div className="bg-black/[0.03] p-8 rounded-3xl border border-black/5 mb-8">
                 <div className="flex justify-between items-end mb-6">
                   <div>
-                    <p className="text-[10px] font-black uppercase tracking-widest text-black/30 mb-2">Plan Curent</p>
+                    <p className="text-[10px] font-semibold uppercase tracking-widest text-black/30 mb-2">Plan Curent</p>
                     <p className="text-3xl font-black tracking-tighter">
-                      {dbUser?.subscription_tier?.toUpperCase() || 'ESSENTIAL'}
+                      {dbUser?.subscription_tier?.toUpperCase() || 'ESENȚIAL'}
                     </p>
                   </div>
-                  <div className="text-right text-apple-blue font-black tracking-tighter">
+                  <div className="text-right text-apple-blue font-semibold tracking-tighter">
                     {dbUser?.subscription_tier === 'free' ? '0€ / lună' : 'ÎN CURÂND'}
                   </div>
                 </div>
 
                 {dbUser?.subscription_tier === 'free' && trialDaysRemaining() > 0 && (
                   <div className="space-y-3">
-                    <div className="flex justify-between items-center text-[10px] font-black uppercase tracking-widest">
+                    <div className="flex justify-between items-center text-[10px] font-semibold uppercase tracking-widest">
                       <span className="text-black/40">Probă gratuită: activă</span>
                       <span className="text-apple-blue">{trialDaysRemaining()} zile rămase</span>
                     </div>
@@ -149,20 +148,20 @@ export const Profile = () => {
               </div>
 
               <Link to="/pricing" className="btn-primary w-full py-5 flex items-center justify-center gap-3 group">
-                <span className="text-sm">SCHIMBĂ SAU UPGRADEAZĂ PLANUL</span>
+                <span className="text-sm">SCHIMBĂ SAU ACTUALIZEAZĂ PLANUL</span>
                 <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
 
             {/* PROGRESS CARD (MOCK) */}
-            <div className="apple-card p-10 border border-white/50 bg-white/60">
+            <div className="apple-card p-8 md:p-10 border border-white/50 bg-white/60">
               <div className="flex justify-between items-center mb-8">
                 <h3 className="text-xl font-bold tracking-tight">Antrenamentul tău</h3>
                 <Award size={20} className="text-purple-500" />
               </div>
               <div className="grid grid-cols-3 gap-6">
                 {[
-                  { label: 'Workout-uri', value: '0', icon: Calendar },
+                  { label: 'Antrenamente', value: '0', icon: Calendar },
                   { label: 'Recorduri', value: '0', icon: Trophy },
                   { label: 'Zile Active', value: '0', icon: Zap },
                 ].map((stat, i) => (
@@ -179,7 +178,7 @@ export const Profile = () => {
           {/* SIDEBAR / ACCOUNT OPS */}
           <div className="space-y-6">
             <div className="apple-card p-8 space-y-2 border border-white/50 bg-white/60">
-              <h4 className="text-[10px] font-black uppercase tracking-widest text-black/30 mb-4 px-2">Opțiuni cont</h4>
+              <h4 className="text-[10px] font-semibold uppercase tracking-widest text-black/30 mb-4 px-2">Opțiuni cont</h4>
               <button className="w-full flex items-center justify-between p-4 hover:bg-black/[0.03] rounded-2xl transition-all group">
                 <div className="flex items-center gap-4">
                   <div className="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-500 flex items-center justify-center">
@@ -208,7 +207,7 @@ export const Profile = () => {
 
             <div className="apple-card p-8 bg-black text-white overflow-hidden relative group">
               <div className="absolute -right-8 -bottom-8 w-32 h-32 bg-apple-blue/20 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-1000"></div>
-              <h4 className="text-[10px] font-black uppercase tracking-widest text-white/40 mb-4 relative z-10">Sfat Pro</h4>
+              <h4 className="text-[10px] font-semibold uppercase tracking-widest text-white/40 mb-4 relative z-10">Sfat Pro</h4>
               <p className="text-xs font-medium leading-relaxed opacity-80 relative z-10">
                 Consistența este cheia succesului. Nu uita să bifezi antrenamentele pentru a vedea progresul real în timp!
               </p>

@@ -128,7 +128,7 @@ export const PPLProgram = () => {
   };
 
   if (loading) {
-    return <div className="pt-44 text-center text-black/40">Se încarcă programul...</div>;
+    return <div className="pt-40 md:pt-44 text-center text-black/55">Se încarcă programul...</div>;
   }
 
   if (error) {
@@ -137,8 +137,8 @@ export const PPLProgram = () => {
 
   if (workouts.length === 0) {
     return (
-      <div className="pt-44 text-center">
-        <p className="text-black/40 mb-4">Nu am găsit antrenamente pentru programul: <span className="font-mono text-black">{programId}</span></p>
+      <div className="pt-40 md:pt-44 text-center">
+        <p className="text-black/55 mb-4">Nu am găsit antrenamente pentru programul: <span className="font-mono text-black">{programId}</span></p>
         <button onClick={() => navigate(-1)} className="btn-primary">Înapoi</button>
       </div>
     );
@@ -160,7 +160,7 @@ export const PPLProgram = () => {
             <span className="text-[10px] font-black uppercase tracking-widest">Forță și hipertrofie</span>
           </div>
           <h1 className="text-4xl md:text-5xl font-black tracking-tighter mb-2">PPL - Push/Pull/Legs</h1>
-          <p className="text-black/40 font-medium tracking-tight">Săptămâna 1 - setează ritmul antrenamentului tău</p>
+          <p className="text-black/55 font-medium tracking-tight">Săptămâna 1 - setează ritmul antrenamentului tău</p>
         </div>
         <div className="bg-white/60 backdrop-blur-md p-6 rounded-3xl border border-white/50 shadow-sm">
           <p className="text-[9px] font-black uppercase tracking-widest text-black/30 mb-1">Status Progres</p>
@@ -212,11 +212,11 @@ export const PPLProgram = () => {
                         <p className="col-span-5 font-medium text-black/80">{exercise.name}</p>
                         <p className="col-span-2 text-black/50 text-center">{exercise.sets}x{exercise.reps}</p>
                         <p className="col-span-2 text-black/50 text-center">{exercise.rest_time}</p>
-                        <p className="col-span-3 text-black/40 text-right text-[11px]">#{idx + 1}</p>
+                        <p className="col-span-3 text-black/55 text-right text-[11px]">#{idx + 1}</p>
                       </div>
                     ))
                   ) : (
-                    <p className="text-black/40 text-center py-4">Încă nu există exerciții</p>
+                    <p className="text-black/55 text-center py-4">Încă nu există exerciții</p>
                   )}
                 </div>
               </div>

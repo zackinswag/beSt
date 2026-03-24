@@ -1,7 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { SignedIn, SignedOut, SignInButton, RedirectToSignIn } from "@clerk/clerk-react";
-import { Zap } from 'lucide-react';
+import { SignedIn } from "@clerk/clerk-react";
 
 import './App.css';
 
@@ -12,7 +11,6 @@ import { SyncUser } from './components/SyncUser';
 import { Home } from './pages/Home';
 import { Training } from './pages/Training';
 import { ProtocolDetail } from './pages/ProtocolDetail';
-import { WorkoutSession } from './pages/WorkoutSession';
 import { Library } from './pages/Library';
 import { Contact } from './pages/Contact';
 import { Pricing } from './pages/Pricing';

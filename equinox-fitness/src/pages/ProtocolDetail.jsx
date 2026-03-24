@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { useUser, SignInButton } from '@clerk/clerk-react';
+import { useUser } from '@clerk/clerk-react';
 import { ArrowLeft, Dumbbell, Shield, Flame, Battery, ArrowRight, Zap, Layers, User, Lock } from 'lucide-react';
 import { useSupabase } from '../hooks/useSupabase';
 
@@ -62,7 +62,7 @@ export const ProtocolDetail = () => {
     {
       id: 'bro_split',
       name: 'SPLIT PE GRUPE',
-      desc: 'O grupă musculară pe zi. Focus intens pe hipertrofie.',
+      desc: 'O grupă musculară pe zi. Focus clar pe hipertrofie.',
       why: 'Ideal pentru cei care vor să dedice timp maxim fiecărei grupe în parte.',
       icon: Dumbbell,
       color: 'purple'
@@ -97,7 +97,7 @@ export const ProtocolDetail = () => {
     {
       id: 'gym_maintenance',
       name: 'Menținere',
-      desc: 'Echilibru între volum și intensitate. Optim pentru păstrarea masei musculare.',
+      desc: 'Echilibru între volum și intensitate. Ideal pentru păstrarea masei musculare.',
       icon: Battery,
       color: 'emerald',
       tier: 'free'
@@ -132,9 +132,6 @@ export const ProtocolDetail = () => {
   ];
 
   const subProtocols = id === 'gym' ? gymSubProtocols : id === 'calisthenics' ? calisthenicsSubProtocols : [];
-  const protocolTitle = id === 'gym' ? 'SALA DE FORȚĂ' : 'MĂIESTRIA CORPULUI';
-  const protocolIcon = id === 'gym' ? Dumbbell : User;
-
   if (!['gym', 'calisthenics'].includes(id)) {
     return (
       <div className="pt-44 pb-20 max-w-4xl mx-auto px-6 text-center">
@@ -145,7 +142,7 @@ export const ProtocolDetail = () => {
           <ArrowLeft size={14} /> Înapoi
         </button>
         <h2 className="text-4xl font-black tracking-tighter mb-4">În curând</h2>
-        <p className="text-black/40">Lucrăm la acest protocol ({id}). Revino curând!</p>
+        <p className="text-black/55">Lucrăm la acest protocol ({id}). Revino curând!</p>
       </div>
     );
   }
@@ -193,8 +190,8 @@ export const ProtocolDetail = () => {
                   id === 'gym' ? <>SALA DE <span className="font-serif-italic font-normal text-black/70">FORȚĂ</span></> : <>MĂIESTRIA <span className="font-serif-italic font-normal text-black/70">CORPULUI</span></>
                 )}
               </h2>
-              <p className="text-black/40 font-bold tracking-widest text-[10px] uppercase mt-1">
-                {selectedSubProtocol ? 'Selectează tipul de split pentru programul tău' : 'Selectează specializarea programului'}
+              <p className="text-black/55 font-bold tracking-widest text-[10px] uppercase mt-1">
+                {selectedSubProtocol ? 'Alege tipul de split pentru programul tău' : 'Alege specializarea programului'}
               </p>
             </div>
           </div>
@@ -232,7 +229,7 @@ export const ProtocolDetail = () => {
                 </div>
 
                 <h3 className="text-2xl font-black mb-4 tracking-tight">{sub.name}</h3>
-                <p className="text-black/40 text-sm leading-relaxed mb-10 font-medium">
+                <p className="text-black/55 text-sm leading-relaxed mb-10 font-medium">
                   {sub.desc}
                 </p>
 

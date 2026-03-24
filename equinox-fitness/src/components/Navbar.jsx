@@ -26,8 +26,8 @@ const NAV_LINKS = [
 // Reusable navigation component
 const NavigationLinks = ({ isMobile = false, location, onLinkClick }) => (
   <div className={isMobile 
-    ? "flex flex-col gap-6 text-[14px] font-black uppercase tracking-[0.3em] text-black/60 w-full" 
-    : "hidden md:flex gap-10 text-[12px] font-bold uppercase tracking-[0.2em]"
+    ? "flex flex-col gap-6 text-[14px] font-semibold uppercase tracking-[0.3em] text-black/60 w-full" 
+    : "hidden md:flex gap-10 text-[12px] font-semibold uppercase tracking-[0.2em]"
   }>
     {NAV_LINKS.map(({ label, path }) => (
       <Link 
@@ -78,7 +78,7 @@ export const Navbar = () => {
 
   return (
     <nav className="fixed w-full z-50 px-4 md:px-6 py-4">
-      <div className={`max-w-5xl mx-auto flex justify-between items-center backdrop-blur-2xl rounded-[24px] md:rounded-[32px] border px-5 md:px-8 py-3 transition-all duration-500 ${
+      <div className={`max-w-6xl mx-auto flex justify-between items-center backdrop-blur-2xl rounded-[24px] md:rounded-[32px] border px-5 md:px-8 py-3 transition-all duration-500 ${
         scrolled 
           ? 'bg-white/80 border-white/40 shadow-[0_8px_32px_rgba(0,0,0,0.08)]' 
           : 'bg-white/60 border-white/30 shadow-[0_8px_32px_rgba(0,0,0,0.04)]'
@@ -92,16 +92,16 @@ export const Navbar = () => {
           <div className="hidden md:flex items-center gap-6">
             <SignedOut>
               <SignInButton mode="modal">
-                <button className="text-[12px] font-bold uppercase tracking-widest text-black/40 hover:text-black cursor-pointer transition-colors duration-300 bg-transparent border-none" aria-label="Autentifică-te în cont">Autentificare</button>
+                <button className="text-[12px] font-semibold uppercase tracking-widest text-black/40 hover:text-black cursor-pointer transition-colors duration-300 bg-transparent border-none" aria-label="Autentifică-te în cont">Autentificare</button>
               </SignInButton>
               <SignUpButton mode="modal">
-                <button className="btn-primary text-[11px] px-7 py-2.5 uppercase tracking-[0.2em] font-black cursor-pointer" aria-label="Creează un cont nou">Înregistrare</button>
+                <button className="btn-primary text-[11px] px-7 py-2.5 uppercase tracking-[0.2em] font-semibold cursor-pointer" aria-label="Creează un cont nou">Înregistrare</button>
               </SignUpButton>
             </SignedOut>
           </div>
 
           <SignedIn>
-            <Link to="/pricing" className="hidden md:flex items-center gap-2 bg-apple-blue/10 text-apple-blue px-4 py-2 rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-apple-blue hover:text-white transition-all duration-300" aria-label="Treci la planul Elită">
+            <Link to="/pricing" className="hidden md:flex items-center gap-2 bg-apple-blue/10 text-apple-blue px-4 py-2 rounded-full text-[10px] font-semibold uppercase tracking-widest hover:bg-apple-blue hover:text-white transition-all duration-300" aria-label="Treci la planul Elită">
               <Sparkles size={12} />
               Treci la Elită
             </Link>
@@ -112,7 +112,7 @@ export const Navbar = () => {
                   userButtonAvatarAvatarBox: "w-9 h-9 border border-black/5" 
                 } 
               }} 
-              aria-label="User account menu"
+              aria-label="Meniul contului utilizatorului"
             />
           </SignedIn>
 
@@ -138,10 +138,10 @@ export const Navbar = () => {
           <SignedOut>
             <div className="flex flex-col gap-4 w-full pt-4">
               <SignInButton mode="modal">
-                <button className="text-[12px] font-bold uppercase tracking-widest text-black/40 py-2" aria-label="Autentifică-te în cont">Autentificare</button>
+                <button className="text-[12px] font-semibold uppercase tracking-widest text-black/40 py-2" aria-label="Autentifică-te în cont">Autentificare</button>
               </SignInButton>
               <SignUpButton mode="modal">
-                <button className="btn-primary w-full py-4 rounded-[18px] text-[12px] uppercase tracking-[0.2em] font-black" aria-label="Creează un cont nou">Intră în Elită</button>
+                <button className="btn-primary w-full py-4 rounded-[18px] text-[12px] uppercase tracking-[0.2em] font-semibold" aria-label="Creează un cont nou">Intră în Elită</button>
               </SignUpButton>
             </div>
           </SignedOut>

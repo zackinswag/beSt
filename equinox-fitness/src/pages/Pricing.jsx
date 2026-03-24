@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useUser, SignInButton } from '@clerk/clerk-react';
+import { useUser } from '@clerk/clerk-react';
 import { Check, Zap, Sparkles, Trophy, ArrowLeft, Loader2 } from 'lucide-react';
 import { useSupabase } from '../hooks/useSupabase';
 
 export const Pricing = () => {
   const navigate = useNavigate();
-  const { user, isLoaded, isSignedIn } = useUser();
+  const { user } = useUser();
   const getSupabase = useSupabase();
   const [upgrading, setUpgrading] = useState(false);
   const [showComingSoon, setShowComingSoon] = useState(false);
@@ -38,10 +38,10 @@ export const Pricing = () => {
       id: 'free',
       name: 'Esențial',
       price: '0',
-      desc: 'Bazele antrenamentului pentru început.',
+      desc: 'Tot ce ai nevoie ca să începi corect.',
       features: [
         'Acces la baza Calisthenics',
-        'Bibliotecă de exerciții (limitat)',
+        'Bibliotecă de exerciții (limitată)',
         'Monitorizare progres de bază',
         'Fără suport tehnic'
       ],
@@ -54,7 +54,7 @@ export const Pricing = () => {
       id: 'premium',
       name: 'Performanță de Elită',
       price: '19.99',
-      desc: 'Tot ce ai nevoie pentru a deveni cea mai bună versiune.',
+      desc: 'Pachetul complet pentru progres constant.',
       features: [
         'Toate protocoalele (Sală și Calisthenics)',
         'Toate tipurile de Split (PPL, Bro, U/L)',
@@ -72,7 +72,7 @@ export const Pricing = () => {
       id: 'pro',
       name: 'Măiestrie Absolută',
       price: '29.99',
-      desc: 'Optimizare totală: Antrenament, Nutriție și Recuperare.',
+      desc: 'Optimizare completă: antrenament, nutriție și recuperare.',
       features: [
         'Tot din Premium',
         'Plan de Nutriție Personalizat',
@@ -101,8 +101,7 @@ export const Pricing = () => {
 
       {/* BACKGROUND AMBIENT */}
       <div className="absolute top-0 left-0 w-full h-full -z-10 overflow-hidden bg-[#F5F5F7]">
-        <div className="absolute top-[5%] right-[10%] w-[45%] h-[45%] bg-blue-400/10 rounded-full blur-[100px] animate-mesh" style={{ animationDuration: '10s' }}></div>
-        <div className="absolute bottom-[10%] left-[-5%] w-[40%] h-[40%] bg-purple-400/10 rounded-full blur-[120px] animate-mesh" style={{ animationDuration: '12s', animationDelay: '-4s' }}></div>
+        <div className="absolute top-[5%] right-[10%] w-[45%] h-[45%] bg-blue-400/10 rounded-full blur-[100px] animate-mesh" style={{ animationDuration: '12s' }}></div>
       </div>
 
       <div className="pt-32 md:pt-44 max-w-6xl mx-auto px-6 relative">
@@ -118,13 +117,19 @@ export const Pricing = () => {
         <div className="text-center mb-16 md:mb-20 card-animate">
           <div className="inline-flex items-center gap-2.5 bg-black/[0.03] border border-black/[0.05] px-5 py-2 rounded-full mb-8">
             <Sparkles size={12} className="text-apple-blue" />
-            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-black/40">Investește în tine</span>
+            <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-black/40">Investește în tine</span>
           </div>
           <h2 className="text-4xl md:text-7xl font-black tracking-tighter mb-6">
             Alege-ți <span className="font-serif-italic font-normal text-black/70">nivelul</span>.
           </h2>
-          <p className="text-lg md:text-xl text-black/40 font-medium max-w-2xl mx-auto leading-relaxed">
-            Fiecare plan include o <span className="text-black font-black">perioadă de probă de 30 de zile</span> pentru a te asigura că vezi rezultate reale înainte de a plăti.
+          <p className="text-lg md:text-xl text-black/55 font-medium max-w-2xl mx-auto leading-relaxed">
+            Testezi platforma cu o <span className="text-black font-black">perioadă de probă de 30 de zile</span>, apoi decizi ce plan ți se potrivește.
+          </p>
+        </div>
+
+        <div className="apple-card p-6 md:p-8 mb-10 card-animate">
+          <p className="text-sm md:text-base text-black/60">
+            Toate planurile includ aceeași experiență de bază. Diferența o fac nivelul de personalizare și viteza cu care ajungi la rezultate.
           </p>
         </div>
 
@@ -133,12 +138,12 @@ export const Pricing = () => {
           {tiers.map((tier, i) => (
             <div
               key={tier.id}
-              className={`apple-card relative flex flex-col p-10 transition-all duration-500 hover:shadow-2xl card-animate ${tier.recommended ? 'border-apple-blue shadow-xl shadow-apple-blue/5 scale-105 z-10' : 'border-transparent'
+              className={`apple-card relative flex flex-col p-8 md:p-10 transition-all duration-500 hover:shadow-2xl card-animate ${tier.recommended ? 'border-apple-blue shadow-xl shadow-apple-blue/5 md:scale-105 z-10' : 'border-transparent'
                 }`}
               style={{ animationDelay: `${0.1 + i * 0.1}s` }}
             >
               {tier.recommended && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-apple-blue text-white text-[10px] font-black uppercase tracking-widest px-4 py-1.5 rounded-full shadow-lg">
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-apple-blue text-white text-[10px] font-semibold uppercase tracking-widest px-4 py-1.5 rounded-full shadow-lg">
                   Recomandat
                 </div>
               )}
@@ -148,13 +153,13 @@ export const Pricing = () => {
                   <tier.icon size={24} className={tier.textColor} />
                 </div>
                 <h3 className="text-2xl font-black tracking-tight mb-2">{tier.name}</h3>
-                <p className="text-black/40 text-sm font-medium leading-relaxed">{tier.desc}</p>
+                <p className="text-black/55 text-sm font-medium leading-relaxed">{tier.desc}</p>
               </div>
 
               <div className="mb-10">
                 <div className="flex items-baseline gap-1">
                   <span className="text-5xl font-black tracking-tighter">{tier.price}</span>
-                  <span className="text-black/30 font-bold uppercase tracking-widest text-xs">€/lună</span>
+                  <span className="text-black/30 font-semibold uppercase tracking-widest text-xs">€/lună</span>
                 </div>
               </div>
 
@@ -164,7 +169,7 @@ export const Pricing = () => {
                     <div className="mt-1 w-4 h-4 rounded-full bg-emerald-500/10 flex items-center justify-center flex-shrink-0">
                       <Check size={10} className="text-emerald-500" strokeWidth={3} />
                     </div>
-                    <span className="text-sm font-medium text-black/60 leading-tight">{feature}</span>
+                    <span className="text-sm font-medium text-black/70 leading-tight">{feature}</span>
                   </div>
                 ))}
               </div>
@@ -175,7 +180,7 @@ export const Pricing = () => {
                   setTimeout(() => setShowComingSoon(false), 3000);
                 }}
                 disabled={upgrading}
-                className={`w-full py-4 rounded-2xl font-black uppercase tracking-widest text-xs transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2 relative ${tier.buttonVariant} ${upgrading ? 'opacity-50 cursor-not-allowed' : ''}`}
+                className={`w-full py-4 rounded-2xl font-semibold uppercase tracking-widest text-xs transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2 relative ${tier.buttonVariant} ${upgrading ? 'opacity-50 cursor-not-allowed' : ''}`}
               >
                 {upgrading ? (
                   <Loader2 size={16} className="animate-spin" />
@@ -189,7 +194,7 @@ export const Pricing = () => {
 
         {/* FOOTER NOTE */}
         <div className="mt-20 text-center max-w-2xl mx-auto">
-          <p className="text-black/30 text-xs font-bold leading-relaxed">
+          <p className="text-black/45 text-xs font-medium leading-relaxed">
             Anularea se poate face oricând din contul tău. Nu există contracte pe termen lung.
             Toate programele sunt create de experți Equinox și sunt actualizate constant.
           </p>

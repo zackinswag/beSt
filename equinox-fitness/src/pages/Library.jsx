@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { PlayCircle, ChevronRight, Search, ArrowUpRight } from 'lucide-react';
+import { PlayCircle, Search, ArrowUpRight } from 'lucide-react';
 
 export const Library = () => {
   const [filter, setFilter] = useState('Toate');
@@ -18,20 +18,19 @@ export const Library = () => {
     <div className="relative min-h-screen overflow-hidden">
       {/* BACKGROUND AMBIENT LIGHTS */}
       <div className="absolute top-0 left-0 w-full h-full -z-10 overflow-hidden bg-[#F5F5F7]">
-        <div className="absolute top-[10%] left-[60%] w-[45%] h-[45%] bg-blue-300/20 rounded-full blur-[100px] animate-mesh" style={{ animationDuration: '8s' }}></div>
-        <div className="absolute bottom-[20%] left-[-5%] w-[40%] h-[40%] bg-indigo-300/20 rounded-full blur-[120px] animate-mesh" style={{ animationDuration: '7s', animationDelay: '-2s' }}></div>
+        <div className="absolute top-[10%] left-[60%] w-[45%] h-[45%] bg-blue-300/15 rounded-full blur-[100px] animate-mesh" style={{ animationDuration: '12s' }}></div>
       </div>
 
-      <div className="pt-44 pb-20 max-w-6xl mx-auto px-6">
+      <div className="pt-40 md:pt-44 pb-20 max-w-6xl mx-auto px-6">
         {/* HEADER */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 mb-16 card-animate">
           <div className="text-left">
             <div className="inline-flex items-center gap-2.5 bg-black/[0.03] border border-black/[0.05] px-5 py-2 rounded-full mb-6">
               <PlayCircle size={12} className="text-apple-blue" />
-              <span className="text-[10px] font-black uppercase tracking-[0.2em] text-black/40">Bază de cunoștințe</span>
+              <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-black/40">Bază de cunoștințe</span>
             </div>
             <h2 className="text-5xl md:text-6xl font-black tracking-tighter mb-2">Seiful de <span className="font-serif-italic font-normal text-black/70">exerciții</span>.</h2>
-            <p className="text-black/40 font-bold tracking-widest text-xs uppercase">Standarde de mișcare și măiestrie tehnică</p>
+            <p className="text-black/55 font-semibold tracking-widest text-xs uppercase">Standarde de mișcare și măiestrie tehnică</p>
           </div>
           
           {/* FILTER PILLS - Improved for Mobile */}
@@ -41,7 +40,7 @@ export const Library = () => {
                 <button 
                   key={cat} 
                   onClick={() => setFilter(cat)} 
-                  className={`px-6 py-2.5 rounded-full text-[10px] font-black uppercase tracking-widest transition-all duration-300 ${
+                  className={`px-6 py-2.5 rounded-full text-[10px] font-semibold uppercase tracking-widest transition-all duration-300 ${
                     filter === cat 
                       ? 'bg-white shadow-[0_4px_12px_rgba(0,0,0,0.05)] text-apple-blue' 
                       : 'text-black/40 hover:text-black hover:bg-black/5'
@@ -52,6 +51,12 @@ export const Library = () => {
               ))}
             </div>
           </div>
+        </div>
+
+        <div className="apple-card p-5 md:p-6 mb-10 card-animate">
+          <p className="text-sm text-black/60">
+            Alege categoria dorită și urmărește forma corectă. Execuția bună aduce rezultate mai rapide și mai sigure.
+          </p>
         </div>
 
         {/* LIBRARY GRID */}
@@ -67,7 +72,7 @@ export const Library = () => {
                 <img 
                   src={ex.img} 
                   alt={ex.name} 
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 group-hover:rotate-1 opacity-70 group-hover:opacity-100"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-75 group-hover:opacity-100"
                 />
                 
                 {/* DARK GRADIENT OVERLAY */}
@@ -80,7 +85,7 @@ export const Library = () => {
                 </div>
                 
                 {/* FLOATING BADGE */}
-                <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1.5 rounded-lg text-[9px] font-black uppercase tracking-widest text-apple-blue shadow-sm">
+                <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1.5 rounded-lg text-[9px] font-semibold uppercase tracking-widest text-apple-blue shadow-sm">
                   {ex.cat}
                 </div>
               </div>
@@ -91,7 +96,7 @@ export const Library = () => {
                   <h4 className="font-extrabold text-lg mb-1 group-hover:text-apple-blue transition-colors">{ex.name}</h4>
                   <div className="flex items-center gap-2">
                     <div className="w-1.5 h-1.5 rounded-full bg-apple-blue/50"></div>
-                    <p className="text-[10px] font-black text-black/30 tracking-widest uppercase">Nivel {ex.level}</p>
+                    <p className="text-[10px] font-semibold text-black/30 tracking-widest uppercase">Nivel {ex.level}</p>
                   </div>
                 </div>
                 <div className="w-10 h-10 rounded-full flex items-center justify-center shrink-0 bg-black/[0.03] group-hover:bg-apple-blue group-hover:text-white transition-all duration-300">

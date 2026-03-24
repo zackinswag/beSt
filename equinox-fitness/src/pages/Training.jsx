@@ -9,7 +9,7 @@ export const Training = () => {
       id: 'gym',
       title: 'SALA DE FORȚĂ',
       subtitle: 'Protocolul 01',
-      desc: 'Hipertrofie structurală și forță brută. Proiectat pentru performanță maximă fără compromisuri.',
+      desc: 'Pentru masă musculară și forță, cu progres clar de la săptămână la săptămână.',
       icon: Dumbbell,
       color: 'blue',
       gradient: 'from-blue-500/20 to-transparent'
@@ -18,7 +18,7 @@ export const Training = () => {
       id: 'calisthenics',
       title: 'MĂIESTRIA CORPULUI',
       subtitle: 'Protocolul 02',
-      desc: 'Stăpânește fizica propriei greutăți. Dezvoltă skill-uri de la începător la nivel de elită absolută.',
+      desc: 'Pentru control corporal, mobilitate și skill-uri progresive, de la bază la avansat.',
       icon: User,
       color: 'purple',
       gradient: 'from-purple-500/20 to-transparent'
@@ -27,7 +27,7 @@ export const Training = () => {
       id: 'hybrid',
       title: 'MOTOR HIBRID',
       subtitle: 'Protocolul 03',
-      desc: 'Unde forța explozivă întâlnește rezistența infinită. Programul complet pentru atletul total.',
+      desc: 'Pentru echilibru între forță, condiție fizică și rezistență pe termen lung.',
       icon: Zap,
       color: 'rose',
       gradient: 'from-rose-500/20 to-transparent'
@@ -38,8 +38,7 @@ export const Training = () => {
     <div className="relative min-h-screen overflow-hidden">
       {/* BACKGROUND AMBIENT LIGHTS */}
       <div className="absolute top-0 left-0 w-full h-full -z-10 overflow-hidden bg-[#F5F5F7]">
-        <div className="absolute top-[5%] left-[10%] w-[45%] h-[45%] bg-blue-400/20 rounded-full blur-[100px] animate-mesh" style={{ animationDuration: '9s' }}></div>
-        <div className="absolute bottom-[20%] right-[-5%] w-[40%] h-[40%] bg-purple-400/20 rounded-full blur-[120px] animate-mesh" style={{ animationDuration: '8s', animationDelay: '-3s' }}></div>
+        <div className="absolute top-[5%] left-[10%] w-[45%] h-[45%] bg-blue-400/15 rounded-full blur-[100px] animate-mesh" style={{ animationDuration: '11s' }}></div>
       </div>
 
       <div className="pt-32 md:pt-44 pb-20 max-w-6xl mx-auto px-6">
@@ -47,13 +46,22 @@ export const Training = () => {
         <div className="text-center mb-16 card-animate">
           <div className="inline-flex items-center gap-2.5 bg-black/[0.03] border border-black/[0.05] px-5 py-2 rounded-full mb-6">
             <Zap size={12} className="text-apple-blue" />
-            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-black/40">Selectează parcursul</span>
+            <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-black/40">Selectează parcursul</span>
           </div>
           <h2 className="text-4xl md:text-6xl font-black tracking-tighter mb-6">
             Alege-ți <span className="font-serif-italic font-normal text-black/70">parcursul</span>.
           </h2>
-          <p className="text-lg md:text-xl text-black/40 font-medium max-w-2xl mx-auto leading-relaxed">
-            Fiecare protocol este optimizat pentru a elibera un tip diferit de performanță umană. Alege-ți armura.
+          <p className="text-lg md:text-xl text-black/55 font-medium max-w-2xl mx-auto leading-relaxed">
+            Fiecare protocol are un obiectiv clar. Alege-l pe cel potrivit nivelului și scopului tău.
+          </p>
+        </div>
+
+        <div className="apple-card p-6 md:p-8 mb-10 card-animate">
+          <h3 className="text-xl md:text-2xl font-black tracking-tight mb-2">Nu știi ce să alegi?</h3>
+          <p className="text-sm md:text-base text-black/55">
+            <span className="font-semibold text-black/80">Sală de forță</span> pentru masă și forță,{" "}
+            <span className="font-semibold text-black/80">Măiestria corpului</span> pentru control și mobilitate,{" "}
+            <span className="font-semibold text-black/80">Motor hibrid</span> pentru performanță completă.
           </p>
         </div>
 
@@ -74,7 +82,7 @@ export const Training = () => {
                   <protocol.icon size={28} className={`text-black/40 group-hover:text-white transition-colors duration-500`} />
                 </div>
                 
-                <span className={`text-[10px] font-black uppercase tracking-[0.3em] text-black/30 mb-4 block group-hover:text-${protocol.color}-500 transition-colors`}>
+                <span className={`text-[10px] font-semibold uppercase tracking-[0.3em] text-black/30 mb-4 block group-hover:text-${protocol.color}-500 transition-colors`}>
                   {protocol.subtitle}
                 </span>
                 
@@ -89,7 +97,7 @@ export const Training = () => {
 
               {/* Bottom CTA Arrow */}
               <div className="relative z-10 flex items-center justify-between mt-auto border-t border-black/5 pt-6 group-hover:border-black/10 transition-colors">
-                <span className="text-[11px] font-black uppercase tracking-widest text-black/40 group-hover:text-black transition-colors">
+                <span className="text-[11px] font-semibold uppercase tracking-widest text-black/40 group-hover:text-black transition-colors">
                   Accesează
                 </span>
                 <div className="w-10 h-10 rounded-full bg-black/5 flex items-center justify-center group-hover:bg-black group-hover:text-white transition-all duration-300 transform group-hover:scale-110">

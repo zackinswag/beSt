@@ -9,12 +9,12 @@ export const Footer = () => (
         {/* Brand */}
         <div className="md:col-span-1">
           <h3 className="font-extrabold text-lg tracking-tighter mb-3">EQUINOX</h3>
-          <p className="text-sm text-black/40 leading-relaxed">Creat pentru cei care refuză mediocritatea.</p>
+          <p className="text-sm text-black/55 leading-relaxed">Creat pentru cei care refuză mediocritatea.</p>
         </div>
         
         {/* Quick Links */}
         <div>
-          <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-black/30 mb-4">Navigare</h4>
+          <h4 className="text-[10px] font-semibold uppercase tracking-[0.2em] text-black/30 mb-4">Navigare</h4>
           <div className="space-y-2.5">
             <Link to="/training" className="block text-sm text-black/50 hover:text-apple-blue transition-colors">Programe</Link>
             <Link to="/library" className="block text-sm text-black/50 hover:text-apple-blue transition-colors">Bibliotecă</Link>
@@ -24,7 +24,7 @@ export const Footer = () => (
         
         {/* Protocols */}
         <div>
-          <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-black/30 mb-4">Protocoale</h4>
+          <h4 className="text-[10px] font-semibold uppercase tracking-[0.2em] text-black/30 mb-4">Protocoale</h4>
           <div className="space-y-2.5">
             <p className="text-sm text-black/50">Sala de Forță</p>
             <p className="text-sm text-black/50">Măiestria Corpului</p>
@@ -34,7 +34,7 @@ export const Footer = () => (
 
         {/* Social */}
         <div>
-          <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-black/30 mb-4">Conectare</h4>
+          <h4 className="text-[10px] font-semibold uppercase tracking-[0.2em] text-black/30 mb-4">Conectare</h4>
           <div className="flex gap-3">
             <a href="#" className="w-10 h-10 rounded-full bg-black/5 hover:bg-apple-blue hover:text-white flex items-center justify-center transition-all duration-300">
               <Instagram size={16} />
@@ -52,10 +52,10 @@ export const Footer = () => (
       {/* Bottom bar */}
       <div className="divider-gradient mb-6"></div>
       <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-        <p className="text-[10px] uppercase font-bold tracking-[0.3em] text-black/20">
+        <p className="text-[10px] uppercase font-semibold tracking-[0.3em] text-black/30">
           © {new Date().getFullYear()} Equinox Performance System. Creat pentru excelență.
         </p>
-        <p className="text-[10px] uppercase font-bold tracking-[0.3em] text-black/20">
+        <p className="text-[10px] uppercase font-semibold tracking-[0.3em] text-black/30">
           Creat cu precizie
         </p>
       </div>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Sparkles, Dumbbell, User, Zap, Trophy, Users, Target, ArrowUpRight } from 'lucide-react';
-import { useAuth, SignedIn, SignUpButton } from "@clerk/clerk-react";
+import { useAuth } from "@clerk/clerk-react";
 
 const AnimatedCounter = ({ end, suffix = '', duration = 2000 }) => {
   const [count, setCount] = useState(0);
@@ -31,18 +31,16 @@ export const Home = () => {
     <div className="relative overflow-hidden min-h-screen">
       {/* BACKGROUND AMBIENT LIGHTS */}
       <div className="absolute top-0 left-0 w-full h-full -z-10 overflow-hidden bg-[#F5F5F7]">
-        <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] bg-blue-400/30 rounded-full blur-[100px] animate-mesh" style={{ animationDuration: '8s' }}></div>
-        <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-purple-400/30 rounded-full blur-[100px] animate-mesh" style={{ animationDuration: '7s', animationDelay: '-2s' }}></div>
-        <div className="absolute top-[30%] left-[50%] w-[50%] h-[50%] bg-pink-400/20 rounded-full blur-[120px] animate-mesh" style={{ animationDuration: '9s', animationDelay: '-4s' }}></div>
-        <div className="absolute bottom-[20%] left-[-10%] w-[40%] h-[40%] bg-indigo-400/20 rounded-full blur-[100px] animate-mesh" style={{ animationDuration: '6s', animationDelay: '-3s' }}></div>
+        <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] bg-blue-400/25 rounded-full blur-[100px] animate-mesh" style={{ animationDuration: '10s' }}></div>
+        <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-purple-400/20 rounded-full blur-[100px] animate-mesh" style={{ animationDuration: '11s', animationDelay: '-2s' }}></div>
       </div>
 
       {/* HERO SECTION */}
-      <section className="pt-44 pb-16 px-6 text-center">
+      <section className="pt-40 md:pt-44 pb-20 px-6 text-center">
         <div className="max-w-4xl mx-auto">
           <div className="inline-flex items-center gap-2.5 bg-black/[0.03] border border-black/[0.05] px-5 py-2 rounded-full mb-10 card-animate">
             <Sparkles size={12} className="text-apple-blue" />
-            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-black/40">Sistem de elită activat</span>
+            <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-black/40">Sistem de elită activat</span>
           </div>
           
           <h1 className="text-6xl md:text-[7rem] font-black tracking-tighter mb-8 leading-[0.85]">
@@ -51,8 +49,8 @@ export const Home = () => {
             <span className="font-serif-italic font-normal text-5xl md:text-7xl text-black/70">inteligență.</span>
           </h1>
           
-          <p className="text-lg md:text-xl text-black/40 font-medium mb-14 max-w-xl mx-auto leading-relaxed tracking-tight">
-            Fuziunea rafinată între forța brută a sălii, măiestria calisthenics-ului și longevitatea atletică.
+          <p className="text-lg md:text-xl text-black/55 font-medium mb-14 max-w-xl mx-auto leading-relaxed tracking-tight">
+            Combină forța din sală, controlul din calisthenics și un ritm sustenabil pe termen lung.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-6">
@@ -60,7 +58,7 @@ export const Home = () => {
               to="/training" 
               className="btn-primary btn-glow px-14 py-5 text-sm shadow-2xl shadow-blue-500/30 hover:shadow-blue-500/50"
             >
-              {isSignedIn ? 'DASHBOARD ANTRENAMENT' : 'ÎNCEPE TRANSFORMAREA'}
+              {isSignedIn ? 'VEZI ANTRENAMENTELE' : 'ÎNCEPE ACUM'}
             </Link>
             <div className="flex items-center -space-x-3">
               {[1,2,3,4].map(i => (
@@ -70,7 +68,7 @@ export const Home = () => {
               ))}
               <div className="pl-6 text-left">
                 <div className="text-sm font-black leading-none italic">4.9/5</div>
-                <div className="text-[10px] font-bold uppercase opacity-30 tracking-widest">Evaluarea utilizatorilor</div>
+                <div className="text-[10px] font-semibold uppercase opacity-30 tracking-widest">Evaluarea utilizatorilor</div>
               </div>
             </div>
           </div>
@@ -78,7 +76,7 @@ export const Home = () => {
       </section>
 
       {/* METRICS STRIP */}
-      <section className="max-w-4xl mx-auto px-6 py-10">
+      <section className="max-w-5xl mx-auto px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {[
             { icon: Users, value: 2847, suffix: '+', label: 'Membri activi' },
@@ -90,14 +88,37 @@ export const Home = () => {
               <div className="text-4xl md:text-4xl font-black tracking-tighter mb-1">
                 <AnimatedCounter end={metric.value} suffix={metric.suffix} />
               </div>
-              <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-black/30">{metric.label}</div>
+              <div className="text-[10px] font-semibold uppercase tracking-[0.2em] text-black/30">{metric.label}</div>
             </div>
           ))}
         </div>
       </section>
 
+      {/* CUM FUNCȚIONEAZĂ */}
+      <section className="max-w-5xl mx-auto px-6 py-8 md:py-12">
+        <div className="apple-card p-8 md:p-10 card-animate">
+          <h3 className="text-2xl md:text-3xl font-black tracking-tighter mb-3">Cum începi în 3 pași</h3>
+          <p className="text-sm md:text-base text-black/55 mb-8 max-w-2xl">
+            Un parcurs simplu, fără complicații: alegi direcția, urmezi programul și urmărești progresul.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
+            {[
+              { step: 'Pasul 1', title: 'Alege protocolul', desc: 'Selectezi direcția potrivită: sală, calisthenics sau hibrid.' },
+              { step: 'Pasul 2', title: 'Urmează antrenamentele', desc: 'Primești structură clară pe zile și exerciții.' },
+              { step: 'Pasul 3', title: 'Măsoară progresul', desc: 'Bifezi sesiunile și vezi evoluția în timp.' }
+            ].map((item) => (
+              <div key={item.step} className="rounded-2xl bg-black/[0.02] border border-black/[0.05] p-5">
+                <p className="text-[10px] uppercase tracking-[0.2em] font-semibold text-apple-blue mb-2">{item.step}</p>
+                <p className="font-semibold mb-1.5">{item.title}</p>
+                <p className="text-sm text-black/55">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* BENTO GRID - PROGRAMS */}
-      <section className="max-w-6xl mx-auto px-6 py-12">
+      <section className="max-w-6xl mx-auto px-6 py-10 md:py-12">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
           
           {/* Gym - Main Card */}
@@ -105,10 +126,10 @@ export const Home = () => {
             <Dumbbell className="absolute top-10 right-10 text-black/[0.03] w-48 h-48 -rotate-12 group-hover:text-apple-blue/10 group-hover:rotate-0 transition-all duration-700" />
             <div className="absolute inset-0 bg-gradient-to-t from-white/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             <div className="relative z-10">
-              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-apple-blue mb-4 block">Protocolul 01</span>
+              <span className="text-[10px] font-semibold uppercase tracking-[0.3em] text-apple-blue mb-4 block">Protocolul 01</span>
               <h3 className="text-4xl md:text-5xl font-black mb-4 tracking-tighter italic">SALA DE FORȚĂ</h3>
-              <p className="text-black/50 max-w-md text-sm leading-relaxed mb-8">Hipertrofie structurală și forță brută. Proiectat pentru performanță maximă fără compromisuri.</p>
-              <Link to="/training" className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest group/link hover:text-apple-blue transition-colors">
+              <p className="text-black/50 max-w-md text-sm leading-relaxed mb-8">Creștere musculară și forță reală, cu un plan clar și progresiv.</p>
+              <Link to="/training" className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest group/link hover:text-apple-blue transition-colors">
                 Descoperă <ArrowUpRight size={14} className="group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
               </Link>
             </div>
@@ -122,7 +143,7 @@ export const Home = () => {
               backgroundSize: '20px 20px'
             }}></div>
             <div className="space-y-8 relative z-10">
-              <h4 className="text-[10px] font-black uppercase tracking-[0.3em] opacity-40">Eficiența sistemului</h4>
+              <h4 className="text-[10px] font-semibold uppercase tracking-[0.3em] opacity-40">Eficiența sistemului</h4>
               <div className="space-y-4">
                 <div className="flex justify-between items-end">
                   <span className="text-xs font-bold opacity-60">Forță</span>
@@ -151,7 +172,7 @@ export const Home = () => {
                 </div>
               </div>
             </div>
-            <p className="text-[9px] font-bold uppercase tracking-[0.3em] opacity-30 leading-relaxed relative z-10 mt-6">Optimizare activă: <br />Inteligența Equinox</p>
+            <p className="text-[9px] font-semibold uppercase tracking-[0.3em] opacity-30 leading-relaxed relative z-10 mt-6">Optimizare activă: <br />Inteligența Equinox</p>
           </div>
 
           {/* Body Mastery - with gradient overlay */}
@@ -160,8 +181,8 @@ export const Home = () => {
             <div className="relative z-10">
               <User className="text-apple-blue/20 mb-8 group-hover:text-apple-blue group-hover:scale-110 transition-all duration-500" size={32} />
               <h3 className="text-3xl font-black mb-4 tracking-tighter italic">MĂIESTRIA CORPULUI</h3>
-              <p className="text-black/50 text-sm leading-relaxed mb-8">Stăpânește fizica propriei greutăți. Skill-uri de la începător la nivel de elită.</p>
-              <Link to="/training" className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest hover:text-apple-blue transition-colors">
+              <p className="text-black/50 text-sm leading-relaxed mb-8">Învață controlul propriului corp, de la bază până la skill-uri avansate.</p>
+              <Link to="/training" className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest hover:text-apple-blue transition-colors">
                 Protocol <ArrowUpRight size={14} />
               </Link>
             </div>
@@ -173,8 +194,8 @@ export const Home = () => {
             <div className="relative z-10">
               <Zap className="text-apple-blue/20 mb-8 group-hover:text-apple-blue group-hover:scale-110 transition-all duration-500" size={32} />
               <h3 className="text-3xl font-black mb-4 tracking-tighter italic">MOTOR HIBRID</h3>
-              <p className="text-black/50 text-sm leading-relaxed mb-8">Unde forța explozivă întâlnește rezistența infinită. Atletul total.</p>
-              <Link to="/training" className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest hover:text-apple-blue transition-colors">
+              <p className="text-black/50 text-sm leading-relaxed mb-8">Îmbină forța și condiția fizică într-un program complet și echilibrat.</p>
+              <Link to="/training" className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest hover:text-apple-blue transition-colors">
                 Protocol <ArrowUpRight size={14} />
               </Link>
             </div>
