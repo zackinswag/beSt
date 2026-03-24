@@ -160,7 +160,7 @@ export const WorkoutSession = () => {
   }
 
   return (
-    <div className="relative min-h-screen bg-[#F5F5F7] pb-32">
+    <div className="relative min-h-screen bg-transparent pb-32">
       {/* HEADER OVERLAY */}
       <div className="fixed top-0 left-0 w-full h-80 bg-gradient-to-b from-blue-500/10 to-transparent -z-10" />
 

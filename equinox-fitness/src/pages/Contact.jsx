@@ -35,7 +35,7 @@ export const Contact = () => {
   return (
     <div className="relative min-h-screen overflow-hidden">
       {/* Ambient background */}
-      <div className="absolute top-0 left-0 w-full h-full -z-10 overflow-hidden bg-[#F5F5F7]">
+      <div className="absolute top-0 left-0 w-full h-full -z-10 overflow-hidden bg-transparent">
         <div className="absolute top-[10%] right-[-5%] w-[50%] h-[50%] bg-blue-400/20 rounded-full blur-[100px] animate-mesh" style={{ animationDuration: '12s' }}></div>
         <div className="absolute bottom-[20%] left-[-10%] w-[45%] h-[45%] bg-purple-400/15 rounded-full blur-[100px] animate-mesh" style={{ animationDuration: '11s', animationDelay: '-3s' }}></div>
       </div>

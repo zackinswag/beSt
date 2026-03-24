@@ -10,7 +10,7 @@ export const Training = () => {
   return (
     <div className="relative min-h-screen overflow-hidden">
       {/* BACKGROUND AMBIENT LIGHTS */}
-      <div className="absolute top-0 left-0 w-full h-full -z-10 overflow-hidden bg-[#F5F5F7]">
+      <div className="absolute top-0 left-0 w-full h-full -z-10 overflow-hidden bg-transparent">
         <div className="absolute top-[5%] left-[10%] w-[45%] h-[45%] bg-blue-400/15 rounded-full blur-[100px] animate-mesh" style={{ animationDuration: '11s' }}></div>
       </div>
 

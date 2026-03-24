@@ -1,38 +1,12 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useUser } from '@clerk/clerk-react';
-import { Check, Zap, Sparkles, Trophy, ArrowLeft, Loader2 } from 'lucide-react';
-import { useSupabase } from '../hooks/useSupabase';
+import { Check, Zap, Sparkles, Trophy, ArrowLeft } from 'lucide-react';
 import { SectionBadge } from '../components/ui/SectionBadge';
+import { Toast } from '../components/ui/Toast';
 
 export const Pricing = () => {
   const navigate = useNavigate();
-  const { user } = useUser();
-  const getSupabase = useSupabase();
-  const [upgrading, setUpgrading] = useState(false);
   const [showComingSoon, setShowComingSoon] = useState(false);
-
-  const handleUpgrade = async (tierId) => {
-    if (!user || !getSupabase) return;
-    setUpgrading(true);
-
-    try {
-      const supabase = await getSupabase();
-      const { error } = await supabase
-        .from('users')
-        .update({ subscription_tier: tierId })
-        .eq('clerk_id', user.id);
-
-      if (error) throw error;
-
-      // Redirect to training after successful "purchase"
-      navigate('/training');
-    } catch (err) {
-      console.error("Error upgrading plan:", err);
-    } finally {
-      setUpgrading(false);
-    }
-  };
 
   const tiers = [
     {
@@ -91,17 +65,15 @@ export const Pricing = () => {
   return (
     <div className="relative min-h-screen overflow-hidden pb-32">
       {/* COMING SOON TOAST */}
-      {showComingSoon && (
-        <div className="fixed top-24 left-1/2 -translate-x-1/2 z-[100] animate-in fade-in slide-in-from-top-4 duration-500">
-          <div className="bg-black text-white px-8 py-4 rounded-2xl shadow-2xl flex items-center gap-3 border border-white/10">
-            <Zap size={18} className="text-apple-blue animate-pulse" />
-            <span className="font-black uppercase tracking-widest text-[10px]">Abonamentele vin curând!</span>
-          </div>
-        </div>
-      )}
+      <Toast 
+        isVisible={showComingSoon} 
+        onClose={() => setShowComingSoon(false)} 
+        message="Abonamentele vin curând!" 
+        duration={3000} 
+      />
 
       {/* BACKGROUND AMBIENT */}
-      <div className="absolute top-0 left-0 w-full h-full -z-10 overflow-hidden bg-[#F5F5F7]">
+      <div className="absolute top-0 left-0 w-full h-full -z-10 overflow-hidden bg-transparent">
         <div className="absolute top-[5%] right-[10%] w-[45%] h-[45%] bg-blue-400/10 rounded-full blur-[100px] animate-mesh" style={{ animationDuration: '12s' }}></div>
       </div>
 
@@ -173,18 +145,10 @@ export const Pricing = () => {
               </div>
 
               <button 
-                onClick={() => {
-                  setShowComingSoon(true);
-                  setTimeout(() => setShowComingSoon(false), 3000);
-                }}
-                disabled={upgrading}
-                className={`w-full py-4 rounded-2xl font-semibold uppercase tracking-widest text-xs transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2 relative ${tier.buttonVariant} ${upgrading ? 'opacity-50 cursor-not-allowed' : ''}`}
+                onClick={() => setShowComingSoon(true)}
+                className={`w-full py-4 rounded-2xl font-semibold uppercase tracking-widest text-xs transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2 relative ${tier.buttonVariant}`}
               >
-                {upgrading ? (
-                  <Loader2 size={16} className="animate-spin" />
-                ) : (
-                  tier.id === 'free' ? 'Începe gratuit' : 'Începe proba de 30 zile'
-                )}
+                {tier.id === 'free' ? 'Începe gratuit' : 'Începe proba de 30 zile'}
               </button>
             </div>
           ))}

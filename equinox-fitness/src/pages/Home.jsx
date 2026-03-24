@@ -32,7 +32,7 @@ export const Home = () => {
   return (
     <div className="relative overflow-hidden min-h-screen">
       {/* BACKGROUND AMBIENT LIGHTS */}
-      <div className="absolute top-0 left-0 w-full h-full -z-10 overflow-hidden bg-[#F5F5F7]">
+      <div className="absolute top-0 left-0 w-full h-full -z-10 overflow-hidden bg-transparent">
         <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] bg-blue-400/25 rounded-full blur-[100px] animate-mesh" style={{ animationDuration: '10s' }}></div>
         <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-purple-400/20 rounded-full blur-[100px] animate-mesh" style={{ animationDuration: '11s', animationDelay: '-2s' }}></div>
       </div>
@@ -104,7 +104,7 @@ export const Home = () => {
               { step: 'Pasul 2', title: 'Urmează antrenamentele', desc: 'Primești structură clară pe zile și exerciții.' },
               { step: 'Pasul 3', title: 'Măsoară progresul', desc: 'Bifezi sesiunile și vezi evoluția în timp.' }
             ].map((item) => (
-              <div key={item.step} className="rounded-2xl bg-black/[0.02] border border-black/[0.05] p-5">
+              <div key={item.step} className="rounded-2xl bg-white/30 border border-white/50 p-5 shadow-sm">
                 <p className="text-[10px] uppercase tracking-[0.2em] font-semibold text-apple-blue mb-2">{item.step}</p>
                 <p className="font-semibold mb-1.5">{item.title}</p>
                 <p className="text-sm text-black/55">{item.desc}</p>

@@ -17,7 +17,7 @@ export const Footer = () => (
           <h4 className="text-[10px] font-semibold uppercase tracking-[0.2em] text-black/30 mb-4">Navigare</h4>
           <div className="space-y-2.5">
             <Link to="/training" className="block text-sm text-black/50 hover:text-apple-blue transition-colors">Programe</Link>
-            <Link to="/library" className="block text-sm text-black/50 hover:text-apple-blue transition-colors">Bibliotecă</Link>
+
             <Link to="/contact" className="block text-sm text-black/50 hover:text-apple-blue transition-colors">Contact</Link>
           </div>
         </div>

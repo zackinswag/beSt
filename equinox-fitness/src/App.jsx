@@ -11,7 +11,7 @@ import { SyncUser } from './components/SyncUser';
 import { Home } from './pages/Home';
 import { Training } from './pages/Training';
 import { ProtocolDetail } from './pages/ProtocolDetail';
-import { Library } from './pages/Library';
+
 import { Contact } from './pages/Contact';
 import { Pricing } from './pages/Pricing';
 import { Profile } from './pages/Profile';
@@ -21,7 +21,7 @@ export default function App() {
   return (
     <Router>
       <SignedIn><SyncUser /></SignedIn>
-      <div className="min-h-screen flex flex-col bg-[#F5F5F7]">
+      <div className="min-h-screen flex flex-col bg-gradient-to-br from-slate-50 via-blue-50/20 to-slate-100">
         <Navbar />
         <main className="flex-grow">
           <Routes>
@@ -29,7 +29,7 @@ export default function App() {
             <Route path="/training" element={<Training />} />
             <Route path="/training/:id" element={<ProtocolDetail />} />
             <Route path="/training/:id/:programId" element={<PPLProgram />} />
-            <Route path="/library" element={<Library />} />
+
             <Route path="/contact" element={<Contact />} />
             <Route path="/pricing" element={<Pricing />} />
             <Route path="/profile" element={<SignedIn><Profile /></SignedIn>} />

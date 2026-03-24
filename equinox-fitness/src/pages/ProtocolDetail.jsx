@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useUser } from '@clerk/clerk-react';
-import { ArrowLeft, ArrowRight, Zap, User, Dumbbell, Lock } from 'lucide-react';
+import { ArrowLeft, ArrowRight, User, Dumbbell, Lock } from 'lucide-react';
 import { useSupabase } from '../hooks/useSupabase';
 import { SPLITS, getSubProtocolsByType } from '../data/protocolDetail';
 import { getTrialActive } from '../utils/subscription';
+import { Toast } from '../components/ui/Toast';
 
 export const ProtocolDetail = () => {
   const { id } = useParams();
@@ -64,7 +65,6 @@ export const ProtocolDetail = () => {
       return;
     }
     setShowComingSoon(true);
-    setTimeout(() => setShowComingSoon(false), 3000);
   };
 
   const handleSplitSelect = (splitId) => {
@@ -73,7 +73,6 @@ export const ProtocolDetail = () => {
       return;
     }
     setShowComingSoon(true);
-    setTimeout(() => setShowComingSoon(false), 3000);
   };
 
   if (!['gym', 'calisthenics'].includes(id)) {
@@ -94,17 +93,15 @@ export const ProtocolDetail = () => {
   return (
     <div className="relative min-h-screen overflow-hidden">
       {/* COMING SOON TOAST */}
-      {showComingSoon && (
-        <div className="fixed top-24 left-1/2 -translate-x-1/2 z-[100] animate-in fade-in slide-in-from-top-4 duration-500">
-          <div className="bg-black text-white px-8 py-4 rounded-2xl shadow-2xl flex items-center gap-3 border border-white/10">
-            <Zap size={18} className="text-apple-blue animate-pulse" />
-            <span className="font-black uppercase tracking-widest text-[10px]">Modulul de antrenament vine curând!</span>
-          </div>
-        </div>
-      )}
+      <Toast 
+        isVisible={showComingSoon} 
+        onClose={() => setShowComingSoon(false)} 
+        message="Modulul de antrenament vine curând!" 
+        duration={3000} 
+      />
 
       {/* BACKGROUND AMBIENT */}
-      <div className="absolute top-0 left-0 w-full h-full -z-10 overflow-hidden bg-[#F5F5F7]">
+      <div className="absolute top-0 left-0 w-full h-full -z-10 overflow-hidden bg-transparent">
         <div className="absolute top-[10%] right-[10%] w-[40%] h-[40%] bg-blue-400/10 rounded-full blur-[100px] animate-mesh"></div>
       </div>
 

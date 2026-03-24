@@ -18,7 +18,7 @@ const throttle = (func, delay) => {
 // Navigation links configuration
 const NAV_LINKS = [
   { label: 'Programe', path: '/training' },
-  { label: 'Bibliotecă', path: '/library' },
+
   { label: 'Prețuri', path: '/pricing' },
   { label: 'Contact', path: '/contact' }
 ];

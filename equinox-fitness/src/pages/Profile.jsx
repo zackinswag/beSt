@@ -19,7 +19,7 @@ export const Profile = () => {
       
       try {
         const supabase = await getSupabase();
-        const { data, error } = await supabase
+        const { data } = await supabase
           .from('users')
           .select('*')
           .eq('clerk_id', user.id)
@@ -69,7 +69,7 @@ export const Profile = () => {
   return (
     <div className="relative min-h-screen overflow-hidden pb-20">
       {/* BACKGROUND AMBIENT */}
-      <div className="absolute top-0 left-0 w-full h-full -z-10 overflow-hidden bg-[#F5F5F7]">
+      <div className="absolute top-0 left-0 w-full h-full -z-10 overflow-hidden bg-transparent">
         <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-blue-400/5 rounded-full blur-[120px] animate-mesh" style={{ animationDuration: '12s' }}></div>
       </div>
 
@@ -114,13 +114,13 @@ export const Profile = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* SUBSCRIPTION CARD */}
           <div className="md:col-span-2 space-y-8">
-            <div className="apple-card p-8 md:p-10 hover:shadow-2xl hover:shadow-black/5 transition-all duration-500 border border-white/50 bg-white/60">
+            <div className="apple-card p-8 md:p-10 hover:shadow-2xl hover:shadow-black/5 transition-all duration-500">
               <div className="flex justify-between items-center mb-10">
                 <h3 className="text-xl font-bold tracking-tight">Status Abonament</h3>
                 <Zap size={20} className="text-apple-blue" />
               </div>
 
-              <div className="bg-black/[0.03] p-8 rounded-3xl border border-black/5 mb-8">
+              <div className="bg-white/30 p-8 rounded-3xl border border-white/50 mb-8 shadow-sm">
                 <div className="flex justify-between items-end mb-6">
                   <div>
                     <p className="text-[10px] font-semibold uppercase tracking-widest text-black/30 mb-2">Plan Curent</p>
@@ -156,7 +156,7 @@ export const Profile = () => {
             </div>
 
             {/* PROGRESS CARD (MOCK) */}
-            <div className="apple-card p-8 md:p-10 border border-white/50 bg-white/60">
+            <div className="apple-card p-8 md:p-10">
               <div className="flex justify-between items-center mb-8">
                 <h3 className="text-xl font-bold tracking-tight">Antrenamentul tău</h3>
                 <Award size={20} className="text-purple-500" />
@@ -167,7 +167,7 @@ export const Profile = () => {
                   { label: 'Recorduri', value: '0', icon: Trophy },
                   { label: 'Zile Active', value: '0', icon: Zap },
                 ].map((stat, i) => (
-                  <div key={i} className="text-center p-6 bg-black/[0.02] rounded-2xl border border-black/5">
+                  <div key={i} className="text-center p-6 bg-white/30 rounded-2xl border border-white/50 shadow-sm">
                     <stat.icon size={16} className="mx-auto mb-3 text-black/20" />
                     <div className="text-2xl font-black mb-1 tracking-tighter">{stat.value}</div>
                     <div className="text-[8px] font-black uppercase tracking-[0.2em] text-black/30">{stat.label}</div>
@@ -179,9 +179,9 @@ export const Profile = () => {
 
           {/* SIDEBAR / ACCOUNT OPS */}
           <div className="space-y-6">
-            <div className="apple-card p-8 space-y-2 border border-white/50 bg-white/60">
+            <div className="apple-card p-8 space-y-2">
               <h4 className="text-[10px] font-semibold uppercase tracking-widest text-black/30 mb-4 px-2">Opțiuni cont</h4>
-              <button className="w-full flex items-center justify-between p-4 hover:bg-black/[0.03] rounded-2xl transition-all group">
+              <button className="w-full flex items-center justify-between p-4 hover:bg-white/40 rounded-2xl transition-all group">
                 <div className="flex items-center gap-4">
                   <div className="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-500 flex items-center justify-center">
                     <User size={18} />
@@ -190,7 +190,7 @@ export const Profile = () => {
                 </div>
                 <ChevronRight size={16} className="text-black/10" />
               </button>
-              <button className="w-full flex items-center justify-between p-4 hover:bg-black/[0.03] rounded-2xl transition-all group">
+              <button className="w-full flex items-center justify-between p-4 hover:bg-white/40 rounded-2xl transition-all group">
                 <div className="flex items-center gap-4">
                   <div className="w-10 h-10 rounded-xl bg-purple-500/10 text-purple-500 flex items-center justify-center">
                     <Settings size={18} />
