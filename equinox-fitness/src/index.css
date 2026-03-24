@@ -51,8 +51,8 @@
 /* Global typography */
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  background: linear-gradient(180deg, #f8fbff 0%, #f0f7ff 100%);
-  background-attachment: fixed;
+  background: #f9fafa;
+
   color: #1D1D1F;
   margin: 0;
   min-height: 100vh;

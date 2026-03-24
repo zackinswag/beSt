@@ -80,8 +80,8 @@ export const Navbar = () => {
     <nav className="fixed w-full z-50 px-4 md:px-6 py-4">
       <div className={`max-w-6xl mx-auto flex justify-between items-center backdrop-blur-2xl rounded-[24px] md:rounded-[32px] border px-5 md:px-8 py-3 transition-all duration-500 ${
         scrolled 
-          ? 'bg-white/75 border-white/40 shadow-[0_8px_32px_rgba(0,0,0,0.08)]' 
-          : 'bg-white/50 border-white/20 shadow-none'
+          ? 'bg-white/80 border-white/40 shadow-[0_8px_32px_rgba(0,0,0,0.08)]' 
+          : 'bg-white/60 border-white/30 shadow-[0_8px_32px_rgba(0,0,0,0.04)]'
       }`}>
         <Link to="/" className="font-extrabold text-xl tracking-tighter hover:scale-105 transition-transform">EQUINOX</Link>
         

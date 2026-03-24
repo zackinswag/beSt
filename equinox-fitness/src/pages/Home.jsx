@@ -55,14 +55,21 @@ export const Home = () => {
             >
               {isSignedIn ? 'VEZI ANTRENAMENTELE' : 'ÎNCEPE ACUM'}
             </Link>
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-2xl bg-apple-blue/10 flex items-center justify-center">
-                <Target size={18} className="text-apple-blue" />
-              </div>
-              <div className="text-left">
-                <div className="text-sm font-black leading-none italic uppercase">Construit pentru consistență</div>
-                <div className="text-[10px] font-semibold uppercase opacity-30 tracking-widest">Fără scurtături inutile</div>
-              </div>
+            
+            <Link 
+              to="/pricing" 
+              className="px-10 py-5 text-sm font-bold text-black/40 hover:text-black transition-all"
+            >
+              VEZI PREȚURILE
+            </Link>
+          </div>
+          <div className="flex items-center gap-3 justify-center"> {/* Added justify-center to align with buttons */}
+            <div className="w-10 h-10 rounded-2xl bg-apple-blue/10 flex items-center justify-center">
+              <Target size={18} className="text-apple-blue" />
+            </div>
+            <div className="text-left">
+              <div className="text-sm font-black leading-none italic uppercase">Construit pentru consistență</div>
+              <div className="text-[10px] font-semibold uppercase opacity-30 tracking-widest">Fără scurtături inutile</div>
             </div>
           </div>
         </div>

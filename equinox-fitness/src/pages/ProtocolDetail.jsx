@@ -100,10 +100,6 @@ export const ProtocolDetail = () => {
         duration={3000} 
       />
 
-      {/* BACKGROUND AMBIENT */}
-      <div className="absolute top-0 left-0 w-full h-full -z-10 overflow-hidden bg-transparent">
-        <div className="absolute top-[10%] right-[10%] w-[40%] h-[40%] bg-blue-400/10 rounded-full blur-[100px] animate-mesh"></div>
-      </div>
 
       <div className="pt-32 md:pt-44 pb-20 max-w-6xl mx-auto px-6">
         {/* BACK & HEADER */}
