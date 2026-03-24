@@ -35,7 +35,7 @@ export const WorkoutSession = () => {
           const diffDays = Math.ceil((now - trialStart) / (1000 * 60 * 60 * 24));
           const trialActive = diffDays <= 30;
           
-          const isPremiumProgram = programId.startsWith('gym_') || programId.startsWith('calisthenics_skills');
+          const isPremiumProgram = programId.startsWith('calisthenics_skills');
           const isUserEligible = userData.subscription_tier !== 'free' || trialActive || !isPremiumProgram;
 
           if (!isUserEligible) {

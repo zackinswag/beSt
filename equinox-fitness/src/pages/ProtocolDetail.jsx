@@ -91,7 +91,7 @@ export const ProtocolDetail = () => {
       desc: 'Focus pe bază și intensitate maximă. 3-5 repetări, pauze lungi, forță brută.',
       icon: Shield,
       color: 'blue',
-      tier: 'premium'
+      tier: 'free'
     },
     {
       id: 'gym_maintenance',
@@ -99,7 +99,7 @@ export const ProtocolDetail = () => {
       desc: 'Echilibru între volum și intensitate. Optim pentru păstrarea masei musculare.',
       icon: Battery,
       color: 'emerald',
-      tier: 'premium'
+      tier: 'free'
     },
     {
       id: 'gym_shred',
@@ -107,7 +107,7 @@ export const ProtocolDetail = () => {
       desc: 'Volum ridicat, densitate mare. Proiectat pentru definire maximă și anduranță.',
       icon: Flame,
       color: 'rose',
-      tier: 'premium'
+      tier: 'free'
     }
   ];
 
