@@ -14,19 +14,19 @@ export const Contact = () => {
   const contactInfo = [
     {
       icon: <div className="w-10 h-10 rounded-xl bg-apple-blue/10 flex items-center justify-center"><MapPin size={18} className="text-apple-blue" /></div>,
-      title: 'Locație',
+      title: 'Unde suntem',
       detail: 'Oradea, România',
-      sub: 'Zona Rogerius'
+      sub: 'Rogerius'
     },
     {
       icon: <div className="w-10 h-10 rounded-xl bg-apple-blue/10 flex items-center justify-center"><Mail size={18} className="text-apple-blue" /></div>,
-      title: 'Email',
+      title: 'Scrie-ne',
       detail: 'contact@equinox.ro',
-      sub: 'Răspundem în 24h'
+      sub: 'Îți răspundem repede.'
     },
     {
       icon: <div className="w-10 h-10 rounded-xl bg-apple-blue/10 flex items-center justify-center"><Clock size={18} className="text-apple-blue" /></div>,
-      title: 'Program',
+      title: 'Dacă vii la sală',
       detail: 'Luni - Vineri',
       sub: '06:00 — 22:00'
     },
@@ -38,12 +38,12 @@ export const Contact = () => {
       <div className="pt-40 md:pt-44 pb-20 max-w-6xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-16 card-animate">
-          <SectionBadge icon={MessageCircle} text="Contactează-ne" className="mb-8" />
+          <SectionBadge icon={MessageCircle} text="Vorbim?" className="mb-8" />
           <h2 className="text-5xl md:text-6xl font-black tracking-tighter mb-4">
-            Hai să <span className="font-serif-italic font-normal text-black/70">ne conectăm.</span>
+            Hai să vedem ce <span className="font-serif-italic font-normal text-black/70">ți se potrivește.</span>
           </h2>
           <p className="text-lg text-black/55 font-medium max-w-lg mx-auto">
-            Spune-ne ce obiectiv ai, iar noi te ajutăm să alegi direcția potrivită.
+            Spune-ne ce obiectiv ai și încercăm să găsim cea mai scurtă cale spre el.
           </p>
         </div>
 
@@ -76,8 +76,8 @@ export const Contact = () => {
                 </div>
               )}
 
-              <h3 className="text-xl font-bold tracking-tight mb-1">Trimite un mesaj</h3>
-              <p className="text-xs text-black/55 mb-8">Completează formularul și revenim rapid cu un răspuns.</p>
+               <h3 className="text-xl font-bold tracking-tight mb-1">Scrie-ne aici</h3>
+              <p className="text-xs text-black/55 mb-8">Lasă-ne un mesaj scurt și te contactăm noi.</p>
 
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -112,10 +112,9 @@ export const Contact = () => {
                 <div>
                   <label className="text-[10px] font-semibold uppercase tracking-[0.15em] text-black/30 mb-2 block">Subiect</label>
                   <select className="w-full bg-black/[0.03] border border-black/[0.06] p-4 rounded-2xl outline-none focus:ring-2 ring-apple-blue/20 focus:border-apple-blue/30 transition-all text-sm text-black/60 appearance-none cursor-pointer">
-                    <option>Vreau să mă înscriu</option>
-                    <option>Întrebare despre programe</option>
-                    <option>Colaborare</option>
-                    <option>Altele</option>
+                    <option>Vreau un program</option>
+                    <option>Am o întrebare</option>
+                    <option>Altceva</option>
                   </select>
                 </div>
 
@@ -132,7 +131,7 @@ export const Contact = () => {
                   type="submit"
                   className="btn-primary btn-glow w-full py-4 text-xs font-semibold uppercase tracking-widest shadow-lg shadow-blue-500/10"
                 >
-                  Trimite Mesajul
+                  Trimite
                 </button>
 
                 <p className="text-[10px] text-center text-black/25 font-medium">

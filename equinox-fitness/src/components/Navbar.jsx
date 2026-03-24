@@ -17,8 +17,7 @@ const throttle = (func, delay) => {
 
 // Navigation links configuration
 const NAV_LINKS = [
-  { label: 'Programe', path: '/training' },
-
+  { label: 'Antrenamente', path: '/training' },
   { label: 'Prețuri', path: '/pricing' },
   { label: 'Contact', path: '/contact' }
 ];
@@ -34,26 +33,36 @@ const NavigationLinks = ({ isMobile = false, location, onLinkClick }) => (
         key={path}
         to={path} 
         onClick={onLinkClick}
-        className={`transition-colors duration-300 ${
+        className={`relative transition-colors duration-300 ${
           location.pathname === path 
             ? 'text-apple-blue' 
-            : 'text-black/40 hover:text-apple-blue'
+            : 'text-black/40 hover:text-black group'
         } ${isMobile ? 'py-2 border-b border-black/[0.03]' : ''}`}
       >
-        {label}
+        <span>{label}</span>
+        {!isMobile && (
+          <span className={`absolute -bottom-1.5 left-0 w-full h-[1px] bg-apple-blue origin-left transition-transform duration-300 ease-out ${
+            location.pathname === path ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
+          }`}></span>
+        )}
       </Link>
     ))}
     <SignedIn>
       <Link 
         to="/profile"
         onClick={onLinkClick}
-        className={`transition-colors duration-300 ${
+        className={`relative transition-colors duration-300 ${
           location.pathname === '/profile' 
             ? 'text-apple-blue' 
-            : 'text-black/40 hover:text-apple-blue'
+            : 'text-black/40 hover:text-black group'
         } ${isMobile ? 'py-2 border-b border-black/[0.03]' : ''}`}
       >
-        Profil
+        <span>Contul meu</span>
+        {!isMobile && (
+          <span className={`absolute -bottom-1.5 left-0 w-full h-[1px] bg-apple-blue origin-left transition-transform duration-300 ease-out ${
+            location.pathname === '/profile' ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
+          }`}></span>
+        )}
       </Link>
     </SignedIn>
   </div>
@@ -92,18 +101,18 @@ export const Navbar = () => {
           <div className="hidden md:flex items-center gap-6">
             <SignedOut>
               <SignInButton mode="modal">
-                <button className="text-[12px] font-semibold uppercase tracking-widest text-black/40 hover:text-black cursor-pointer transition-colors duration-300 bg-transparent border-none" aria-label="Autentifică-te în cont">Autentificare</button>
+                <button className="text-[12px] font-semibold uppercase tracking-widest text-black/40 hover:text-black cursor-pointer transition-colors duration-300 bg-transparent border-none" aria-label="Cont">Cont</button>
               </SignInButton>
               <SignUpButton mode="modal">
-                <button className="btn-primary text-[11px] px-7 py-2.5 uppercase tracking-[0.2em] font-semibold cursor-pointer" aria-label="Creează un cont nou">Înregistrare</button>
+                <button className="btn-primary text-[11px] px-7 py-2.5 uppercase tracking-[0.2em] font-semibold cursor-pointer" aria-label="Vreau să încep">Vreau să încep</button>
               </SignUpButton>
             </SignedOut>
           </div>
 
           <SignedIn>
-            <Link to="/pricing" className="hidden md:flex items-center gap-2 bg-apple-blue/10 text-apple-blue px-4 py-2 rounded-full text-[10px] font-semibold uppercase tracking-widest hover:bg-apple-blue hover:text-white transition-all duration-300" aria-label="Treci la planul Elită">
+            <Link to="/pricing" className="hidden md:flex items-center gap-2 bg-apple-blue/10 text-apple-blue px-4 py-2 rounded-full text-[10px] font-semibold uppercase tracking-widest hover:bg-apple-blue hover:text-white transition-all duration-300" aria-label="Upgrade">
               <Sparkles size={12} />
-              Treci la Elită
+              Upgrade
             </Link>
             <UserButton 
               afterSignOutUrl="/" 
@@ -138,10 +147,10 @@ export const Navbar = () => {
           <SignedOut>
             <div className="flex flex-col gap-4 w-full pt-4">
               <SignInButton mode="modal">
-                <button className="text-[12px] font-semibold uppercase tracking-widest text-black/40 py-2" aria-label="Autentifică-te în cont">Autentificare</button>
+                <button className="text-[12px] font-semibold uppercase tracking-widest text-black/40 py-2" aria-label="Cont">Cont</button>
               </SignInButton>
               <SignUpButton mode="modal">
-                <button className="btn-primary w-full py-4 rounded-[18px] text-[12px] uppercase tracking-[0.2em] font-semibold" aria-label="Creează un cont nou">Intră în Elită</button>
+                <button className="btn-primary w-full py-4 rounded-[18px] text-[12px] uppercase tracking-[0.2em] font-semibold" aria-label="Vreau să încep">Vreau să încep</button>
               </SignUpButton>
             </div>
           </SignedOut>

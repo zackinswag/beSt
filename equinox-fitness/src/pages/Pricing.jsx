@@ -11,9 +11,9 @@ export const Pricing = () => {
   const tiers = [
     {
       id: 'free',
-      name: 'Esențial',
+      name: 'Bază',
       price: '0',
-      desc: 'Tot ce ai nevoie ca să începi corect.',
+      desc: 'Doar ce este esențial.',
       features: [
         'Acces la baza Calisthenics',
         'Bibliotecă de exerciții (limitată)',
@@ -28,9 +28,9 @@ export const Pricing = () => {
     },
     {
       id: 'premium',
-      name: 'Experiență Completă',
+      name: 'Toate programele',
       price: '19.99',
-      desc: 'Pachetul complet pentru progres constant.',
+      desc: 'Tot ce avem noi mai bun aici.',
       features: [
         'Toate protocoalele (Sală și Calisthenics)',
         'Toate tipurile de Split (PPL, Bro, U/L)',
@@ -47,15 +47,15 @@ export const Pricing = () => {
     },
     {
       id: 'pro',
-      name: 'Optimizare Avansată',
+      name: 'Personal & Complet',
       price: '29.99',
-      desc: 'Optimizare completă: antrenament, nutriție și recuperare.',
+      desc: 'Antrenament, nutriție și noi la dispoziția ta.',
       features: [
         'Tot din Premium',
         'Plan de Nutriție Personalizat',
         'Ghid de Recuperare & Mobilitate',
         'Sesiuni 1-on-1 lunare',
-        'Suport prioritar VIP 24/7'
+        'Suport prioritar 24/7'
       ],
       color: 'bg-purple-50',
       textColor: 'text-purple-600',
@@ -88,12 +88,12 @@ export const Pricing = () => {
 
         {/* HEADER */}
         <div className="text-center mb-16 md:mb-20 card-animate">
-          <SectionBadge icon={Sparkles} text="Investește în tine" className="mb-8" />
-          <h2 className="text-4xl md:text-7xl font-black tracking-tighter mb-6">
-            Alege-ți <span className="font-serif-italic font-normal text-black/70">nivelul</span>.
+          <SectionBadge icon={Sparkles} text="Prețuri simple" className="mb-8" />
+          <h2 className="text-4xl md:text-7xl font-black tracking-tighter mb-6 signature-dot">
+            Alege ce <span className="font-serif-italic font-normal text-black/70">are sens</span>
           </h2>
           <p className="text-lg md:text-xl text-black/55 font-medium max-w-2xl mx-auto leading-relaxed">
-            Testezi platforma cu o <span className="text-black font-black">perioadă de probă de 30 de zile</span>, apoi decizi ce plan ți se potrivește.
+            Ai la dispoziție o <span className="text-black font-black">perioadă de probă de 30 de zile</span>. Dacă nu e pentru tine, poți anula oricând.
           </p>
         </div>
 
@@ -104,7 +104,7 @@ export const Pricing = () => {
           {tiers.map((tier, i) => (
             <div
               key={tier.id}
-              className={`rounded-2xl border p-8 md:p-10 transition-all duration-500 hover:shadow-2xl card-animate flex flex-col ${
+              className={`border p-8 md:p-10 premium-hover flex flex-col asymmetric-card ${
                 tier.accent || 'border-zinc-200 bg-white'
               } ${tier.recommended ? 'shadow-xl shadow-blue-500/5 md:scale-105 z-10' : ''}`}
               style={{ animationDelay: `${0.1 + i * 0.1}s` }}
@@ -154,8 +154,8 @@ export const Pricing = () => {
         {/* FOOTER NOTE */}
         <div className="mt-20 text-center max-w-2xl mx-auto">
           <p className="text-black/45 text-xs font-medium leading-relaxed">
-            Anularea se poate face oricând din contul tău. Nu există contracte pe termen lung.
-            Toate programele sunt create de experți Equinox și sunt actualizate constant.
+            Fără contracte, fără bătăi de cap. Poți anula oricând direct din contul tău. 
+            Programele sunt actualizate periodic pentru a te ține motivat.
           </p>
         </div>
       </div>

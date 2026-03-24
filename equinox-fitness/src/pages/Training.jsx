@@ -31,12 +31,12 @@ export const Training = () => {
       <div className="pt-32 md:pt-40 pb-24 max-w-6xl mx-auto px-6">
         {/* HEADER */}
         <div className="mb-12 card-animate">
-          <SectionBadge icon={Zap} text="Explorare Programe" className="mb-6" />
-          <h2 className="text-4xl md:text-5xl font-black tracking-tighter mb-4">
-            Catalog <span className="font-serif-italic font-normal text-black/70">Antrenamente</span>.
+          <SectionBadge icon={Zap} text="Aici sunt toate programele" className="mb-6" />
+          <h2 className="text-4xl md:text-5xl font-black tracking-tighter mb-4 signature-dot">
+            Ce antrenăm <span className="font-serif-italic font-normal text-black/70">astăzi</span>
           </h2>
           <p className="text-black/50 text-sm md:text-base font-medium max-w-xl leading-relaxed">
-            Protocoale de antrenament proiectate pentru performanță. Structură clară, obiective precise și progres garantat prin consistență.
+            Alege un program care are sens pentru tine. Fără jargon inutil, doar pași clari către obiectivul tău.
           </p>
         </div>
 
@@ -50,7 +50,7 @@ export const Training = () => {
                 : 'bg-white text-black/40 border-zinc-200 hover:border-black/20 hover:text-black'
             }`}
           >
-            Toate Programele
+            Toate
           </button>
           {TRAINING_PROTOCOLS.map((protocol) => (
             <button 
@@ -71,13 +71,17 @@ export const Training = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {filteredPrograms.length > 0 ? (
             filteredPrograms.map((program, i) => (
-              <div key={program.id} style={{ animationDelay: `${i * 0.1}s` }} className="card-animate">
-                <ProgramCard program={program} />
+              <div 
+                key={program.id} 
+                style={{ animationDelay: `${i * 0.1}s` }} 
+                className={`card-animate ${i === 0 && currentFilter === 'all' ? 'md:col-span-2' : ''}`}
+              >
+                <ProgramCard program={program} featured={i === 0 && currentFilter === 'all'} />
               </div>
             ))
           ) : (
             <div className="col-span-full py-20 text-center bg-white rounded-3xl border border-dashed border-zinc-200">
-              <p className="text-black/30 font-bold uppercase tracking-widest text-xs italic">Nu există programe active pentru acest filtru.</p>
+              <p className="text-black/30 font-bold uppercase tracking-widest text-[10px] italic">Încă nu am pus nimic pe aici.</p>
             </div>
           )}
         </div>
