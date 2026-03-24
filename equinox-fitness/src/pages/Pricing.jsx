@@ -20,9 +20,10 @@ export const Pricing = () => {
         'Monitorizare progres de bază',
         'Fără suport tehnic'
       ],
-      color: 'bg-black/5',
-      textColor: 'text-black/40',
-      buttonVariant: 'bg-black/5 hover:bg-black/10 text-black/60',
+      color: 'bg-zinc-100',
+      textColor: 'text-zinc-600',
+      buttonVariant: 'bg-zinc-100 hover:bg-zinc-200 text-zinc-600',
+      accent: 'border-zinc-200',
       icon: Zap
     },
     {
@@ -38,9 +39,10 @@ export const Pricing = () => {
         'Analiza Video a execuției'
       ],
       recommended: true,
-      color: 'bg-apple-blue/10',
-      textColor: 'text-apple-blue',
+      color: 'bg-blue-50',
+      textColor: 'text-blue-600',
       buttonVariant: 'btn-primary',
+      accent: 'border-blue-200 bg-blue-50/30',
       icon: Sparkles
     },
     {
@@ -55,9 +57,10 @@ export const Pricing = () => {
         'Sesiuni 1-on-1 lunare',
         'Suport prioritar VIP 24/7'
       ],
-      color: 'bg-purple-500/10',
+      color: 'bg-purple-50',
       textColor: 'text-purple-600',
       buttonVariant: 'bg-purple-600 text-white hover:bg-purple-700 shadow-lg shadow-purple-500/20',
+      accent: 'border-purple-200 opacity-90',
       icon: Trophy
     }
   ];
@@ -97,19 +100,16 @@ export const Pricing = () => {
           </p>
         </div>
 
-        <div className="apple-card p-6 md:p-8 mb-10 card-animate">
-          <p className="text-sm md:text-base text-black/60">
-            Toate planurile includ aceeași experiență de bază. Diferența o fac nivelul de personalizare și viteza cu care ajungi la rezultate.
-          </p>
-        </div>
+
 
         {/* PRICING GRID */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {tiers.map((tier, i) => (
             <div
               key={tier.id}
-              className={`apple-card relative flex flex-col p-8 md:p-10 transition-all duration-500 hover:shadow-2xl card-animate ${tier.recommended ? 'border-apple-blue shadow-xl shadow-apple-blue/5 md:scale-105 z-10' : 'border-transparent'
-                }`}
+              className={`rounded-2xl border p-8 md:p-10 transition-all duration-500 hover:shadow-2xl card-animate flex flex-col ${
+                tier.accent || 'border-zinc-200 bg-white'
+              } ${tier.recommended ? 'shadow-xl shadow-blue-500/5 md:scale-105 z-10' : ''}`}
               style={{ animationDelay: `${0.1 + i * 0.1}s` }}
             >
               {tier.recommended && (
