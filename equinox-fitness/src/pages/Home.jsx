@@ -56,20 +56,12 @@ export const Home = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-6">
-            {isSignedIn ? (
-              <Link 
-                to="/training" 
-                className="btn-primary btn-glow px-14 py-5 text-sm shadow-2xl shadow-blue-500/30 hover:shadow-blue-500/50"
-              >
-                DASHBOARD ANTRENAMENT
-              </Link>
-            ) : (
-              <SignUpButton mode="modal">
-                <button className="btn-primary btn-glow px-14 py-5 text-sm shadow-2xl shadow-blue-500/30 hover:shadow-blue-500/50 cursor-pointer text-white">
-                  ÎNCEPE TRANSFORMAREA
-                </button>
-              </SignUpButton>
-            )}
+            <Link 
+              to="/training" 
+              className="btn-primary btn-glow px-14 py-5 text-sm shadow-2xl shadow-blue-500/30 hover:shadow-blue-500/50"
+            >
+              {isSignedIn ? 'DASHBOARD ANTRENAMENT' : 'ÎNCEPE TRANSFORMAREA'}
+            </Link>
             <div className="flex items-center -space-x-3">
               {[1,2,3,4].map(i => (
                 <div key={i} className="w-10 h-10 rounded-full border-2 border-white bg-gray-200 flex items-center justify-center overflow-hidden shadow-sm">
