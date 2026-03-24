@@ -101,6 +101,7 @@ export const Home = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {[
             { 
+              id: 'gym',
               num: '01', 
               icon: Dumbbell,
               title: TRAINING_PROTOCOLS[0].title, 
@@ -110,6 +111,7 @@ export const Home = () => {
               numColor: 'text-blue-500'
             },
             { 
+              id: 'calisthenics',
               num: '02', 
               icon: User,
               title: TRAINING_PROTOCOLS[1].title, 
@@ -119,6 +121,7 @@ export const Home = () => {
               numColor: 'text-emerald-600'
             },
             { 
+              id: 'hybrid',
               num: '03', 
               icon: Zap,
               title: TRAINING_PROTOCOLS[2].title, 
@@ -128,7 +131,7 @@ export const Home = () => {
               numColor: 'text-amber-600'
             }
           ].map((p) => (
-            <Link to="/training" key={p.num} className={`rounded-2xl ${p.accent} border p-8 group hover:shadow-lg transition-all duration-300 block`}>
+            <Link to={`/training?protocol=${p.id}`} key={p.num} className={`rounded-2xl ${p.accent} border p-8 group hover:shadow-lg transition-all duration-300 block`}>
               <div className="flex items-center justify-between mb-6">
                 <div className={`w-11 h-11 rounded-xl ${p.iconColor} flex items-center justify-center`}>
                   <p.icon size={20} />

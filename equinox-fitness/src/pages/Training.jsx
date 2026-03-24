@@ -1,81 +1,88 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Zap, ArrowUpRight } from 'lucide-react';
+import React, { useMemo } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import { Zap } from 'lucide-react';
 import { TRAINING_PROTOCOLS } from '../data/protocols';
+import { MASTER_PROGRAMS } from '../data/masterPrograms';
 import { SectionBadge } from '../components/ui/SectionBadge';
+import { ProgramCard } from '../components/training/ProgramCard';
 
 export const Training = () => {
-  const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const currentFilter = searchParams.get('protocol') || 'all';
+
+  const filteredPrograms = useMemo(() => {
+    if (currentFilter === 'all') return MASTER_PROGRAMS;
+    return MASTER_PROGRAMS.filter(p => p.protocolId === currentFilter);
+  }, [currentFilter]);
+
+  const handleFilterChange = (id) => {
+    if (id === 'all') {
+      searchParams.delete('protocol');
+    } else {
+      searchParams.set('protocol', id);
+    }
+    setSearchParams(searchParams);
+  };
 
   return (
-    <div className="relative min-h-screen overflow-hidden">
-      {/* BACKGROUND AMBIENT LIGHTS */}
+    <div className="relative min-h-screen overflow-hidden bg-zinc-50/50">
+      {/* BACKGROUND AMBIENT */}
       <div className="absolute top-0 left-0 w-full h-full -z-10 overflow-hidden bg-transparent">
-        <div className="absolute top-[5%] left-[10%] w-[45%] h-[45%] bg-blue-400/15 rounded-full blur-[100px] animate-mesh" style={{ animationDuration: '11s' }}></div>
+        <div className="absolute top-[5%] left-[10%] w-[45%] h-[45%] bg-blue-400/5 rounded-full blur-[100px] animate-mesh"></div>
       </div>
 
-      <div className="pt-32 md:pt-44 pb-20 max-w-6xl mx-auto px-6">
+      <div className="pt-32 md:pt-40 pb-24 max-w-6xl mx-auto px-6">
         {/* HEADER */}
-        <div className="text-center mb-16 card-animate">
-          <SectionBadge icon={Zap} text="Selectează parcursul" className="mb-6" />
-          <h2 className="text-4xl md:text-6xl font-black tracking-tighter mb-6">
-            Alege-ți <span className="font-serif-italic font-normal text-black/70">parcursul</span>.
+        <div className="mb-12 card-animate">
+          <SectionBadge icon={Zap} text="Explorare Programe" className="mb-6" />
+          <h2 className="text-4xl md:text-5xl font-black tracking-tighter mb-4">
+            Catalog <span className="font-serif-italic font-normal text-black/70">Antrenamente</span>.
           </h2>
-          <p className="text-lg md:text-xl text-black/55 font-medium max-w-2xl mx-auto leading-relaxed">
-            Fiecare protocol are un obiectiv clar. Alege-l pe cel potrivit nivelului și scopului tău.
+          <p className="text-black/50 text-sm md:text-base font-medium max-w-xl leading-relaxed">
+            Nu mai pierde timpul cu meniuri complicate. Alege programul, apasă pe card și începe antrenamentul imediat.
           </p>
         </div>
 
-        <div className="apple-card p-6 md:p-8 mb-10 card-animate">
-          <h3 className="text-xl md:text-2xl font-black tracking-tight mb-2">Nu știi ce să alegi?</h3>
-          <p className="text-sm md:text-base text-black/55">
-            <span className="font-semibold text-black/80">Sală de forță</span> pentru masă și forță,{" "}
-            <span className="font-semibold text-black/80">Măiestria corpului</span> pentru control și mobilitate,{" "}
-            <span className="font-semibold text-black/80">Motor hibrid</span> pentru performanță completă.
-          </p>
-        </div>
-
-        {/* 3 CARDS GRID */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {TRAINING_PROTOCOLS.map((protocol, i) => (
-            <div 
-              key={protocol.id} 
-              onClick={() => navigate(`/training/${protocol.id}`)}
-              className={`apple-card relative overflow-hidden group cursor-pointer card-animate min-h-[420px] flex flex-col justify-between p-10 hover:shadow-2xl hover:shadow-${protocol.color}-500/10 transition-all duration-500`}
-              style={{ animationDelay: `${0.1 + i * 0.15}s` }}
+        {/* FILTER BAR */}
+        <div className="flex flex-wrap items-center gap-2 mb-12 card-animate">
+          <button 
+            onClick={() => handleFilterChange('all')}
+            className={`px-6 py-2.5 rounded-full text-[10px] font-black uppercase tracking-widest transition-all duration-300 border ${
+              currentFilter === 'all' 
+                ? 'bg-black text-white border-black shadow-lg shadow-black/10' 
+                : 'bg-white text-black/40 border-zinc-200 hover:border-black/20 hover:text-black'
+            }`}
+          >
+            Toate Programele
+          </button>
+          {TRAINING_PROTOCOLS.map((protocol) => (
+            <button 
+              key={protocol.id}
+              onClick={() => handleFilterChange(protocol.id)}
+              className={`px-6 py-2.5 rounded-full text-[10px] font-black uppercase tracking-widest transition-all duration-300 border ${
+                currentFilter === protocol.id 
+                  ? 'bg-black text-white border-black shadow-lg shadow-black/10' 
+                  : 'bg-white text-black/40 border-zinc-200 hover:border-black/20 hover:text-black'
+              }`}
             >
-              {/* Subtle accent background on hover */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${protocol.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-0`}></div>
-              
-              <div className="relative z-10">
-                <div className={`w-16 h-16 rounded-2xl bg-black/5 flex items-center justify-center mb-8 group-hover:bg-${protocol.color}-500 group-hover:text-white transition-all duration-500 shadow-sm`}>
-                  <protocol.icon size={28} className={`text-black/40 group-hover:text-white transition-colors duration-500`} />
-                </div>
-                
-                <span className={`text-[10px] font-semibold uppercase tracking-[0.3em] text-black/30 mb-4 block group-hover:text-${protocol.color}-500 transition-colors`}>
-                  {protocol.subtitle}
-                </span>
-                
-                <h3 className="text-3xl font-black mb-4 tracking-tighter break-words">
-                  {protocol.title}
-                </h3>
-                
-                <p className="text-black/50 text-sm leading-relaxed mb-8 font-medium">
-                  {protocol.description}
-                </p>
-              </div>
-
-              {/* Bottom CTA Arrow */}
-              <div className="relative z-10 flex items-center justify-between mt-auto border-t border-black/5 pt-6 group-hover:border-black/10 transition-colors">
-                <span className="text-[11px] font-semibold uppercase tracking-widest text-black/40 group-hover:text-black transition-colors">
-                  Accesează
-                </span>
-                <div className="w-10 h-10 rounded-full bg-black/5 flex items-center justify-center group-hover:bg-black group-hover:text-white transition-all duration-300 transform group-hover:scale-110">
-                  <ArrowUpRight size={18} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                </div>
-              </div>
-            </div>
+              {protocol.title}
+            </button>
           ))}
+        </div>
+
+        {/* PROGRAMS GRID */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          {filteredPrograms.length > 0 ? (
+            filteredPrograms.map((program, i) => (
+              <div key={program.id} style={{ animationDelay: `${i * 0.1}s` }} className="card-animate">
+                <ProgramCard program={program} />
+              </div>
+            ))
+          ) : (
+            <div className="col-span-full py-20 text-center bg-white rounded-3xl border border-dashed border-zinc-200">
+              <p className="text-black/30 font-bold uppercase tracking-widest text-xs italic">Nu există programe active pentru acest filtru.</p>
+            </div>
+          )}
         </div>
       </div>
     </div>

@@ -4,12 +4,16 @@ import { useUser } from '@clerk/clerk-react';
 import { ChevronDown, Check, ArrowLeft, Zap } from 'lucide-react';
 import { useSupabase } from '../hooks/useSupabase';
 import { getSupabaseClient } from '../lib/supabase';
+import { MASTER_PROGRAMS } from '../data/masterPrograms';
 
 export const PPLProgram = () => {
   const { id, programId } = useParams();
   const navigate = useNavigate();
   const { user, isLoaded: userLoaded } = useUser();
   const getSupabase = useSupabase();
+  
+  const currentProgram = MASTER_PROGRAMS.find(p => p.id === programId);
+  const ProgramIcon = currentProgram?.icon || Zap;
   
   const [workouts, setWorkouts] = useState([]);
   const [exercises, setExercises] = useState({});
@@ -147,19 +151,19 @@ export const PPLProgram = () => {
   return (
     <div className="pt-32 md:pt-44 pb-20 px-4 md:px-6 max-w-4xl mx-auto min-h-screen">
       <button 
-        onClick={() => navigate(`/training/${id}`)}
+        onClick={() => navigate(`/training?protocol=${id}`)}
         className="inline-flex items-center gap-2 text-black/40 hover:text-apple-blue mb-8 transition-colors font-black uppercase tracking-[0.2em] text-[10px]"
       >
-        <ArrowLeft size={14} /> Înapoi la Specializări
+        <ArrowLeft size={14} /> Înapoi la Catalog
       </button>
 
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12">
         <div>
           <div className="inline-flex items-center gap-2 bg-apple-blue/10 text-apple-blue px-3 py-1 rounded-full mb-3">
-            <Zap size={12} fill="currentColor" />
-            <span className="text-[10px] font-black uppercase tracking-widest">Forță și hipertrofie</span>
+            <ProgramIcon size={12} fill="currentColor" />
+            <span className="text-[10px] font-black uppercase tracking-widest">{currentProgram?.goal || 'Program Antrenament'}</span>
           </div>
-          <h1 className="text-4xl md:text-5xl font-black tracking-tighter mb-2">PPL - Push/Pull/Legs</h1>
+          <h1 className="text-4xl md:text-5xl font-black tracking-tighter mb-2">{currentProgram?.name || 'Program'}</h1>
           <p className="text-black/55 font-medium tracking-tight">Săptămâna 1 - setează ritmul antrenamentului tău</p>
         </div>
         <div className="bg-white/60 backdrop-blur-md p-6 rounded-3xl border border-white/50 shadow-sm">
