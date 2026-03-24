@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { SignedIn, SignedOut, SignInButton, RedirectToSignIn } from "@clerk/clerk-react";
+import { Zap } from 'lucide-react';
 
 import './App.css';
 
