@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useUser } from '@clerk/clerk-react';
-import { ArrowLeft, Dumbbell, Shield, Flame, Battery, ArrowRight, Zap, Layers, User, Lock } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Zap, User, Dumbbell, Lock } from 'lucide-react';
 import { useSupabase } from '../hooks/useSupabase';
+import { SPLITS, getSubProtocolsByType } from '../data/protocolDetail';
+import { getTrialActive } from '../utils/subscription';
 
 export const ProtocolDetail = () => {
   const { id } = useParams();
@@ -22,21 +24,16 @@ export const ProtocolDetail = () => {
       }
       try {
         const supabase = await getSupabase();
-        const { data, error } = await supabase
+        const { data } = await supabase
           .from('users')
           .select('subscription_tier, trial_start_date')
           .eq('clerk_id', user.id)
           .single();
 
         if (data) {
-          const trialStart = new Date(data.trial_start_date);
-          const now = new Date();
-          const diffDays = Math.ceil((now - trialStart) / (1000 * 60 * 60 * 24));
-          const trialActive = diffDays <= 30;
-          
-          setUserAccess({ 
+          setUserAccess({
             tier: data.subscription_tier, 
-            trialActive, 
+            trialActive: getTrialActive(data.trial_start_date),
             loading: false 
           });
         } else {
@@ -48,90 +45,37 @@ export const ProtocolDetail = () => {
       }
     };
     fetchAccess();
-  }, [user, getSupabase]);
+  }, [user, getSupabase, isLoaded, isSignedIn]);
 
-  const splits = [
-    {
-      id: 'ppl',
-      name: 'PPL (Push, Pull, Legs)',
-      desc: 'Împarte antrenamentul în mișcări de împingere, tragere și picioare.',
-      why: 'Permite o frecvență ridicată pentru fiecare grupă musculară și recuperare optimă.',
-      icon: Zap,
-      color: 'blue'
-    },
-    {
-      id: 'bro_split',
-      name: 'SPLIT PE GRUPE',
-      desc: 'O grupă musculară pe zi. Focus clar pe hipertrofie.',
-      why: 'Ideal pentru cei care vor să dedice timp maxim fiecărei grupe în parte.',
-      icon: Dumbbell,
-      color: 'purple'
-    },
-    {
-      id: 'upper_lower',
-      name: 'U/L (Superior - Inferior)',
-      desc: 'Antrenamente alternative între partea superioară și cea inferioară.',
-      why: 'Echilibru perfect între frecvență și volum, foarte versatil.',
-      icon: Layers,
-      color: 'emerald'
-    },
-    {
-      id: 'full_body',
-      name: 'TOT CORPUL',
-      desc: 'Antrenează tot corpul în fiecare sesiune.',
-      why: 'Maxim de eficiență pentru cei cu program încărcat, stimulează sinteza proteică frecvent.',
-      icon: User,
-      color: 'rose'
+  const subProtocols = getSubProtocolsByType(id);
+
+  const isGymProtocol = id === 'gym';
+  const protocolHeading = isGymProtocol
+    ? <>SALA DE <span className="font-serif-italic font-normal text-black/70">FORȚĂ</span></>
+    : <>MĂIESTRIA <span className="font-serif-italic font-normal text-black/70">CORPULUI</span></>;
+
+  const showLockedBadge = (tier) => {
+    return tier === 'premium' && userAccess.tier === 'free' && !userAccess.trialActive;
+  };
+
+  const handleSubProtocolSelect = (subProtocol) => {
+    if (isGymProtocol) {
+      setSelectedSubProtocol(subProtocol);
+      return;
     }
-  ];
+    setShowComingSoon(true);
+    setTimeout(() => setShowComingSoon(false), 3000);
+  };
 
-  const gymSubProtocols = [
-    {
-      id: 'gym_strength',
-      name: 'Strict Forță',
-      desc: 'Focus pe bază și intensitate maximă. 3-5 repetări, pauze lungi, forță brută.',
-      icon: Shield,
-      color: 'blue',
-      tier: 'free'
-    },
-    {
-      id: 'gym_maintenance',
-      name: 'Menținere',
-      desc: 'Echilibru între volum și intensitate. Ideal pentru păstrarea masei musculare.',
-      icon: Battery,
-      color: 'emerald',
-      tier: 'free'
-    },
-    {
-      id: 'gym_shred',
-      name: 'Fibrare',
-      desc: 'Volum ridicat, densitate mare. Proiectat pentru definire maximă și anduranță.',
-      icon: Flame,
-      color: 'rose',
-      tier: 'free'
+  const handleSplitSelect = (splitId) => {
+    if (splitId === 'ppl') {
+      navigate(`/training/${id}/gym_ppl`);
+      return;
     }
-  ];
+    setShowComingSoon(true);
+    setTimeout(() => setShowComingSoon(false), 3000);
+  };
 
-  const calisthenicsSubProtocols = [
-    {
-      id: 'calisthenics_classic',
-      name: 'Clasic',
-      desc: 'Bază solidă (tracțiuni, dips etc.). Esențial pentru a construi forța brută necesară skill-urilor avansate.',
-      icon: User,
-      color: 'blue',
-      tier: 'free'
-    },
-    {
-      id: 'calisthenics_skills',
-      name: 'Skill-uri',
-      desc: 'Măiestrie (Front Lever, Planche etc.). Antrenamentul pe skill-uri dezvoltă forță relativă și mobilitate superioară prin integrare sistemică.',
-      icon: Zap,
-      color: 'purple',
-      tier: 'premium'
-    }
-  ];
-
-  const subProtocols = id === 'gym' ? gymSubProtocols : id === 'calisthenics' ? calisthenicsSubProtocols : [];
   if (!['gym', 'calisthenics'].includes(id)) {
     return (
       <div className="pt-44 pb-20 max-w-4xl mx-auto px-6 text-center">
@@ -187,7 +131,7 @@ export const ProtocolDetail = () => {
             <div>
               <h2 className="text-3xl md:text-5xl font-black tracking-tighter leading-none">
                 {selectedSubProtocol ? selectedSubProtocol.name.toUpperCase() : (
-                  id === 'gym' ? <>SALA DE <span className="font-serif-italic font-normal text-black/70">FORȚĂ</span></> : <>MĂIESTRIA <span className="font-serif-italic font-normal text-black/70">CORPULUI</span></>
+                  protocolHeading
                 )}
               </h2>
               <p className="text-black/55 font-bold tracking-widest text-[10px] uppercase mt-1">
@@ -203,16 +147,9 @@ export const ProtocolDetail = () => {
             {subProtocols.map((sub, i) => (
               <div 
                 key={sub.id}
-                onClick={() => {
-                  if (id === 'gym') {
-                    setSelectedSubProtocol(sub);
-                  } else {
-                    setShowComingSoon(true);
-                    setTimeout(() => setShowComingSoon(false), 3000);
-                  }
-                }}
+                onClick={() => handleSubProtocolSelect(sub)}
                 className={`apple-card p-10 group cursor-pointer hover:shadow-2xl hover:shadow-black/5 transition-all duration-500 card-animate ${
-                  userAccess.tier === 'free' && !userAccess.trialActive && sub.tier !== 'free' ? 'opacity-60' : ''
+                  showLockedBadge(sub.tier) ? 'opacity-60' : ''
                 }`}
                 style={{ animationDelay: `${0.1 + i * 0.1}s` }}
               >
@@ -220,7 +157,7 @@ export const ProtocolDetail = () => {
                   <div className={`w-14 h-14 rounded-2xl bg-${sub.color}-500/10 flex items-center justify-center group-hover:bg-${sub.color}-500 group-hover:text-white transition-all duration-500`}>
                     <sub.icon size={24} className={`text-${sub.color}-500 group-hover:text-white transition-colors`} />
                   </div>
-                  {sub.tier === 'premium' && userAccess.tier === 'free' && !userAccess.trialActive && (
+                  {showLockedBadge(sub.tier) && (
                     <div className="bg-apple-blue/10 px-3 py-1 rounded-full flex items-center gap-1.5">
                       <Lock size={10} className="text-apple-blue" />
                       <span className="text-[9px] font-black uppercase tracking-widest text-apple-blue">Doar Elită</span>
@@ -245,18 +182,10 @@ export const ProtocolDetail = () => {
         ) : (
           /* SPLITS SELECTION GRID */
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 card-animate">
-            {splits.map((split, i) => (
+            {SPLITS.map((split, i) => (
               <div 
                 key={split.id}
-                onClick={() => {
-                  if (split.id === 'ppl') {
-                    // mapăm split-ul ppl la id-ul 'gym_ppl' care există în baza de date
-                    navigate(`/training/${id}/gym_ppl`);
-                  } else {
-                    setShowComingSoon(true);
-                    setTimeout(() => setShowComingSoon(false), 3000);
-                  }
-                }}
+                onClick={() => handleSplitSelect(split.id)}
                 className="apple-card p-10 group cursor-pointer hover:shadow-2xl hover:shadow-black/5 transition-all duration-500 relative"
                 style={{ animationDelay: `${0.1 + i * 0.1}s` }}
               >

@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useUser } from '@clerk/clerk-react';
 import { Check, Zap, Sparkles, Trophy, ArrowLeft, Loader2 } from 'lucide-react';
 import { useSupabase } from '../hooks/useSupabase';
+import { SectionBadge } from '../components/ui/SectionBadge';
 
 export const Pricing = () => {
   const navigate = useNavigate();
@@ -52,7 +53,7 @@ export const Pricing = () => {
     },
     {
       id: 'premium',
-      name: 'Performanță de Elită',
+      name: 'Experiență Completă',
       price: '19.99',
       desc: 'Pachetul complet pentru progres constant.',
       features: [
@@ -70,7 +71,7 @@ export const Pricing = () => {
     },
     {
       id: 'pro',
-      name: 'Măiestrie Absolută',
+      name: 'Optimizare Avansată',
       price: '29.99',
       desc: 'Optimizare completă: antrenament, nutriție și recuperare.',
       features: [
@@ -115,10 +116,7 @@ export const Pricing = () => {
 
         {/* HEADER */}
         <div className="text-center mb-16 md:mb-20 card-animate">
-          <div className="inline-flex items-center gap-2.5 bg-black/[0.03] border border-black/[0.05] px-5 py-2 rounded-full mb-8">
-            <Sparkles size={12} className="text-apple-blue" />
-            <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-black/40">Investește în tine</span>
-          </div>
+          <SectionBadge icon={Sparkles} text="Investește în tine" className="mb-8" />
           <h2 className="text-4xl md:text-7xl font-black tracking-tighter mb-6">
             Alege-ți <span className="font-serif-italic font-normal text-black/70">nivelul</span>.
           </h2>

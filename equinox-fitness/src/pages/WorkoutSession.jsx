@@ -3,6 +3,63 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useUser } from '@clerk/clerk-react';
 import { ArrowLeft, CheckCircle2, Clock, Info, ChevronRight } from 'lucide-react';
 import { useSupabase } from '../hooks/useSupabase';
+import { hasTierAccess } from '../utils/subscription';
+
+const calculateProgress = (completedCount, totalCount) => {
+  if (totalCount === 0) return 0;
+  return Math.round((completedCount / totalCount) * 100);
+};
+
+const ExerciseItem = ({ exercise, index, completed, onToggle }) => {
+  return (
+    <div
+      onClick={() => onToggle(exercise.id)}
+      className={`apple-card p-6 flex flex-col md:flex-row md:items-center justify-between gap-6 group cursor-pointer transition-all duration-300 ${
+        completed ? 'bg-emerald-500/5 border-emerald-500/20' : ''
+      }`}
+    >
+      <div className="flex items-center gap-6">
+        <div className={`w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-500 ${
+          completed ? 'bg-emerald-500 text-white' : 'bg-black/5 text-black/20'
+        }`}>
+          {completed ? <CheckCircle2 size={24} /> : <span className="font-black text-lg">{index + 1}</span>}
+        </div>
+
+        <div>
+          <h3 className={`text-xl font-bold tracking-tight transition-colors ${completed ? 'text-emerald-700 opacity-50' : ''}`}>
+            {exercise.name}
+          </h3>
+          <div className="flex items-center gap-4 mt-1">
+            <span className="flex items-center gap-1.5 text-[10px] font-black uppercase tracking-widest text-black/30">
+              <ChevronRight size={10} className="text-apple-blue" /> {exercise.sets} SETURI
+            </span>
+            <span className="flex items-center gap-1.5 text-[10px] font-black uppercase tracking-widest text-black/30">
+              <ChevronRight size={10} className="text-apple-blue" /> {exercise.reps} REPETĂRI
+            </span>
+            {exercise.rest_time && (
+              <span className="flex items-center gap-1.5 text-[10px] font-black uppercase tracking-widest text-black/30">
+                <Clock size={10} className="text-apple-blue" /> {exercise.rest_time} ODIHNĂ
+              </span>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <div className="flex items-center gap-3 self-end md:self-center">
+        <button className="w-10 h-10 rounded-full bg-black/[0.03] flex items-center justify-center text-black/20 hover:bg-black/10 hover:text-black transition-all">
+          <Info size={16} />
+        </button>
+        {completed ? (
+          <span className="text-[10px] font-black uppercase tracking-widest text-emerald-600 px-4 py-2 bg-emerald-100 rounded-full">Finalizat</span>
+        ) : (
+          <button className="btn-primary py-2.5 px-6 text-[10px] uppercase font-black tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">
+            Bifează
+          </button>
+        )}
+      </div>
+    </div>
+  );
+};
 
 export const WorkoutSession = () => {
   const { id, programId } = useParams();
@@ -31,13 +88,12 @@ export const WorkoutSession = () => {
           .single();
 
         if (userData) {
-          const trialStart = new Date(userData.trial_start_date);
-          const now = new Date();
-          const diffDays = Math.ceil((now - trialStart) / (1000 * 60 * 60 * 24));
-          const trialActive = diffDays <= 30;
-          
           const isPremiumProgram = programId.startsWith('calisthenics_skills');
-          const isUserEligible = userData.subscription_tier !== 'free' || trialActive || !isPremiumProgram;
+          const isUserEligible = hasTierAccess({
+            tier: userData.subscription_tier,
+            trialStartDate: userData.trial_start_date,
+            requiresPremium: isPremiumProgram,
+          });
 
           if (!isUserEligible) {
             navigate('/pricing');
@@ -84,9 +140,7 @@ export const WorkoutSession = () => {
     setCompletedExercises(newSet);
   };
 
-  const progress = exercises.length > 0 
-    ? Math.round((completedExercises.size / exercises.length) * 100) 
-    : 0;
+  const progress = calculateProgress(completedExercises.size, exercises.length);
 
   if (authLoading || loading) {
     return (
@@ -161,53 +215,13 @@ export const WorkoutSession = () => {
         {/* EXERCISES LIST */}
         <div className="flex flex-col gap-4">
           {exercises.map((ex, i) => (
-            <div 
+            <ExerciseItem
               key={ex.id}
-              onClick={() => toggleComplete(ex.id)}
-              className={`apple-card p-6 flex flex-col md:flex-row md:items-center justify-between gap-6 group cursor-pointer transition-all duration-300 ${
-                completedExercises.has(ex.id) ? 'bg-emerald-500/5 border-emerald-500/20' : ''
-              }`}
-            >
-              <div className="flex items-center gap-6">
-                <div className={`w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-500 ${
-                  completedExercises.has(ex.id) ? 'bg-emerald-500 text-white' : 'bg-black/5 text-black/20'
-                }`}>
-                  {completedExercises.has(ex.id) ? <CheckCircle2 size={24} /> : <span className="font-black text-lg">{i + 1}</span>}
-                </div>
-                
-                <div>
-                  <h3 className={`text-xl font-bold tracking-tight transition-colors ${
-                    completedExercises.has(ex.id) ? 'text-emerald-700 opacity-50' : ''
-                  }`}>
-                    {ex.name}
-                  </h3>
-                  <div className="flex items-center gap-4 mt-1">
-                    <span className="flex items-center gap-1.5 text-[10px] font-black uppercase tracking-widest text-black/30">
-                      <ChevronRight size={10} className="text-apple-blue" /> {ex.sets} SETURI
-                    </span>
-                    <span className="flex items-center gap-1.5 text-[10px] font-black uppercase tracking-widest text-black/30">
-                       <ChevronRight size={10} className="text-apple-blue" /> {ex.reps} REPETĂRI
-                    </span>
-                    {ex.rest_time && (
-                      <span className="flex items-center gap-1.5 text-[10px] font-black uppercase tracking-widest text-black/30">
-                        <Clock size={10} className="text-apple-blue" /> {ex.rest_time} ODIHNĂ
-                      </span>
-                    )}
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-3 self-end md:self-center">
-                 <button className="w-10 h-10 rounded-full bg-black/[0.03] flex items-center justify-center text-black/20 hover:bg-black/10 hover:text-black transition-all">
-                   <Info size={16} />
-                 </button>
-                 {completedExercises.has(ex.id) ? (
-                   <span className="text-[10px] font-black uppercase tracking-widest text-emerald-600 px-4 py-2 bg-emerald-100 rounded-full">Finalizat</span>
-                 ) : (
-                   <button className="btn-primary py-2.5 px-6 text-[10px] uppercase font-black tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">Bifează</button>
-                 )}
-              </div>
-            </div>
+              exercise={ex}
+              index={i}
+              completed={completedExercises.has(ex.id)}
+              onToggle={toggleComplete}
+            />
           ))}
         </div>
         

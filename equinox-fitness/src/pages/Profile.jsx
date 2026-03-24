@@ -3,6 +3,7 @@ import { useUser } from '@clerk/clerk-react';
 import { useNavigate, Link } from 'react-router-dom';
 import { User, Mail, Shield, Zap, Calendar, Settings, LogOut, ChevronRight, Award, Trophy } from 'lucide-react';
 import { useSupabase } from '../hooks/useSupabase';
+import { getTrialActive } from '../utils/subscription';
 
 export const Profile = () => {
   const { user, isLoaded, isSignedIn } = useUser();
@@ -55,6 +56,7 @@ export const Profile = () => {
     const diff = Math.ceil((now - start) / (1000 * 60 * 60 * 24));
     return Math.max(0, 30 - diff);
   };
+  const isTrialActive = getTrialActive(dbUser?.trial_start_date);
 
   const getTierColor = (tier) => {
     switch(tier) {
@@ -90,7 +92,7 @@ export const Profile = () => {
               <div className="flex flex-wrap items-center justify-center md:justify-start gap-3 mb-3">
                 <h1 className="text-4xl md:text-5xl font-black tracking-tighter">{user?.fullName}</h1>
                 <div className={`px-4 py-1.5 rounded-full border text-[10px] font-semibold uppercase tracking-widest ${getTierColor(dbUser?.subscription_tier)}`}>
-                  {dbUser?.subscription_tier === 'pro' ? 'Atlet de elită' : 
+                  {dbUser?.subscription_tier === 'pro' ? 'Perspectivă Atletică' : 
                    dbUser?.subscription_tier === 'premium' ? 'Membru premium' : 'Utilizator esențial'}
                 </div>
               </div>
@@ -131,7 +133,7 @@ export const Profile = () => {
                   </div>
                 </div>
 
-                {dbUser?.subscription_tier === 'free' && trialDaysRemaining() > 0 && (
+                {dbUser?.subscription_tier === 'free' && isTrialActive && (
                   <div className="space-y-3">
                     <div className="flex justify-between items-center text-[10px] font-semibold uppercase tracking-widest">
                       <span className="text-black/40">Probă gratuită: activă</span>

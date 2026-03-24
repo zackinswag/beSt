@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { PlayCircle, Search, ArrowUpRight } from 'lucide-react';
+import { SectionBadge } from '../components/ui/SectionBadge';
 
 export const Library = () => {
   const [filter, setFilter] = useState('Toate');
@@ -25,10 +26,7 @@ export const Library = () => {
         {/* HEADER */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 mb-16 card-animate">
           <div className="text-left">
-            <div className="inline-flex items-center gap-2.5 bg-black/[0.03] border border-black/[0.05] px-5 py-2 rounded-full mb-6">
-              <PlayCircle size={12} className="text-apple-blue" />
-              <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-black/40">Bază de cunoștințe</span>
-            </div>
+            <SectionBadge icon={PlayCircle} text="Bază de cunoștințe" className="mb-6" />
             <h2 className="text-5xl md:text-6xl font-black tracking-tighter mb-2">Seiful de <span className="font-serif-italic font-normal text-black/70">exerciții</span>.</h2>
             <p className="text-black/55 font-semibold tracking-widest text-xs uppercase">Standarde de mișcare și măiestrie tehnică</p>
           </div>

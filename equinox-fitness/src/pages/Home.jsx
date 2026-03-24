@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Sparkles, Dumbbell, User, Zap, Trophy, Users, Target, ArrowUpRight } from 'lucide-react';
 import { useAuth } from "@clerk/clerk-react";
+import { SectionBadge } from '../components/ui/SectionBadge';
+import { TRAINING_PROTOCOLS } from '../data/protocols';
 
 const AnimatedCounter = ({ end, suffix = '', duration = 2000 }) => {
   const [count, setCount] = useState(0);
@@ -38,10 +40,7 @@ export const Home = () => {
       {/* HERO SECTION */}
       <section className="pt-40 md:pt-44 pb-20 px-6 text-center">
         <div className="max-w-4xl mx-auto">
-          <div className="inline-flex items-center gap-2.5 bg-black/[0.03] border border-black/[0.05] px-5 py-2 rounded-full mb-10 card-animate">
-            <Sparkles size={12} className="text-apple-blue" />
-            <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-black/40">Sistem de elită activat</span>
-          </div>
+          <SectionBadge icon={Sparkles} text="Sistem de antrenament structurat" className="mb-10 card-animate" />
           
           <h1 className="text-6xl md:text-[7rem] font-black tracking-tighter mb-8 leading-[0.85]">
             <span className="text-shimmer">Antrenează-te cu</span>
@@ -60,15 +59,13 @@ export const Home = () => {
             >
               {isSignedIn ? 'VEZI ANTRENAMENTELE' : 'ÎNCEPE ACUM'}
             </Link>
-            <div className="flex items-center -space-x-3">
-              {[1,2,3,4].map(i => (
-                <div key={i} className="w-10 h-10 rounded-full border-2 border-white bg-gray-200 flex items-center justify-center overflow-hidden shadow-sm">
-                  <img src={`https://i.pravatar.cc/100?img=${i+10}`} alt="user" className="w-full h-full object-cover" />
-                </div>
-              ))}
-              <div className="pl-6 text-left">
-                <div className="text-sm font-black leading-none italic">4.9/5</div>
-                <div className="text-[10px] font-semibold uppercase opacity-30 tracking-widest">Evaluarea utilizatorilor</div>
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-2xl bg-apple-blue/10 flex items-center justify-center">
+                <Target size={18} className="text-apple-blue" />
+              </div>
+              <div className="text-left">
+                <div className="text-sm font-black leading-none italic uppercase">Construit pentru consistență</div>
+                <div className="text-[10px] font-semibold uppercase opacity-30 tracking-widest">Fără scurtături inutile</div>
               </div>
             </div>
           </div>
@@ -79,9 +76,9 @@ export const Home = () => {
       <section className="max-w-5xl mx-auto px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {[
-            { icon: Users, value: 2847, suffix: '+', label: 'Membri activi' },
-            { icon: Target, value: 42, suffix: '', label: 'Programe de elită' },
-            { icon: Trophy, value: 97, suffix: '%', label: 'Rată de succes' },
+            { icon: Users, value: 3, suffix: '', label: 'Protocoale de bază' },
+            { icon: Target, value: 100, suffix: '+', label: 'Exerciții filtrate' },
+            { icon: Trophy, value: 100, suffix: '%', label: 'Progres sustenabil' },
           ].map((metric, i) => (
             <div key={i} className="metric-item text-center py-8 px-6 rounded-2xl bg-white/40 backdrop-blur-sm border border-white/60">
               <metric.icon size={20} className="mx-auto mb-3 text-apple-blue/60" />
@@ -127,8 +124,8 @@ export const Home = () => {
             <div className="absolute inset-0 bg-gradient-to-t from-white/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             <div className="relative z-10">
               <span className="text-[10px] font-semibold uppercase tracking-[0.3em] text-apple-blue mb-4 block">Protocolul 01</span>
-              <h3 className="text-4xl md:text-5xl font-black mb-4 tracking-tighter italic">SALA DE FORȚĂ</h3>
-              <p className="text-black/50 max-w-md text-sm leading-relaxed mb-8">Creștere musculară și forță reală, cu un plan clar și progresiv.</p>
+              <h3 className="text-4xl md:text-5xl font-black mb-4 tracking-tighter italic">{TRAINING_PROTOCOLS[0].title}</h3>
+              <p className="text-black/50 max-w-md text-sm leading-relaxed mb-8">{TRAINING_PROTOCOLS[0].description}</p>
               <Link to="/training" className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest group/link hover:text-apple-blue transition-colors">
                 Descoperă <ArrowUpRight size={14} className="group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
               </Link>
@@ -180,8 +177,8 @@ export const Home = () => {
             <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-transparent to-purple-50/30 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
             <div className="relative z-10">
               <User className="text-apple-blue/20 mb-8 group-hover:text-apple-blue group-hover:scale-110 transition-all duration-500" size={32} />
-              <h3 className="text-3xl font-black mb-4 tracking-tighter italic">MĂIESTRIA CORPULUI</h3>
-              <p className="text-black/50 text-sm leading-relaxed mb-8">Învață controlul propriului corp, de la bază până la skill-uri avansate.</p>
+              <h3 className="text-3xl font-black mb-4 tracking-tighter italic">{TRAINING_PROTOCOLS[1].title}</h3>
+              <p className="text-black/50 text-sm leading-relaxed mb-8">{TRAINING_PROTOCOLS[1].description}</p>
               <Link to="/training" className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest hover:text-apple-blue transition-colors">
                 Protocol <ArrowUpRight size={14} />
               </Link>
@@ -193,8 +190,8 @@ export const Home = () => {
             <div className="absolute inset-0 bg-gradient-to-br from-amber-50/30 via-transparent to-rose-50/30 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
             <div className="relative z-10">
               <Zap className="text-apple-blue/20 mb-8 group-hover:text-apple-blue group-hover:scale-110 transition-all duration-500" size={32} />
-              <h3 className="text-3xl font-black mb-4 tracking-tighter italic">MOTOR HIBRID</h3>
-              <p className="text-black/50 text-sm leading-relaxed mb-8">Îmbină forța și condiția fizică într-un program complet și echilibrat.</p>
+              <h3 className="text-3xl font-black mb-4 tracking-tighter italic">{TRAINING_PROTOCOLS[2].title}</h3>
+              <p className="text-black/50 text-sm leading-relaxed mb-8">{TRAINING_PROTOCOLS[2].description}</p>
               <Link to="/training" className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest hover:text-apple-blue transition-colors">
                 Protocol <ArrowUpRight size={14} />
               </Link>

@@ -1,38 +1,11 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Dumbbell, User, Zap, ArrowUpRight } from 'lucide-react';
+import { Zap, ArrowUpRight } from 'lucide-react';
+import { TRAINING_PROTOCOLS } from '../data/protocols';
+import { SectionBadge } from '../components/ui/SectionBadge';
 
 export const Training = () => {
   const navigate = useNavigate();
-  const protocols = [
-    {
-      id: 'gym',
-      title: 'SALA DE FORȚĂ',
-      subtitle: 'Protocolul 01',
-      desc: 'Pentru masă musculară și forță, cu progres clar de la săptămână la săptămână.',
-      icon: Dumbbell,
-      color: 'blue',
-      gradient: 'from-blue-500/20 to-transparent'
-    },
-    {
-      id: 'calisthenics',
-      title: 'MĂIESTRIA CORPULUI',
-      subtitle: 'Protocolul 02',
-      desc: 'Pentru control corporal, mobilitate și skill-uri progresive, de la bază la avansat.',
-      icon: User,
-      color: 'purple',
-      gradient: 'from-purple-500/20 to-transparent'
-    },
-    {
-      id: 'hybrid',
-      title: 'MOTOR HIBRID',
-      subtitle: 'Protocolul 03',
-      desc: 'Pentru echilibru între forță, condiție fizică și rezistență pe termen lung.',
-      icon: Zap,
-      color: 'rose',
-      gradient: 'from-rose-500/20 to-transparent'
-    }
-  ];
 
   return (
     <div className="relative min-h-screen overflow-hidden">
@@ -44,10 +17,7 @@ export const Training = () => {
       <div className="pt-32 md:pt-44 pb-20 max-w-6xl mx-auto px-6">
         {/* HEADER */}
         <div className="text-center mb-16 card-animate">
-          <div className="inline-flex items-center gap-2.5 bg-black/[0.03] border border-black/[0.05] px-5 py-2 rounded-full mb-6">
-            <Zap size={12} className="text-apple-blue" />
-            <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-black/40">Selectează parcursul</span>
-          </div>
+          <SectionBadge icon={Zap} text="Selectează parcursul" className="mb-6" />
           <h2 className="text-4xl md:text-6xl font-black tracking-tighter mb-6">
             Alege-ți <span className="font-serif-italic font-normal text-black/70">parcursul</span>.
           </h2>
@@ -67,7 +37,7 @@ export const Training = () => {
 
         {/* 3 CARDS GRID */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {protocols.map((protocol, i) => (
+          {TRAINING_PROTOCOLS.map((protocol, i) => (
             <div 
               key={protocol.id} 
               onClick={() => navigate(`/training/${protocol.id}`)}
@@ -91,7 +61,7 @@ export const Training = () => {
                 </h3>
                 
                 <p className="text-black/50 text-sm leading-relaxed mb-8 font-medium">
-                  {protocol.desc}
+                  {protocol.description}
                 </p>
               </div>
 

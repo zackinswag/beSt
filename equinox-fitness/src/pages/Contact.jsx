@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Mail, MessageCircle, MapPin, Clock, Sparkles, CheckCircle2 } from 'lucide-react';
+import { SectionBadge } from '../components/ui/SectionBadge';
 
 export const Contact = () => {
   const [formSent, setFormSent] = useState(false);
@@ -42,10 +43,7 @@ export const Contact = () => {
       <div className="pt-40 md:pt-44 pb-20 max-w-6xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-16 card-animate">
-          <div className="inline-flex items-center gap-2.5 bg-black/[0.03] border border-black/[0.05] px-5 py-2 rounded-full mb-8">
-            <MessageCircle size={12} className="text-apple-blue" />
-            <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-black/40">Contactează-ne</span>
-          </div>
+          <SectionBadge icon={MessageCircle} text="Contactează-ne" className="mb-8" />
           <h2 className="text-5xl md:text-6xl font-black tracking-tighter mb-4">
             Hai să <span className="font-serif-italic font-normal text-black/70">ne conectăm.</span>
           </h2>
