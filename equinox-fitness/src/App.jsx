@@ -25,21 +25,8 @@ export default function App() {
         <main className="flex-grow">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/training" element={
-              <>
-                <SignedIn><Training /></SignedIn>
-                <SignedOut>
-                  <div className="pt-48 text-center animate-in fade-in duration-700">
-                    <h2 className="text-2xl font-bold mb-4">Acces Restricționat</h2>
-                    <p className="mb-8 opacity-50 font-medium">Loghează-te pentru a vedea protocoalele Equinox.</p>
-                    <SignInButton mode="modal">
-                      <button className="btn-primary">Loghează-te</button>
-                    </SignInButton>
-                  </div>
-                </SignedOut>
-              </>
-            } />
-            <Route path="/training/:id" element={<SignedIn><ProtocolDetail /></SignedIn>} />
+            <Route path="/training" element={<Training />} />
+            <Route path="/training/:id" element={<ProtocolDetail />} />
             <Route path="/training/:id/:programId" element={<SignedIn><WorkoutSession /></SignedIn>} />
             <Route path="/library" element={<Library />} />
             <Route path="/contact" element={<Contact />} />

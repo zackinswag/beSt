@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { useUser } from '@clerk/clerk-react';
+import { useUser, SignInButton } from '@clerk/clerk-react';
 import { ArrowLeft, Dumbbell, Shield, Flame, Battery, ArrowRight, Zap, Layers, User, Lock } from 'lucide-react';
 import { useSupabase } from '../hooks/useSupabase';
 
@@ -15,7 +15,10 @@ export const ProtocolDetail = () => {
 
   useEffect(() => {
     const fetchAccess = async () => {
-      if (!user || !getSupabase) return;
+      if (!user || !getSupabase) {
+        setUserAccess({ tier: 'free', trialActive: false, loading: false });
+        return;
+      }
       try {
         const supabase = await getSupabase();
         const { data, error } = await supabase
@@ -35,6 +38,8 @@ export const ProtocolDetail = () => {
             trialActive, 
             loading: false 
           });
+        } else {
+          setUserAccess({ tier: 'free', trialActive: false, loading: false });
         }
       } catch (err) {
         console.error("Error fetching access:", err);
@@ -200,6 +205,11 @@ export const ProtocolDetail = () => {
                   if (id === 'gym') {
                     setSelectedSubProtocol(sub);
                   } else {
+                    if (!user) {
+                      // Login handled by wrapper if needed, but here we can just do nothing 
+                      // or use a more explicit check.
+                      return;
+                    }
                     navigate(`/training/${id}/${sub.id}`);
                   }
                 }}
@@ -208,6 +218,11 @@ export const ProtocolDetail = () => {
                 }`}
                 style={{ animationDelay: `${0.1 + i * 0.1}s` }}
               >
+                {!user ? (
+                   <SignInButton mode="modal">
+                      <div className="absolute inset-0 z-30 cursor-pointer"></div>
+                   </SignInButton>
+                ) : null}
                 <div className="flex justify-between items-start mb-8">
                   <div className={`w-14 h-14 rounded-2xl bg-${sub.color}-500/10 flex items-center justify-center group-hover:bg-${sub.color}-500 group-hover:text-white transition-all duration-500`}>
                     <sub.icon size={24} className={`text-${sub.color}-500 group-hover:text-white transition-colors`} />
@@ -227,7 +242,7 @@ export const ProtocolDetail = () => {
 
                 <div className="flex items-center justify-between pt-6 border-t border-black/5">
                   <span className="text-[10px] font-black uppercase tracking-widest text-black/30 group-hover:text-black transition-colors">
-                    {sub.id === 'gym_strength' || sub.id === 'gym_maintenance' || sub.id === 'gym_shred' ? 'Vezi variantele' : 'Start Program'}
+                    {!user ? 'Loghează-te pentru acces' : (sub.id === 'gym_strength' || sub.id === 'gym_maintenance' || sub.id === 'gym_shred' ? 'Vezi variantele' : 'Start Program')}
                   </span>
                   <ArrowRight size={16} className="text-black/20 group-hover:text-black group-hover:translate-x-1 transition-all" />
                 </div>
@@ -240,10 +255,18 @@ export const ProtocolDetail = () => {
             {splits.map((split, i) => (
               <div 
                 key={split.id}
-                onClick={() => navigate(`/training/${id}/${selectedSubProtocol.id}_${split.id}`)}
-                className="apple-card p-10 group cursor-pointer hover:shadow-2xl hover:shadow-black/5 transition-all duration-500"
+                onClick={() => {
+                  if (!user) return;
+                  navigate(`/training/${id}/${selectedSubProtocol.id}_${split.id}`);
+                }}
+                className="apple-card p-10 group cursor-pointer hover:shadow-2xl hover:shadow-black/5 transition-all duration-500 relative"
                 style={{ animationDelay: `${0.1 + i * 0.1}s` }}
               >
+                {!user ? (
+                   <SignInButton mode="modal">
+                      <div className="absolute inset-0 z-30 cursor-pointer"></div>
+                   </SignInButton>
+                ) : null}
                 <div className="flex justify-between items-start mb-8">
                   <div className={`w-14 h-14 rounded-2xl bg-${split.color}-500/10 flex items-center justify-center group-hover:bg-${split.color}-500 group-hover:text-white transition-all duration-500`}>
                     <split.icon size={24} className={`text-${split.color}-500 group-hover:text-white transition-colors`} />

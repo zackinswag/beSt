@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useUser } from '@clerk/clerk-react';
+import { useUser, SignInButton } from '@clerk/clerk-react';
 import { Check, Zap, Sparkles, Trophy, ArrowLeft, Loader2 } from 'lucide-react';
 import { useSupabase } from '../hooks/useSupabase';
 
@@ -158,15 +158,23 @@ export const Pricing = () => {
                 ))}
               </div>
 
-              <button
-                onClick={() => handleUpgrade(tier.id)}
+              <button 
+                onClick={() => {
+                  if (!user) return;
+                  handleUpgrade(tier.id);
+                }}
                 disabled={upgrading}
-                className={`w-full py-4 rounded-2xl font-black uppercase tracking-widest text-xs transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2 ${tier.buttonVariant} ${upgrading ? 'opacity-50 cursor-not-allowed' : ''}`}
+                className={`w-full py-4 rounded-2xl font-black uppercase tracking-widest text-xs transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2 relative ${tier.buttonVariant} ${upgrading ? 'opacity-50 cursor-not-allowed' : ''}`}
               >
+                {!user ? (
+                   <SignInButton mode="modal">
+                      <div className="absolute inset-0 z-30 cursor-pointer"></div>
+                   </SignInButton>
+                ) : null}
                 {upgrading ? (
                   <Loader2 size={16} className="animate-spin" />
                 ) : (
-                  tier.id === 'free' ? 'Începe Gratis' : 'Start Trial 30 Zile'
+                  !user ? 'Loghează-te pentru acces' : (tier.id === 'free' ? 'Începe Gratis' : 'Start Trial 30 Zile')
                 )}
               </button>
             </div>
