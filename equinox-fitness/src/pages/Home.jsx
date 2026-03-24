@@ -91,34 +91,11 @@ export const Home = () => {
         </div>
       </section>
 
-      {/* CUM FUNCȚIONEAZĂ */}
-      <section className="max-w-5xl mx-auto px-6 py-8 md:py-12">
-        <div className="apple-card p-8 md:p-10 card-animate">
-          <h3 className="text-2xl md:text-3xl font-black tracking-tighter mb-3">Cum începi în 3 pași</h3>
-          <p className="text-sm md:text-base text-black/55 mb-8 max-w-2xl">
-            Un parcurs simplu, fără complicații: alegi direcția, urmezi programul și urmărești progresul.
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
-            {[
-              { step: 'Pasul 1', title: 'Alege protocolul', desc: 'Selectezi direcția potrivită: sală, calisthenics sau hibrid.' },
-              { step: 'Pasul 2', title: 'Urmează antrenamentele', desc: 'Primești structură clară pe zile și exerciții.' },
-              { step: 'Pasul 3', title: 'Măsoară progresul', desc: 'Bifezi sesiunile și vezi evoluția în timp.' }
-            ].map((item) => (
-              <div key={item.step} className="rounded-xl bg-zinc-50 border border-zinc-200/60 p-5 shadow-sm">
-                <p className="text-[10px] uppercase tracking-[0.2em] font-semibold text-apple-blue mb-2">{item.step}</p>
-                <p className="font-semibold mb-1.5">{item.title}</p>
-                <p className="text-sm text-black/55">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* PROTOCOALE */}
-      <section className="max-w-5xl mx-auto px-6 py-10 md:py-12">
-        <div className="text-center mb-10">
-          <h2 className="text-3xl md:text-4xl font-black tracking-tighter mb-3">3 protocoale de bază</h2>
-          <p className="text-black/50 text-sm max-w-lg mx-auto">Alege direcția care ți se potrivește. Fiecare protocol este structurat pe niveluri, cu progresie clară.</p>
+      <section className="max-w-5xl mx-auto px-6 py-16 md:py-20">
+        <div className="mb-12">
+          <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-apple-blue mb-3">Protocoale</p>
+          <h2 className="text-3xl md:text-4xl font-black tracking-tighter">Alege-ți direcția.</h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
