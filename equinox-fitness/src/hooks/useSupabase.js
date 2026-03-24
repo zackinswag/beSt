@@ -11,7 +11,7 @@ export const useSupabase = () => {
     // The getToken argument matches the name of the JWT template we created in Clerk
     return async () => {
       const supabaseAccessToken = await session.getToken({
-        template: "supabase",
+        template: "equinox",
       });
       return getSupabaseClient(supabaseAccessToken);
     };

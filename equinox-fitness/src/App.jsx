@@ -10,8 +10,11 @@ import { SyncUser } from './components/SyncUser';
 
 import { Home } from './pages/Home';
 import { Training } from './pages/Training';
+import { ProtocolDetail } from './pages/ProtocolDetail';
+import { WorkoutSession } from './pages/WorkoutSession';
 import { Library } from './pages/Library';
 import { Contact } from './pages/Contact';
+import { Pricing } from './pages/Pricing';
 
 export default function App() {
   return (
@@ -36,8 +39,11 @@ export default function App() {
                 </SignedOut>
               </>
             } />
+            <Route path="/training/:id" element={<SignedIn><ProtocolDetail /></SignedIn>} />
+            <Route path="/training/:id/:programId" element={<SignedIn><WorkoutSession /></SignedIn>} />
             <Route path="/library" element={<Library />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/pricing" element={<Pricing />} />
           </Routes>
         </main>
         <Footer />

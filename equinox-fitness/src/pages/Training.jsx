@@ -1,7 +1,9 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Dumbbell, User, Zap, ArrowUpRight } from 'lucide-react';
 
 export const Training = () => {
+  const navigate = useNavigate();
   const protocols = [
     {
       id: 'gym',
@@ -60,6 +62,7 @@ export const Training = () => {
           {protocols.map((protocol, i) => (
             <div 
               key={protocol.id} 
+              onClick={() => navigate(`/training/${protocol.id}`)}
               className={`apple-card relative overflow-hidden group cursor-pointer card-animate min-h-[420px] flex flex-col justify-between p-10 hover:shadow-2xl hover:shadow-${protocol.color}-500/10 transition-all duration-500`}
               style={{ animationDelay: `${0.1 + i * 0.15}s` }}
             >
