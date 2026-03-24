@@ -7,7 +7,7 @@ import { useSupabase } from '../hooks/useSupabase';
 export const ProtocolDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { user } = useUser();
+  const { user, isLoaded, isSignedIn } = useUser();
   const getSupabase = useSupabase();
 
   const [selectedSubProtocol, setSelectedSubProtocol] = useState(null);
@@ -15,7 +15,7 @@ export const ProtocolDetail = () => {
 
   useEffect(() => {
     const fetchAccess = async () => {
-      if (!user || !getSupabase) {
+      if (!isLoaded || !isSignedIn || !getSupabase) {
         setUserAccess({ tier: 'free', trialActive: false, loading: false });
         return;
       }
@@ -205,11 +205,7 @@ export const ProtocolDetail = () => {
                   if (id === 'gym') {
                     setSelectedSubProtocol(sub);
                   } else {
-                    if (!user) {
-                      // Login handled by wrapper if needed, but here we can just do nothing 
-                      // or use a more explicit check.
-                      return;
-                    }
+                    if (!isSignedIn) return;
                     navigate(`/training/${id}/${sub.id}`);
                   }
                 }}
@@ -218,7 +214,7 @@ export const ProtocolDetail = () => {
                 }`}
                 style={{ animationDelay: `${0.1 + i * 0.1}s` }}
               >
-                {!user ? (
+                {!isSignedIn ? (
                    <SignInButton mode="modal">
                       <div className="absolute inset-0 z-30 cursor-pointer"></div>
                    </SignInButton>
@@ -242,7 +238,7 @@ export const ProtocolDetail = () => {
 
                 <div className="flex items-center justify-between pt-6 border-t border-black/5">
                   <span className="text-[10px] font-black uppercase tracking-widest text-black/30 group-hover:text-black transition-colors">
-                    {!user ? 'Loghează-te pentru acces' : (sub.id === 'gym_strength' || sub.id === 'gym_maintenance' || sub.id === 'gym_shred' ? 'Vezi variantele' : 'Start Program')}
+                    {!isSignedIn ? 'Loghează-te pentru acces' : (sub.id === 'gym_strength' || sub.id === 'gym_maintenance' || sub.id === 'gym_shred' ? 'Vezi variantele' : 'Start Program')}
                   </span>
                   <ArrowRight size={16} className="text-black/20 group-hover:text-black group-hover:translate-x-1 transition-all" />
                 </div>
@@ -256,13 +252,13 @@ export const ProtocolDetail = () => {
               <div 
                 key={split.id}
                 onClick={() => {
-                  if (!user) return;
+                  if (!isSignedIn) return;
                   navigate(`/training/${id}/${selectedSubProtocol.id}_${split.id}`);
                 }}
                 className="apple-card p-10 group cursor-pointer hover:shadow-2xl hover:shadow-black/5 transition-all duration-500 relative"
                 style={{ animationDelay: `${0.1 + i * 0.1}s` }}
               >
-                {!user ? (
+                {!isSignedIn ? (
                    <SignInButton mode="modal">
                       <div className="absolute inset-0 z-30 cursor-pointer"></div>
                    </SignInButton>

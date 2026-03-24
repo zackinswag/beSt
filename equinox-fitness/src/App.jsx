@@ -1,6 +1,6 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { SignedIn, SignedOut, SignInButton } from "@clerk/clerk-react";
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { SignedIn, SignedOut, SignInButton, RedirectToSignIn } from "@clerk/clerk-react";
 
 import './App.css';
 
@@ -27,10 +27,16 @@ export default function App() {
             <Route path="/" element={<Home />} />
             <Route path="/training" element={<Training />} />
             <Route path="/training/:id" element={<ProtocolDetail />} />
-            <Route path="/training/:id/:programId" element={<SignedIn><WorkoutSession /></SignedIn>} />
+            <Route path="/training/:id/:programId" element={
+              <>
+                <SignedIn><WorkoutSession /></SignedIn>
+                <SignedOut><RedirectToSignIn /></SignedOut>
+              </>
+            } />
             <Route path="/library" element={<Library />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/pricing" element={<Pricing />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </main>
         <Footer />

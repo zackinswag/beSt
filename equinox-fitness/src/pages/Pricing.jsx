@@ -6,7 +6,7 @@ import { useSupabase } from '../hooks/useSupabase';
 
 export const Pricing = () => {
   const navigate = useNavigate();
-  const { user } = useUser();
+  const { user, isLoaded, isSignedIn } = useUser();
   const getSupabase = useSupabase();
   const [upgrading, setUpgrading] = useState(false);
 
@@ -160,13 +160,13 @@ export const Pricing = () => {
 
               <button 
                 onClick={() => {
-                  if (!user) return;
+                  if (!isSignedIn) return;
                   handleUpgrade(tier.id);
                 }}
                 disabled={upgrading}
                 className={`w-full py-4 rounded-2xl font-black uppercase tracking-widest text-xs transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2 relative ${tier.buttonVariant} ${upgrading ? 'opacity-50 cursor-not-allowed' : ''}`}
               >
-                {!user ? (
+                {!isSignedIn ? (
                    <SignInButton mode="modal">
                       <div className="absolute inset-0 z-30 cursor-pointer"></div>
                    </SignInButton>
@@ -174,7 +174,7 @@ export const Pricing = () => {
                 {upgrading ? (
                   <Loader2 size={16} className="animate-spin" />
                 ) : (
-                  !user ? 'Loghează-te pentru acces' : (tier.id === 'free' ? 'Începe Gratis' : 'Start Trial 30 Zile')
+                  !isSignedIn ? 'Loghează-te pentru acces' : (tier.id === 'free' ? 'Începe Gratis' : 'Start Trial 30 Zile')
                 )}
               </button>
             </div>
