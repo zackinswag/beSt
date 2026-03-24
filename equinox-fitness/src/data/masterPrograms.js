@@ -41,11 +41,11 @@ export const MASTER_PROGRAMS = [
     id: 'calisthenics_skills',
     protocolId: 'calisthenics',
     name: 'Skill-uri Avansate',
-    desc: 'Front Lever, Planche și Muscle-ups. Măiestria controlului corporal total.',
+    desc: 'Front Lever, Planche și Muscle-ups. Control absolut și forță funcțională la nivel ridicat.',
     duration: '12+ Săptămâni',
     difficulty: 'Avansat',
     intensity: 'Ridicată',
-    goal: 'Măiestrie Skill',
+    goal: 'Skill Progresiv',
     icon: Shield,
     color: 'purple'
   },

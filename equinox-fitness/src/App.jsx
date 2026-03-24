@@ -16,12 +16,14 @@ import { Contact } from './pages/Contact';
 import { Pricing } from './pages/Pricing';
 import { Profile } from './pages/Profile';
 import { PPLProgram } from './pages/PPLProgram';
+import { BackgroundAmbient } from './components/ui/BackgroundAmbient';
 
 export default function App() {
   return (
     <Router>
       <SignedIn><SyncUser /></SignedIn>
-      <div className="min-h-screen flex flex-col bg-zinc-50">
+      <div className="min-h-screen flex flex-col relative">
+        <BackgroundAmbient />
         <Navbar />
         <main className="flex-grow">
           <Routes>

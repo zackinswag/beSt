@@ -31,11 +31,7 @@ export const Home = () => {
 
   return (
     <div className="relative overflow-hidden min-h-screen">
-      {/* BACKGROUND AMBIENT LIGHTS */}
-      <div className="absolute top-0 left-0 w-full h-full -z-10 overflow-hidden bg-transparent">
-        <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] bg-blue-400/25 rounded-full blur-[100px] animate-mesh" style={{ animationDuration: '10s' }}></div>
-        <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-purple-400/20 rounded-full blur-[100px] animate-mesh" style={{ animationDuration: '11s', animationDelay: '-2s' }}></div>
-      </div>
+
 
       {/* HERO SECTION */}
       <section className="pt-40 md:pt-44 pb-20 px-6 text-center">

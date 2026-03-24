@@ -3,7 +3,7 @@ import { Dumbbell, User, Zap } from 'lucide-react';
 export const TRAINING_PROTOCOLS = [
   {
     id: 'gym',
-    title: 'SALA DE FORȚĂ',
+    title: 'SALĂ',
     subtitle: 'Protocolul 01',
     shortLabel: 'sală de forță',
     description:
@@ -14,18 +14,18 @@ export const TRAINING_PROTOCOLS = [
   },
   {
     id: 'calisthenics',
-    title: 'MĂIESTRIA CORPULUI',
+    title: 'CALISTHENICS',
     subtitle: 'Protocolul 02',
-    shortLabel: 'măiestria corpului',
+    shortLabel: 'calisthenics',
     description:
-      'Pentru control corporal, mobilitate și skill-uri progresive, de la bază la avansat.',
+      'Pentru control corporal, mobilitate și skill-uri progresive, de la incepator la avansat.',
     icon: User,
     color: 'purple',
     gradient: 'from-purple-500/20 to-transparent',
   },
   {
     id: 'hybrid',
-    title: 'MOTOR HIBRID',
+    title: 'HIBRID',
     subtitle: 'Protocolul 03',
     shortLabel: 'motor hibrid',
     description:

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Instagram, Twitter, Mail } from 'lucide-react';
 
 export const Footer = () => (
-  <footer className="border-t border-zinc-200 bg-white">
+  <footer className="bg-transparent">
     <div className="max-w-6xl mx-auto px-6 py-16">
       <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
         {/* Brand */}
@@ -27,7 +27,7 @@ export const Footer = () => (
           <h4 className="text-[10px] font-semibold uppercase tracking-[0.2em] text-black/30 mb-4">Protocoale</h4>
           <div className="space-y-2.5">
             <p className="text-sm text-black/50">Sala de Forță</p>
-            <p className="text-sm text-black/50">Măiestria Corpului</p>
+            <p className="text-sm text-black/50">Calisthenics</p>
             <p className="text-sm text-black/50">Motor Hibrid</p>
           </div>
         </div>

@@ -75,10 +75,7 @@ export const Pricing = () => {
         duration={3000} 
       />
 
-      {/* BACKGROUND AMBIENT */}
-      <div className="absolute top-0 left-0 w-full h-full -z-10 overflow-hidden bg-transparent">
-        <div className="absolute top-[5%] right-[10%] w-[45%] h-[45%] bg-blue-400/10 rounded-full blur-[100px] animate-mesh" style={{ animationDuration: '12s' }}></div>
-      </div>
+
 
       <div className="pt-32 md:pt-44 max-w-6xl mx-auto px-6 relative">
         {/* BACK BUTTON (Absolute for cleaner centering of titles) */}

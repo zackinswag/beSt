@@ -25,11 +25,8 @@ export const Training = () => {
   };
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-zinc-50/50">
-      {/* BACKGROUND AMBIENT */}
-      <div className="absolute top-0 left-0 w-full h-full -z-10 overflow-hidden bg-transparent">
-        <div className="absolute top-[5%] left-[10%] w-[45%] h-[45%] bg-blue-400/5 rounded-full blur-[100px] animate-mesh"></div>
-      </div>
+    <div className="relative min-h-screen overflow-hidden">
+
 
       <div className="pt-32 md:pt-40 pb-24 max-w-6xl mx-auto px-6">
         {/* HEADER */}
@@ -39,7 +36,7 @@ export const Training = () => {
             Catalog <span className="font-serif-italic font-normal text-black/70">Antrenamente</span>.
           </h2>
           <p className="text-black/50 text-sm md:text-base font-medium max-w-xl leading-relaxed">
-            Nu mai pierde timpul cu meniuri complicate. Alege programul, apasă pe card și începe antrenamentul imediat.
+            Protocoale de antrenament proiectate pentru performanță. Structură clară, obiective precise și progres garantat prin consistență.
           </p>
         </div>
 
