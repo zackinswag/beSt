@@ -12,6 +12,7 @@ export const ProtocolDetail = () => {
 
   const [selectedSubProtocol, setSelectedSubProtocol] = useState(null);
   const [userAccess, setUserAccess] = useState({ tier: 'free', trialActive: false, loading: true });
+  const [showComingSoon, setShowComingSoon] = useState(false);
 
   useEffect(() => {
     const fetchAccess = async () => {
@@ -151,6 +152,16 @@ export const ProtocolDetail = () => {
 
   return (
     <div className="relative min-h-screen overflow-hidden">
+      {/* COMING SOON TOAST */}
+      {showComingSoon && (
+        <div className="fixed top-24 left-1/2 -translate-x-1/2 z-[100] animate-in fade-in slide-in-from-top-4 duration-500">
+          <div className="bg-black text-white px-8 py-4 rounded-2xl shadow-2xl flex items-center gap-3 border border-white/10">
+            <Zap size={18} className="text-apple-blue animate-pulse" />
+            <span className="font-black uppercase tracking-widest text-[10px]">Modulul de antrenament vine curând!</span>
+          </div>
+        </div>
+      )}
+
       {/* BACKGROUND AMBIENT */}
       <div className="absolute top-0 left-0 w-full h-full -z-10 overflow-hidden bg-[#F5F5F7]">
         <div className="absolute top-[10%] right-[10%] w-[40%] h-[40%] bg-blue-400/10 rounded-full blur-[100px] animate-mesh"></div>
@@ -196,17 +207,11 @@ export const ProtocolDetail = () => {
               <div 
                 key={sub.id}
                 onClick={() => {
-                  const hasAccess = userAccess.tier !== 'free' || userAccess.trialActive || sub.tier === 'free';
-                  if (!hasAccess) {
-                    navigate('/pricing');
-                    return;
-                  }
-                  
                   if (id === 'gym') {
                     setSelectedSubProtocol(sub);
                   } else {
-                    if (!isSignedIn) return;
-                    navigate(`/training/${id}/${sub.id}`);
+                    setShowComingSoon(true);
+                    setTimeout(() => setShowComingSoon(false), 3000);
                   }
                 }}
                 className={`apple-card p-10 group cursor-pointer hover:shadow-2xl hover:shadow-black/5 transition-all duration-500 card-animate ${
@@ -214,11 +219,6 @@ export const ProtocolDetail = () => {
                 }`}
                 style={{ animationDelay: `${0.1 + i * 0.1}s` }}
               >
-                {!isSignedIn ? (
-                   <SignInButton mode="modal">
-                      <div className="absolute inset-0 z-30 cursor-pointer"></div>
-                   </SignInButton>
-                ) : null}
                 <div className="flex justify-between items-start mb-8">
                   <div className={`w-14 h-14 rounded-2xl bg-${sub.color}-500/10 flex items-center justify-center group-hover:bg-${sub.color}-500 group-hover:text-white transition-all duration-500`}>
                     <sub.icon size={24} className={`text-${sub.color}-500 group-hover:text-white transition-colors`} />
@@ -238,7 +238,7 @@ export const ProtocolDetail = () => {
 
                 <div className="flex items-center justify-between pt-6 border-t border-black/5">
                   <span className="text-[10px] font-black uppercase tracking-widest text-black/30 group-hover:text-black transition-colors">
-                    {!isSignedIn ? 'Loghează-te pentru acces' : (sub.id === 'gym_strength' || sub.id === 'gym_maintenance' || sub.id === 'gym_shred' ? 'Vezi variantele' : 'Start Program')}
+                    {sub.id === 'gym_strength' || sub.id === 'gym_maintenance' || sub.id === 'gym_shred' ? 'Vezi variantele' : 'Start Program'}
                   </span>
                   <ArrowRight size={16} className="text-black/20 group-hover:text-black group-hover:translate-x-1 transition-all" />
                 </div>
@@ -252,17 +252,12 @@ export const ProtocolDetail = () => {
               <div 
                 key={split.id}
                 onClick={() => {
-                  if (!isSignedIn) return;
-                  navigate(`/training/${id}/${selectedSubProtocol.id}_${split.id}`);
+                  setShowComingSoon(true);
+                  setTimeout(() => setShowComingSoon(false), 3000);
                 }}
                 className="apple-card p-10 group cursor-pointer hover:shadow-2xl hover:shadow-black/5 transition-all duration-500 relative"
                 style={{ animationDelay: `${0.1 + i * 0.1}s` }}
               >
-                {!isSignedIn ? (
-                   <SignInButton mode="modal">
-                      <div className="absolute inset-0 z-30 cursor-pointer"></div>
-                   </SignInButton>
-                ) : null}
                 <div className="flex justify-between items-start mb-8">
                   <div className={`w-14 h-14 rounded-2xl bg-${split.color}-500/10 flex items-center justify-center group-hover:bg-${split.color}-500 group-hover:text-white transition-all duration-500`}>
                     <split.icon size={24} className={`text-${split.color}-500 group-hover:text-white transition-colors`} />
