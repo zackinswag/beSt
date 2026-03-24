@@ -206,14 +206,6 @@ export const Profile = () => {
                 </button>
               </div>
             </div>
-
-            <div className="apple-card p-8 bg-zinc-950 border-none text-white overflow-hidden relative group">
-              <div className="absolute -right-8 -bottom-8 w-32 h-32 bg-blue-500/30 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-1000"></div>
-              <h4 className="text-[10px] font-bold uppercase tracking-widest text-blue-500 mb-4 relative z-10">Sfat Pro</h4>
-              <p className="text-xs font-medium leading-relaxed opacity-80 relative z-10">
-                Consistența este cheia succesului. Nu uita să bifezi antrenamentele pentru a vedea progresul real în timp!
-              </p>
-            </div>
           </div>
         </div>
       </div>

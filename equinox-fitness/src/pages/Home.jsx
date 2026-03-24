@@ -114,92 +114,57 @@ export const Home = () => {
         </div>
       </section>
 
-      {/* BENTO GRID - PROGRAMS */}
-      <section className="max-w-6xl mx-auto px-6 py-10 md:py-12">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
-          
-          {/* Gym - Main Card */}
-          <div className="md:col-span-8 apple-card p-12 group overflow-hidden relative min-h-[400px] flex flex-col justify-end card-animate">
-            <Dumbbell className="absolute top-10 right-10 text-black/[0.03] w-48 h-48 -rotate-12 group-hover:text-apple-blue/10 group-hover:rotate-0 transition-all duration-700" />
-            <div className="absolute inset-0 bg-gradient-to-t from-white/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-            <div className="relative z-10">
-              <span className="text-[10px] font-semibold uppercase tracking-[0.3em] text-apple-blue mb-4 block">Protocolul 01</span>
-              <h3 className="text-4xl md:text-5xl font-black mb-4 tracking-tighter italic">{TRAINING_PROTOCOLS[0].title}</h3>
-              <p className="text-black/50 max-w-md text-sm leading-relaxed mb-8">{TRAINING_PROTOCOLS[0].description}</p>
-              <Link to="/training" className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest group/link hover:text-apple-blue transition-colors">
-                Descoperă <ArrowUpRight size={14} className="group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
-              </Link>
-            </div>
-          </div>
+      {/* PROTOCOALE */}
+      <section className="max-w-5xl mx-auto px-6 py-10 md:py-12">
+        <div className="text-center mb-10">
+          <h2 className="text-3xl md:text-4xl font-black tracking-tighter mb-3">3 protocoale de bază</h2>
+          <p className="text-black/50 text-sm max-w-lg mx-auto">Alege direcția care ți se potrivește. Fiecare protocol este structurat pe niveluri, cu progresie clară.</p>
+        </div>
 
-          {/* Stats Card - Dark Carbon Dashboard */}
-          <div className="md:col-span-4 bg-zinc-950 text-white rounded-[20px] p-10 flex flex-col justify-between shadow-2xl shadow-black/20 card-animate relative overflow-hidden">
-            {/* Subtle grid pattern */}
-            <div className="absolute inset-0 opacity-10" style={{
-              backgroundImage: 'radial-gradient(circle, #3b82f6 1px, transparent 1px)',
-              backgroundSize: '20px 20px'
-            }}></div>
-            <div className="space-y-8 relative z-10">
-              <h4 className="text-[10px] items-center flex gap-2 font-bold uppercase tracking-[0.3em] text-blue-500">
-                <span className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></span>
-                Performanța sistemului
-              </h4>
-              <div className="space-y-4">
-                <div className="flex justify-between items-end">
-                  <span className="text-xs font-bold opacity-60">Forță</span>
-                  <span className="text-2xl font-light italic tracking-tighter">98.2%</span>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {[
+            { 
+              num: '01', 
+              icon: Dumbbell,
+              title: TRAINING_PROTOCOLS[0].title, 
+              desc: TRAINING_PROTOCOLS[0].description,
+              accent: 'bg-blue-50 border-blue-100',
+              iconColor: 'text-blue-500 bg-blue-100',
+              numColor: 'text-blue-500'
+            },
+            { 
+              num: '02', 
+              icon: User,
+              title: TRAINING_PROTOCOLS[1].title, 
+              desc: TRAINING_PROTOCOLS[1].description,
+              accent: 'bg-emerald-50 border-emerald-100',
+              iconColor: 'text-emerald-600 bg-emerald-100',
+              numColor: 'text-emerald-600'
+            },
+            { 
+              num: '03', 
+              icon: Zap,
+              title: TRAINING_PROTOCOLS[2].title, 
+              desc: TRAINING_PROTOCOLS[2].description,
+              accent: 'bg-amber-50 border-amber-100',
+              iconColor: 'text-amber-600 bg-amber-100',
+              numColor: 'text-amber-600'
+            }
+          ].map((p) => (
+            <Link to="/training" key={p.num} className={`rounded-2xl ${p.accent} border p-8 group hover:shadow-lg transition-all duration-300 block`}>
+              <div className="flex items-center justify-between mb-6">
+                <div className={`w-11 h-11 rounded-xl ${p.iconColor} flex items-center justify-center`}>
+                  <p.icon size={20} />
                 </div>
-                <div className="h-1.5 bg-white/10 rounded-full overflow-hidden">
-                  <div className="h-full bg-gradient-to-r from-blue-500 to-blue-400 w-[98%] shadow-[0_0_12px_#3b82f6] rounded-full"></div>
-                </div>
+                <span className={`text-3xl font-black tracking-tighter ${p.numColor} opacity-30`}>{p.num}</span>
               </div>
-              <div className="space-y-4">
-                <div className="flex justify-between items-end">
-                  <span className="text-xs font-bold opacity-60">Mobilitate</span>
-                  <span className="text-2xl font-light italic tracking-tighter">85.4%</span>
-                </div>
-                <div className="h-1.5 bg-white/10 rounded-full overflow-hidden">
-                  <div className="h-full bg-gradient-to-r from-white/40 to-white/60 w-[85%] rounded-full"></div>
-                </div>
-              </div>
-              <div className="space-y-4">
-                <div className="flex justify-between items-end">
-                  <span className="text-xs font-bold opacity-60">Recuperare</span>
-                  <span className="text-2xl font-light italic tracking-tighter">91.7%</span>
-                </div>
-                <div className="h-1.5 bg-white/10 rounded-full overflow-hidden">
-                  <div className="h-full bg-gradient-to-r from-emerald-500 to-emerald-400 w-[92%] shadow-[0_0_12px_#10b981] rounded-full"></div>
-                </div>
-              </div>
-            </div>
-            <p className="text-[9px] font-bold uppercase tracking-[0.3em] text-white/30 leading-relaxed relative z-10 mt-6">Optimizare activă: <br />Baza de Date Equinox</p>
-          </div>
-
-          {/* Body Mastery - with gradient overlay */}
-          <div className="md:col-span-6 apple-card p-12 group relative overflow-hidden card-animate">
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-transparent to-purple-50/30 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-            <div className="relative z-10">
-              <User className="text-apple-blue/20 mb-8 group-hover:text-apple-blue group-hover:scale-110 transition-all duration-500" size={32} />
-              <h3 className="text-3xl font-black mb-4 tracking-tighter italic">{TRAINING_PROTOCOLS[1].title}</h3>
-              <p className="text-black/50 text-sm leading-relaxed mb-8">{TRAINING_PROTOCOLS[1].description}</p>
-              <Link to="/training" className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest hover:text-apple-blue transition-colors">
-                Protocol <ArrowUpRight size={14} />
-              </Link>
-            </div>
-          </div>
-
-          {/* Hybrid */}
-          <div className="md:col-span-6 apple-card p-12 group relative overflow-hidden card-animate">
-            <div className="absolute inset-0 bg-gradient-to-br from-amber-50/30 via-transparent to-rose-50/30 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-            <div className="relative z-10">
-              <Zap className="text-apple-blue/20 mb-8 group-hover:text-apple-blue group-hover:scale-110 transition-all duration-500" size={32} />
-              <h3 className="text-3xl font-black mb-4 tracking-tighter italic">{TRAINING_PROTOCOLS[2].title}</h3>
-              <p className="text-black/50 text-sm leading-relaxed mb-8">{TRAINING_PROTOCOLS[2].description}</p>
-              <Link to="/training" className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest hover:text-apple-blue transition-colors">
-                Protocol <ArrowUpRight size={14} />
-              </Link>
-            </div>
-          </div>
+              <h3 className="text-xl font-black tracking-tight mb-2">{p.title}</h3>
+              <p className="text-black/50 text-sm leading-relaxed mb-6">{p.desc}</p>
+              <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-black/40 group-hover:text-black transition-colors">
+                Descoperă <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              </span>
+            </Link>
+          ))}
         </div>
       </section>
     </div>

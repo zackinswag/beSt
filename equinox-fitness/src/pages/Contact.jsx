@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, MessageCircle, MapPin, Clock, Sparkles, CheckCircle2 } from 'lucide-react';
+import { Mail, MessageCircle, MapPin, Clock, CheckCircle2 } from 'lucide-react';
 import { SectionBadge } from '../components/ui/SectionBadge';
 
 export const Contact = () => {
@@ -67,32 +67,6 @@ export const Contact = () => {
                 </div>
               </div>
             ))}
-
-            {/* Quick FAQ / trust strip */}
-            <div className="bg-zinc-950 rounded-[16px] p-8 text-white relative overflow-hidden shadow-2xl shadow-black/20 card-animate" style={{ animationDelay: '0.3s' }}>
-              <div className="absolute -right-8 -bottom-8 w-32 h-32 bg-blue-500/30 rounded-full blur-2xl"></div>
-              <div className="absolute inset-0 opacity-10" style={{
-                backgroundImage: 'radial-gradient(circle, #3b82f6 1px, transparent 1px)',
-                backgroundSize: '16px 16px'
-              }}></div>
-              <div className="relative z-10">
-                <Sparkles size={16} className="text-blue-500 mb-4" />
-                <h4 className="font-bold text-sm mb-2">Răspuns Garantat</h4>
-                <p className="text-white/50 text-xs leading-relaxed">
-                  Fiecare mesaj primește răspuns personalizat în maxim 24 de ore de la un specialist Equinox.
-                </p>
-                <div className="flex items-center gap-3 mt-5">
-                  <div className="flex -space-x-2">
-                    {[1,2,3].map(i => (
-                      <div key={i} className="w-7 h-7 rounded-full border-2 border-zinc-950 bg-zinc-700 overflow-hidden">
-                        <img src={`https://i.pravatar.cc/60?img=${i+20}`} alt="coach" className="w-full h-full object-cover" />
-                      </div>
-                    ))}
-                  </div>
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-white/40">3 antrenori online</span>
-                </div>
-              </div>
-            </div>
           </div>
 
           {/* RIGHT — Form */}
