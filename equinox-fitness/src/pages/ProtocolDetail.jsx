@@ -151,7 +151,7 @@ export const ProtocolDetail = () => {
         <div className="absolute top-[10%] right-[10%] w-[40%] h-[40%] bg-blue-400/10 rounded-full blur-[100px] animate-mesh"></div>
       </div>
 
-      <div className="pt-44 pb-20 max-w-6xl mx-auto px-6">
+      <div className="pt-32 md:pt-44 pb-20 max-w-6xl mx-auto px-6">
         {/* BACK & HEADER */}
         <div className="mb-16 card-animate">
           <button 
@@ -167,12 +167,12 @@ export const ProtocolDetail = () => {
             <ArrowLeft size={14} /> {selectedSubProtocol ? 'Înapoi la specializări' : 'Înapoi la protocoale'}
           </button>
           
-          <div className="flex items-center gap-6 mb-6">
-            <div className="w-16 h-16 rounded-2xl bg-black/5 flex items-center justify-center text-apple-blue shadow-sm">
-              {id === 'gym' ? <Dumbbell size={32} /> : <User size={32} />}
+          <div className="flex items-center gap-4 md:gap-6 mb-6 text-left">
+            <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-black/5 flex items-center justify-center text-apple-blue shadow-sm shrink-0">
+              {id === 'gym' ? <Dumbbell size={24} className="md:w-8 md:h-8" /> : <User size={24} className="md:w-8 md:h-8" />}
             </div>
             <div>
-              <h2 className="text-5xl font-black tracking-tighter">
+              <h2 className="text-3xl md:text-5xl font-black tracking-tighter leading-none">
                 {selectedSubProtocol ? selectedSubProtocol.name.toUpperCase() : (
                   id === 'gym' ? <>THE <span className="font-serif-italic font-normal text-black/70">WEIGHTROOM</span></> : <>BODY <span className="font-serif-italic font-normal text-black/70">MASTERY</span></>
                 )}

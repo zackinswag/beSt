@@ -24,7 +24,7 @@ export const Library = () => {
 
       <div className="pt-44 pb-20 max-w-6xl mx-auto px-6">
         {/* HEADER */}
-        <div className="flex flex-col md:flex-row justify-between items-end gap-8 mb-16 card-animate">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 mb-16 card-animate">
           <div className="text-left">
             <div className="inline-flex items-center gap-2.5 bg-black/[0.03] border border-black/[0.05] px-5 py-2 rounded-full mb-6">
               <PlayCircle size={12} className="text-apple-blue" />
@@ -34,17 +34,23 @@ export const Library = () => {
             <p className="text-black/40 font-bold tracking-widest text-xs uppercase">Movement Standards & Technical Mastery</p>
           </div>
           
-          {/* FILTER PILLS */}
-          <div className="flex flex-wrap gap-2 p-1.5 rounded-full bg-black/[0.03] border border-black/[0.05] backdrop-blur-md">
-            {['All', 'Gym', 'Calisthenics', 'Hybrid'].map(cat => (
-              <button 
-                key={cat} 
-                onClick={() => setFilter(cat)} 
-                className={`px-6 py-2.5 rounded-full text-[10px] font-black uppercase tracking-widest transition-all duration-300 ${filter === cat ? 'bg-white shadow-[0_4px_12px_rgba(0,0,0,0.05)] text-apple-blue' : 'text-black/40 hover:text-black hover:bg-black/5'}`}
-              >
-                {cat}
-              </button>
-            ))}
+          {/* FILTER PILLS - Improved for Mobile */}
+          <div className="flex w-full md:w-auto items-center overflow-x-auto no-scrollbar pb-2 md:pb-0">
+            <div className="flex gap-2 p-1.5 rounded-full md:rounded-full bg-black/[0.03] border border-black/[0.05] backdrop-blur-md whitespace-nowrap">
+              {['All', 'Gym', 'Calisthenics', 'Hybrid'].map(cat => (
+                <button 
+                  key={cat} 
+                  onClick={() => setFilter(cat)} 
+                  className={`px-6 py-2.5 rounded-full text-[10px] font-black uppercase tracking-widest transition-all duration-300 ${
+                    filter === cat 
+                      ? 'bg-white shadow-[0_4px_12px_rgba(0,0,0,0.05)] text-apple-blue' 
+                      : 'text-black/40 hover:text-black hover:bg-black/5'
+                  }`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
 

@@ -42,14 +42,14 @@ export const Training = () => {
         <div className="absolute bottom-[20%] right-[-5%] w-[40%] h-[40%] bg-purple-400/20 rounded-full blur-[120px] animate-mesh" style={{ animationDuration: '8s', animationDelay: '-3s' }}></div>
       </div>
 
-      <div className="pt-44 pb-20 max-w-6xl mx-auto px-6">
+      <div className="pt-32 md:pt-44 pb-20 max-w-6xl mx-auto px-6">
         {/* HEADER */}
         <div className="text-center mb-16 card-animate">
           <div className="inline-flex items-center gap-2.5 bg-black/[0.03] border border-black/[0.05] px-5 py-2 rounded-full mb-6">
             <Zap size={12} className="text-apple-blue" />
             <span className="text-[10px] font-black uppercase tracking-[0.2em] text-black/40">Selectează parcursul</span>
           </div>
-          <h2 className="text-5xl md:text-6xl font-black tracking-tighter mb-6">
+          <h2 className="text-4xl md:text-6xl font-black tracking-tighter mb-6">
             Choose your <span className="font-serif-italic font-normal text-black/70">path</span>.
           </h2>
           <p className="text-lg md:text-xl text-black/40 font-medium max-w-2xl mx-auto leading-relaxed">

@@ -94,22 +94,22 @@ export const Pricing = () => {
         <div className="absolute bottom-[10%] left-[-5%] w-[40%] h-[40%] bg-purple-400/10 rounded-full blur-[120px] animate-mesh" style={{ animationDuration: '12s', animationDelay: '-4s' }}></div>
       </div>
 
-      <div className="pt-44 max-w-6xl mx-auto px-6 relative">
+      <div className="pt-32 md:pt-44 max-w-6xl mx-auto px-6 relative">
         {/* BACK BUTTON (Absolute for cleaner centering of titles) */}
         <button 
           onClick={() => navigate(-1)}
-          className="absolute top-44 left-6 inline-flex items-center gap-2 text-black/40 hover:text-black transition-colors font-bold uppercase tracking-widest text-[10px] z-20"
+          className="absolute top-32 md:top-44 left-6 inline-flex items-center gap-2 text-black/40 hover:text-black transition-colors font-bold uppercase tracking-widest text-[10px] z-20"
         >
           <ArrowLeft size={14} /> Înapoi
         </button>
 
         {/* HEADER */}
-        <div className="text-center mb-20 card-animate">
+        <div className="text-center mb-16 md:mb-20 card-animate">
           <div className="inline-flex items-center gap-2.5 bg-black/[0.03] border border-black/[0.05] px-5 py-2 rounded-full mb-8">
             <Sparkles size={12} className="text-apple-blue" />
             <span className="text-[10px] font-black uppercase tracking-[0.2em] text-black/40">Investește în tine</span>
           </div>
-          <h2 className="text-5xl md:text-7xl font-black tracking-tighter mb-6">
+          <h2 className="text-4xl md:text-7xl font-black tracking-tighter mb-6">
             Choose your <span className="font-serif-italic font-normal text-black/70">level</span>.
           </h2>
           <p className="text-lg md:text-xl text-black/40 font-medium max-w-2xl mx-auto leading-relaxed">

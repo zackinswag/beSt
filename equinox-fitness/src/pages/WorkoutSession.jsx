@@ -90,7 +90,7 @@ export const WorkoutSession = () => {
 
   if (authLoading || loading) {
     return (
-      <div className="pt-44 text-center animate-pulse">
+      <div className="pt-32 md:pt-44 text-center animate-pulse">
         <p className="text-black/20 font-black uppercase tracking-widest text-xs">Verificăm accesul...</p>
       </div>
     );
@@ -110,7 +110,7 @@ export const WorkoutSession = () => {
       {/* HEADER OVERLAY */}
       <div className="fixed top-0 left-0 w-full h-80 bg-gradient-to-b from-blue-500/10 to-transparent -z-10" />
 
-      <div className="pt-44 max-w-3xl mx-auto px-6">
+      <div className="pt-32 md:pt-44 max-w-3xl mx-auto px-6">
         {/* BACK & HEADER */}
         <div className="mb-12">
           <button 
@@ -122,7 +122,7 @@ export const WorkoutSession = () => {
           
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
             <div>
-              <h1 className="text-4xl md:text-5xl font-black tracking-tighter mb-2">{workout.name}</h1>
+              <h1 className="text-3xl md:text-5xl font-black tracking-tighter mb-2 leading-none">{workout.name}</h1>
               <p className="text-black/40 font-bold tracking-[0.2em] uppercase text-[10px]">{id} • Protocol {programId}</p>
             </div>
             <div className="bg-white/60 backdrop-blur-xl border border-white/40 px-6 py-4 rounded-3xl flex items-center gap-4 shadow-sm min-w-[160px]">
